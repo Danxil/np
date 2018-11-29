@@ -1,81 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import injectSheet from 'react-jss'
 import { Link } from 'react-router-dom';
 import { compose, branch, renderComponent, withHandlers, pure } from 'recompose';
 import { Icon, Avatar } from 'antd';
-import withUser from '../containers/withUser';
+import withUser from '../../containers/withUser';
 import Coins from '../common/Coins';
-import { toFixedIfNeed } from '../helpers/gameUtils';
+import { toFixedIfNeed } from '../../helpers/gameUtils';
 import { withLocalize } from 'react-localize-redux';
+import styles from './RightBlock.css';
 
-const RightBlock = ({ classes, logout, userInfo, translate }) => {
+const RightBlock = ({ logout, userInfo, translate }) => {
   return (
-    <div className={classes.rightBlock}>
-      <span className={classes.balance}>
-        <span className={classes.balanceLabel}>{translate('BALANCE')}:</span>
-        <span className={classes.balanceAmount}>
-          <Coins /> <span className={classes.coinsAmount}>{toFixedIfNeed(userInfo.balance)}</span> <Link to="/by-coins">
+    <div className={styles.rightBlock}>
+      <span className={styles.balance}>
+        <span className={styles.balanceLabel}>{translate('BALANCE')}:</span>
+        <span className={styles.balanceAmount}>
+          <Coins /> <span className={styles.coinsAmount}>{toFixedIfNeed(userInfo.balance)}</span> <Link to="/by-coins">
           <Icon type="plus-circle-o" />
           </Link>
         </span>
       </span>
-      <div className={classes.userBlock}>
-        <span className={classes.userName}>{userInfo.displayName || userInfo.email}</span>
-        <Avatar size="small" className={`${classes.playerAvatar}`} icon="user" src={userInfo.photo} />
-        <Icon type="logout" className={classes.logOut} onClick={logout} />
+      <div className={styles.userBlock}>
+        <span className={styles.userName}>{userInfo.displayName || userInfo.email}</span>
+        <Avatar size="small" className={`${styles.playerAvatar}`} icon="user" src={userInfo.photo} />
+        <Icon type="logout" className={styles.logOut} onClick={logout} />
       </div>
     </div>
   )
 }
-
-const styles = {
-  logOut: {
-    'font-size': '24px',
-    'cursor': 'pointer',
-    'vertical-align': 'sub',
-    'padding-left': '10px'
-  },
-  rightBlock: {
-    display: 'flex',
-    marginLeft: 40,
-    '@media(max-width: 666px)': {
-      marginLeft: 0,
-    }
-  },
-  userName: {
-    lineHeight: 1.5,
-    'margin-left': '20px',
-    '@media(max-width: 666px)': {
-      display: 'none',
-    }
-  },
-  balance: {
-    color: 'gold',
-  },
-  balanceAmount: {
-    'font-size': '20px',
-    'margin-left': '10px',
-    whiteSpace: 'nowrap',
-  },
-  coinsAmount: {
-    '@media(max-width: 666px)': {
-      'font-size': '17px',
-    }
-  },
-  balanceLabel: {
-    '@media(max-width: 666px)': {
-      display: 'none',
-    }
-  },
-  playerAvatar: {
-    marginLeft: 15,
-  },
-  userBlock: {
-    display: 'flex',
-    alignItems: 'center',
-  }
-};
 
 RightBlock.defaultProps = {
   userData: null,
@@ -90,7 +42,6 @@ RightBlock.propTypes = {
 
 export default compose(
   withLocalize,
-  injectSheet(styles),
   withUser(),
   branch(
     ({ userInfo }) => !userInfo,

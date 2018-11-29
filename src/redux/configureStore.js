@@ -1,19 +1,48 @@
 import { createStore, applyMiddleware } from 'redux';
 import { apiMiddleware } from 'redux-api-middleware';
-import { createEpicMiddleware } from 'redux-observable';
-import { connectRouter, routerMiddleware } from 'connected-react-router'
+import createSagaMiddleware from 'redux-saga'
+import { routerMiddleware, connectRouter } from 'connected-react-router'
 import logger from 'redux-logger'
-import { rootReducer, rootEpic } from './index';
+import { all, takeLatest } from 'redux-saga/effects';
+import { localizeReducer } from 'react-localize-redux';
+import { combineReducers } from 'redux';
+
+import userSaga from './user/saga';
+import userReducer from './user';
+import spinnersReducer from './spinners';
+import { setSpinnerStatus } from './spinners/actions';
 import restApiInjector from './middlewares/restApiInjector';
 import spinnerMiddleware from './middlewares/spinnerMiddleware';
 
 export default ({ history }) => {
-  const epicMiddleware = createEpicMiddleware();
+  const rootReducer = combineReducers({
+    router: connectRouter(history),
+    spinners: spinnersReducer,
+    user: userReducer,
+    localize: localizeReducer,
+  });
+
+  const rootSaga = function* () {
+    yield all([
+      userSaga,
+      function* () {
+        yield takeLatest(
+          ({ type }) => {
+            return type.indexOf('REQUEST') !== -1;
+          }, ({ type }) => {
+            setSpinnerStatus({ key: `REST_API.${type}`, active: true })
+          }
+        );
+      },
+    ]);
+  };
+
+  const sagaMiddleware = createSagaMiddleware();
 
   const middlewares = [
     restApiInjector,
     apiMiddleware,
-    epicMiddleware,
+    sagaMiddleware,
     routerMiddleware(history),
     spinnerMiddleware,
   ];
@@ -21,11 +50,11 @@ export default ({ history }) => {
   if (process.env.NODE_ENV === 'development') middlewares.push(logger);
 
   const store = createStore(
-    connectRouter(history)(rootReducer),
+    rootReducer,
     applyMiddleware(...middlewares),
   );
 
-  epicMiddleware.run(rootEpic);
+  sagaMiddleware.run(rootSaga);
 
   return store
 }

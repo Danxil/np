@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout } from 'antd';
+import { isMobile } from 'react-device-detect';
 import { renderToStaticMarkup } from 'react-dom/server';
 import classNames from 'classnames';
 import Cookie from 'js-cookie';
@@ -9,23 +10,19 @@ import { branch, compose, lifecycle, pure, renderComponent, withHandlers, withSt
 import { withLocalize } from 'react-localize-redux';
 
 import Providers, { history } from './redux/Providers';
-import AuthenticatedRoute from './common/AuthenticatedRoute';
 
 import Content from './components/Content';
 import Main from './components/Main';
-import Tables from './components/Tables';
 import Footer from './components/Footer';
+import Header from './components/Header';
+import SideMenu from './components/SideMenu';
 import withUser from './containers/withUser';
-import withMeta from './containers/withMeta';
-import withGameConfig from './containers/withGameConfig';
-import withTables from './containers/withTables';
 import localization from './localization';
-import Spinner from './common/Spinner';
+import Spinner from './components/common/Spinner';
 
-
+import styles from './App.css';
 
 const AppComp = ({
-  classes,
   collapsedSideMenu,
   setCollapsedSideMenuFn,
   userInfo,
@@ -43,60 +40,32 @@ const AppComp = ({
         />
         <div
           className={classNames(
-            classes.content, {
+            styles.content, {
               'collapsed-mode': isMobile ? collapsedSideMenu : false,
               notAuthenticated: !userInfo,
             })}
         >
           <Content>
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Main} />
             </Switch>
           </Content>
           <Footer />
-          <Spinner spinnerKey="GAME_CHOOSE" overlay={true} noFadeIn={true} fixed={true} />
         </div>
       </Layout>
     </Layout>
   );
 };
 
-const styles = {
-  content: {
-    'margin-top': 64,
-    marginLeft: 200,
-    transition: 'all .2s',
-    '&.collapsed-mode': {
-      'margin-left': 80,
-    },
-    '&.notAuthenticated': {
-      '@media(min-width: 1101px)': {
-        marginLeft: '0 !important',
-      },
-    },
-    '@media(max-width: 666px)': {
-      marginLeft: '0 !important',
-    }
-  },
-};
-
 const App = compose(
   withRouter,
   withLocalize,
-  withTables(),
   withUser(),
-  withMeta(),
-  withGameConfig(),
-  injectSheet(styles),
   lifecycle({
     componentDidMount() {
       let browserLanguage = (navigator.language || navigator.userLanguage).split('-')[0];
       if (browserLanguage !== 'ru') browserLanguage = 'gb';
       this.props.getUserInfo();
-      this.props.getGameConfig();
-      this.props.getTables();
-      window.onblur = () => this.props.setAppInFocus(false);
-      window.onfocus = () => this.props.setAppInFocus(true);
       this.props.initialize({
         languages: [
           { label: 'EN', code: 'gb' },
@@ -115,7 +84,7 @@ const App = compose(
     }
   }),
   branch(
-    ({ userInfoRequestDone, gameConfig, tablesList }) => !userInfoRequestDone || !gameConfig || !tablesList.length,
+    ({ userInfoRequestDone }) => !userInfoRequestDone,
     renderComponent(() => <Spinner overlay={true} transparentOverlay={true} />),
   ),
   pure,
@@ -128,14 +97,10 @@ AppComp.defaultProps = {
 AppComp.propTypes = {
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired,
-  gameConfig: PropTypes.object,
   userInfo: PropTypes.object,
   collapsedSideMenu: PropTypes.bool.isRequired,
   setCollapsedSideMenu: PropTypes.func.isRequired,
   setCollapsedSideMenuFn: PropTypes.func.isRequired,
-  getGameConfig: PropTypes.func.isRequired,
-  getUserInfo: PropTypes.func.isRequired,
   initialize: PropTypes.func.isRequired,
 };
 

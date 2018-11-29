@@ -1,0 +1,45 @@
+.logOut: {
+  font-size: 24px;
+  cursor: pointer;
+  vertical-align: sub;
+  padding-left: 10px;
+},
+.rightBlock: {
+  display: flex;
+  margin-left: 40;
+  @media(max-width: 666px) {
+    margin-left: 0;
+  }
+},
+.userName: {
+  line-height: 1.5;
+  margin-left: 20px;
+  @media(max-width: 666px) {
+    display: none;
+  }
+},
+.balance: {
+  color: gold;
+},
+.balanceAmount: {
+  font-size: 20px;
+  margin-left: 10px;
+  white-space: nowrap;
+},
+.coinsAmount: {
+  @media(max-width: 666px) {
+    font-size: 17px;
+  }
+},
+.balanceLabel: {
+  @media(max-width: 666px) {
+    display: none;
+  }
+},
+.playerAvatar: {
+  margin-left: 15,
+},
+.userBlock: {
+  display: flex;
+  align-items: center;
+}
