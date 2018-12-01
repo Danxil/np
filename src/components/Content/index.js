@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Layout } from 'antd';
 import { compose, pure } from 'recompose';
-import classNames from 'classnames';
-import styles from './index.css';
+import styles from './index.module.css';
 
 const { Content: ContentAnt } = Layout;
 
 class Content extends Component {
   render() {
-    const { className } = this.props;
     return (
-      <ContentAnt className={classNames(className, styles.contentWrapper)}>
-        <div className="content">
+      <ContentAnt className={styles.contentWrapper}>
+        <div className={styles.content}>
           {this.props.children}
         </div>
       </ContentAnt>

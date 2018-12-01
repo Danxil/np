@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom'
 import { Layout, Icon, Menu } from 'antd';
 import { withRouter } from 'react-router'
 import { withLocalize } from 'react-localize-redux';
-import { TOP_MENU_ITEMS } from '../Header';
+import { MENU_ITEMS } from '../Main';
 import withUser from '../../containers/withUser';
-import styles from './index.css';
+import styles from './index.module.scss';
 
 
 const { Sider } = Layout;
@@ -51,8 +51,8 @@ class SideMenu extends Component {
             styles.sider,
             className,
             {
-              collapsed,
-              notAuthenticated: !userInfo,
+              [styles.collapsed]: collapsed,
+              [styles.notAuthenticated]: !userInfo,
             }
           )
         }
@@ -68,7 +68,7 @@ class SideMenu extends Component {
         >
           {
             userInfo && SIDE_MENU_ITEMS.map(o => (
-              <Menu.Item key={o.route} onClick={() => setCollapsedSideMenu(true)}>
+              <Menu.Item key={o.translateId} onClick={() => setCollapsedSideMenu(true)}>
                 <Link to={o.route}>
                   <Icon type={o.iconType} />
                   <span>{translate(o.translateId)}</span>
@@ -77,8 +77,8 @@ class SideMenu extends Component {
             ))
           }
           {
-            TOP_MENU_ITEMS.filter(o => o.route !== '/login' || !userInfo).map(o => (
-              <Menu.Item className={styles.topMenuDuplicateItem} onClick={() => setCollapsedSideMenu(true)} key={o.route}>
+            MENU_ITEMS.filter(o => o.route !== '/login' || !userInfo).map(o => (
+              <Menu.Item className={styles.topMenuDuplicateItem} onClick={() => setCollapsedSideMenu(true)} key={o.translateId}>
                 <Link to={o.route}>
                   <Icon type={o.iconType} />
                   <span>{translate(o.translateId)}</span>

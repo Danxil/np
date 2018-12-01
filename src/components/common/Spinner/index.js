@@ -1,33 +1,32 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import classNames from 'classnames';
 import {
   compose,
   withProps,
   pure,
 } from 'recompose';
 import Spinkit from 'react-spinkit';
-import { blueColor } from '../../../variables';
 import withSpinners from '../../../containers/withSpinners';
-import styles from './index.css';
+import styles from './index.module.css';
 
-const SpinkitComp = ({ color, noFadeIn }) => <Spinkit name="ball-scale-ripple-multiple" color={color} noFadeIn={noFadeIn} />;
+const SpinkitComp = ({ noFadeIn }) => <Spinkit name="ball-scale-ripple-multiple" noFadeIn={noFadeIn} />;
 
 SpinkitComp.propTypes = {
-  color: PropTypes.string.isRequired,
   noFadeIn: PropTypes.bool.isRequired,
 };
 
-const Spinner = ({ color, overlay, noFadeIn, children, showSpinner }) => {
+const Spinner = ({ overlay, noFadeIn, children, showSpinner, fixed, transparentOverlay }) => {
   return (<Fragment>
     {
       showSpinner && <Fragment>
         {
           overlay ?
-            (<div className={styles.overlay}>
-              <SpinkitComp noFadeIn={noFadeIn} color={color}/>
+            (<div className={classNames(styles.overlay, { fixed, transparentOverlay })}>
+              <SpinkitComp noFadeIn={noFadeIn} />
             </div>) :
-            <div className={styles.spinnerWrapper}><SpinkitComp color={color} noFadeIn={noFadeIn}/></div>
+            <div className={styles.spinnerWrapper}><SpinkitComp noFadeIn={noFadeIn}/></div>
         }
       </Fragment>
     }
@@ -58,8 +57,6 @@ export default compose(
 )(Spinner);
 
 Spinner.defaultProps = {
-  overlayColor: null,
-  color: blueColor,
   overlay: false,
   spinnerKey: null,
   children: null,
@@ -67,11 +64,10 @@ Spinner.defaultProps = {
   noFadeIn: false,
   showSpinner: false,
   fixed: false,
+  transparentOverlay: false,
 };
 
 Spinner.propTypes = {
-  overlayColor: PropTypes.string,
-  color: PropTypes.string,
   overlay: PropTypes.bool,
   showSpinner: PropTypes.bool,
   noFadeIn: PropTypes.bool,
@@ -80,4 +76,5 @@ Spinner.propTypes = {
   children: PropTypes.node,
   show: PropTypes.bool,
   fixed: PropTypes.bool,
+  transparentOverlay: PropTypes.bool,
 };

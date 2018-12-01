@@ -1,0 +1,251 @@
+@import '../../variables.scss';
+
+.main {
+  color: white;
+}
+.bg {
+  position: relative;
+  background: gray;
+  overflow: hidden;
+  height: 1000px;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.75);
+  z-index: 33;
+}
+.bgInside {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url('/bg.png');
+  background-attachment: fixed;
+  background-size: cover;
+  padding-top: 100px;
+}
+.bgOverlay {
+  position: absolute;
+  background-color: black;
+  opacity: .6;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-attachment: fixed;
+}
+.bgShadow {
+  position: absolute;
+  opacity: .3;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: inset 0 15px 30px 0px rgba(0, 0, 0, 0.75);
+  background-image: url('/bg-texture.png');
+  background-attachment: fixed;
+}
+
+@keyframes :global(tipsy) {
+  0 {
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) rotate(360deg);
+  }
+}
+
+.logo {
+  position: relative;
+  z-index: 222;
+  display: inline-block;
+  a {
+    font-family: "Roboto", sans-serif;
+    color: white;
+    text-shadow: 0 20px 25px #2e2e31, 0 40px 60px #2e2e31;
+    font-size: 35px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: -3px;
+    margin: 0;
+  }
+
+  a:before,
+  a:after {
+    content: '';
+    padding: .9em .4em;
+    position: absolute;
+    left: 50%;
+    width: 125%;
+    top: 50%;
+    display: block;
+    border: 10px solid red;
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    :global {
+      animation: 10s infinite alternate ease-in-out tipsy;
+    }
+  }
+
+  a:before {
+    border-color: $mainColor $mainColor rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    z-index: -1;
+  }
+
+  a:after {
+    border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) $mainColor $mainColor;
+    box-shadow: 25px 25px 25px rgba(46, 46, 49, .8);
+  }
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+}
+
+.menuItem {
+  font-size: 20px;
+  margin-left: 20px;
+  display: inline-block;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.menuLink {
+  color: white;
+}
+
+.content {
+  position: relative;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rightBlock {
+  display: flex;
+  align-items: center;
+}
+
+.sloganBlock {
+  text-align: center;
+  margin-top: 200px;
+  max-width: 800px;
+  margin: 200px auto 0;
+}
+
+.slogan {
+  color: white;
+  text-transform: uppercase;
+  font-size: 52px;
+}
+.sloganLogo {
+  text-transform: capitalize;
+  font-size: 35px;
+  color: #d9524a;
+}
+.sloganDescription {
+  color: white;
+  text-transform: uppercase;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  position: relative;
+  font-size: 25px;
+
+  &:before, &:after {
+    content: ' ';
+    border-top: 1px solid white;
+    width: 100px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+  }
+  &:before {
+    top: -50px;
+  }
+  &:after {
+    bottom: -50px;
+  }
+}
+
+.btnBlock {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+  position: relative;
+}
+
+.btn {
+  display: inline-block;
+  margin: 0 20px;
+  width: 150px;
+  border-color: #d9524a;
+}
+
+.previewBlock {
+  display: flex;
+  justify-content: center;
+}
+
+.preview {
+  padding: 20px
+}
+
+.descriptionsWrapper {
+  padding-top: 50px;
+  background-color: #d9524a;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23d95b46' points='800 100 0 200 0 800 1600 800 1600 200'/%3E%3Cpolygon fill='%23d96443' points='800 200 0 400 0 800 1600 800 1600 400'/%3E%3Cpolygon fill='%23d96e3f' points='800 300 0 600 0 800 1600 800 1600 600'/%3E%3Cpolygon fill='%23d9793b' points='1600 800 800 400 0 800'/%3E%3Cpolygon fill='%23d98438' points='1280 800 800 500 320 800'/%3E%3Cpolygon fill='%23d99034' points='533.3 800 1066.7 800 800 600'/%3E%3Cpolygon fill='%23d99c30' points='684.1 800 914.3 800 800 700'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 1000px;
+  position: relative;
+
+  .descriptions {
+    display: flex;
+    // background: linear-gradient(to right, #30e8bf, #d9524a);
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 50%;
+      top: 0;
+      bottom: 0;
+      background: #00000008;
+    }
+  }
+
+  .description {
+    flex-grow: 2;
+    // transform: skew(-17deg, 0deg);
+    text-align: center;
+    padding: 20px;
+  }
+
+  .descriptionTitle {
+    color: white;
+    text-transform: uppercase;
+  }
+
+  .title {
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    position: relative;
+    margin-bottom: 50px;
+
+    &:after {
+      content: ' ';
+      border-top: 1px solid white;
+      width: 100px;
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: -25px;
+      margin-left: -50px;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+.howToPlayTabs {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+.howToPlayImage {
+  max-width: 400px;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 5;
+  & img {
+    box-shadow: 2px 2px 10px -3px rgba(0,0,0,0.3);
+    width: 100%;
+  }
+}
+.howToPlayStep {
+  display: flex;
+  margin-top: 50px;
+  padding: 50px 20px;
+  @media(max-width: 800px) {
+    align-items: center;
+    flex-direction: column !important;
+    margin-top: 0;
+    & .howToPlayImage {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      margin-bottom: 40px !important;
+    }
+  }
+}
+.howToPlayText {
+  text-align: left;
+}
+.stepOdd {
+  flex-direction: row;
+  & .howToPlayImage {
+    margin-right: 50px;
+  }
+}
+.stepEven {
+  flex-direction: row-reverse;
+  & .howToPlayImage {
+    margin-left: 50px;
+  }
+}
+.stepNumber {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,35 @@
+.sider {
+  height: calc(100vh - 64px);
+  z-index: 20;
+  overflow: auto;
+  position: fixed;
+  left: 0;
+  top: 64px;
+  &.collapsed {
+    @media(max-width: 666px) {
+      display: none;
+    }
+  }
+  &.notAuthenticated {
+    @media(min-width: 1101px) {
+      display: none;
+    }
+  }
+}
+.menu {
+  margin-top: 0 !important;
+  .ant-menu-item:first-child {
+    margin-top: 0;
+  }
+}
+.logo {
+  width: 150px;
+  height: 31px;
+  background: rgba(255,255,255,.2);
+  margin: 16px;
+}
+.topMenuDuplicateItem {
+  @media(min-width: 1101px) {
+    display: none;
+  }
+}

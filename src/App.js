@@ -14,13 +14,12 @@ import Providers, { history } from './redux/Providers';
 import Content from './components/Content';
 import Main from './components/Main';
 import Footer from './components/Footer';
-import Header from './components/Header';
 import SideMenu from './components/SideMenu';
 import withUser from './containers/withUser';
 import localization from './localization';
 import Spinner from './components/common/Spinner';
 
-import styles from './App.css';
+import styles from './App.module.css';
 
 const AppComp = ({
   collapsedSideMenu,
@@ -34,16 +33,13 @@ const AppComp = ({
         setCollapsedSideMenu={setCollapsedSideMenuFn}
       />
       <Layout>
-        <Header
-          collapsedSideMenu={isMobile ? collapsedSideMenu : false}
-          setCollapsedSideMenu={setCollapsedSideMenuFn}
-        />
         <div
           className={classNames(
             styles.content, {
-              'collapsed-mode': isMobile ? collapsedSideMenu : false,
-              notAuthenticated: !userInfo,
-            })}
+              [styles.collapsedMode]: isMobile ? collapsedSideMenu : false,
+              [styles.notAuthenticated]: !userInfo,
+            }
+          )}
         >
           <Content>
             <Switch>

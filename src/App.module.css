@@ -1,0 +1,20 @@
+.content {
+  margin-left: 200px;
+  transition: all .2s;
+}
+
+@media(max-width: 666px) {
+  .content {
+    margin-left: 0 !important;
+  }
+}
+
+.collapsedMode {
+  margin-left: 80px,
+}
+
+@media(min-width: 1101px) {
+  .notAuthenticated {
+    margin-left: 0 !important;
+  }
+}

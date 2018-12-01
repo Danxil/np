@@ -1,0 +1,19 @@
+.language {
+  margin-left: 20px;
+  width: 100px;
+  margin-top: 7px;
+  :global {
+    .ant-select-arrow, .ant-select-selection-selected-value {
+      color: white;
+    }
+  }
+
+  :global .ant-select-selection {
+    line-height: 64px;
+    background: transparent;
+    border: none;
+  }
+  @media(max-width: 666px) {
+    margin-top: 10px;
+  }
+}
