@@ -1,12 +1,17 @@
+@import '../../../variables.scss';
+
+
 .howToPlayTabs {
   margin-left: -20px;
   margin-right: -20px;
 }
 .howToPlayImage {
-  max-width: 400px;
+  max-width: 200px;
   width: 100%;
   display: inline-block;
-  margin-bottom: 5;
+  margin-bottom: 5px;
+  padding-right: 20px;
+  text-align: left;
   & img {
     box-shadow: 2px 2px 10px -3px rgba(0,0,0,0.3);
     width: 100%;
@@ -14,7 +19,6 @@
 }
 .howToPlayStep {
   display: flex;
-  margin-top: 50px;
   padding: 50px 20px;
   @media(max-width: 800px) {
     align-items: center;
@@ -30,20 +34,19 @@
 .howToPlayText {
   text-align: left;
 }
-.stepOdd {
-  flex-direction: row;
-  & .howToPlayImage {
-    margin-right: 50px;
-  }
-}
-.stepEven {
-  flex-direction: row-reverse;
-  & .howToPlayImage {
-    margin-left: 50px;
-  }
-}
 .stepNumber {
   font-weight: bold;
   font-size: 20px;
   margin-bottom: 10px;
+}
+.icon {
+  font-size: 100px;
+  color: gold;
+}
+.stepOdd {
+}
+.stepEven {
+  background: #e43a15; /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, $mainColor, #ce7c2a); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, $mainColor, #ce7c2a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

@@ -5,33 +5,29 @@ import { withLocalize } from 'react-localize-redux';
 import { pure, compose} from 'recompose';
 import styles from './index.module.scss';
 
-
 const HowTo = ({ translate, howTo, uniqKey }) => {
   return (
-    howTo.map((step, stepIndex) => (
+    howTo.map((step, stepIndex) => Object.keys(step).length ? (
       <div
         key={`${uniqKey}step${stepIndex}`}
-        className={classNames(
-          styles.howToPlayStep,
-          {
-            [styles.stepOdd]: stepIndex % 2 === 0,
-            [styles.stepEven]: stepIndex % 2 !== 0,
-          }
-        )}
+        className={classNames(styles.howToPlayStep, {
+          [styles.stepOdd]: stepIndex % 2 === 0,
+          [styles.stepEven]: stepIndex % 2 !== 0,
+        })}
       >
-        <div className={classNames(styles.howToPlayImage, 'howToPlayImage')}>
-          <img src={step.imageUrl} />
+        <div className={classNames(styles.howToPlayImage)}>
+          <i className={classNames(styles.icon, step.iconClass)} />
         </div>
         <div className={styles.howToPlayText}>
-          <div className={styles.stepNumber}>{translate('STEP')} {stepIndex + 1}</div>
+          <div className={styles.stepNumber}>{translate('STEP')} {step.stepNumber}</div>
           {
             step.stepItemsKeys.map(text => (
-              <div key={`${uniqKey}${text}`}>- {translate(text)}</div>
+              <div key={`${uniqKey}${text}`}>{translate(text)}</div>
             ))
           }
         </div>
       </div>
-    ))
+    ) : <div/>)
   );
 };
 
@@ -46,7 +42,6 @@ HowTo.defaultProps = {
 
 HowTo.propTypes = {
   uniqKey: PropTypes.string,
-  styles: PropTypes.object.isRequired,
   howTo: PropTypes.array.isRequired,
   translate: PropTypes.func.isRequired,
 };

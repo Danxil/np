@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { Layout, Icon, Menu } from 'antd';
 import { withRouter } from 'react-router'
 import { withLocalize } from 'react-localize-redux';
-import { MENU_ITEMS } from '../Main';
+import { MENU_ITEMS } from '../Main/Top';
 import withUser from '../../containers/withUser';
 import styles from './index.module.scss';
 

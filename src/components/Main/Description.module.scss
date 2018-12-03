@@ -1,0 +1,43 @@
+@import '../../variables.scss';
+
+.descriptionsWrapper {
+  background-color: #d9524a;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23d95b46' points='800 100 0 200 0 800 1600 800 1600 200'/%3E%3Cpolygon fill='%23d96443' points='800 200 0 400 0 800 1600 800 1600 400'/%3E%3Cpolygon fill='%23d96e3f' points='800 300 0 600 0 800 1600 800 1600 600'/%3E%3Cpolygon fill='%23d9793b' points='1600 800 800 400 0 800'/%3E%3Cpolygon fill='%23d98438' points='1280 800 800 500 320 800'/%3E%3Cpolygon fill='%23d99034' points='533.3 800 1066.7 800 800 600'/%3E%3Cpolygon fill='%23d99c30' points='684.1 800 914.3 800 800 700'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.descriptions {
+  color: white;
+  display: flex;
+  // background: linear-gradient(to right, #30e8bf, #d9524a);
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 50%;
+    top: 0;
+    bottom: 0;
+    background: #0000000f;
+  }
+}
+.description {
+  width: 50%;
+  // transform: skew(-17deg, 0deg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.descriptionTitle {
+  color: white;
+  text-transform: uppercase;
+}
+.content {
+  width: 100%;
+}
+.btn {
+  margin: 80px 0;
+}
