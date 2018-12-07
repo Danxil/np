@@ -3,17 +3,21 @@ import PropTypes from 'prop-types';
 import { compose, pure } from 'recompose';
 import styles from './PageTitle.module.scss';
 
-const Title = ({
+const PageTitle = ({
   children,
+  className,
 }) => (
-  <h1 className={styles.pageTitle}>{children}</h1>
+  <h1 className={`${styles.pageTitle} ${className}`}>{children}</h1>
 );
 
 export default compose(
   pure,
-)(Title);
+)(PageTitle);
 
-Title.propTypes = {
+PageTitle.defaultProps = {
+  className: '',
+};
+PageTitle.propTypes = {
   children: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired,
+  className: PropTypes.string,
 };

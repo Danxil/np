@@ -1,9 +1,40 @@
 @import '../../variables.scss';
 
+.bg {
+  position: relative;
+  background: gray;
+  overflow: hidden;
+  z-index: 33;
+}
+.bgInside {
+  background-image: url('/bg.png');
+  background-attachment: fixed;
+  background-size: cover;
+}
+.bgOverlay {
+  position: absolute;
+  background-color: black;
+  opacity: .6;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-attachment: fixed;
+}
+.bgShadow {
+  position: absolute;
+  opacity: .3;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url('/bg-texture.png');
+  background-attachment: fixed;
+}
 .achievementsBlock {
-  padding: 50px 0;
+  position: relative;
+  padding-bottom: 50px;
   text-align: center;
-  background: $mainColor;
   color: white;
   & > h1 {
     color: white;
@@ -18,9 +49,9 @@
   }
 }
 .achievementsItem {
-  width: 200px;
+  width: 300px;
   display: flex;
-  justify-content: center;
+  justify-content: top;
   flex-direction: column;
   align-items: center;
   @media(max-width: 666px) {
@@ -31,17 +62,16 @@
   }
 }
 .achievementIcon {
-  font-size: 40px;
+  font-size: 80px;
 }
 .achievementText {
   margin-top: 10px;
   font-size: 22px;
 }
 .achievementDescription {
-  font-size: 10px;
+  font-size: 15px;
   margin-top: 5px;
-  max-width: 150px;
+  max-width: 200px;
 }
 .achievementUnit {
-  font-size: 16px;
 }

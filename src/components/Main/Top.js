@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withLocalize } from 'react-localize-redux';
 import { Button } from 'antd';
 import classNames from 'classnames';
+import withUser from '../../containers/withUser';
 import Container from '../common/Container';
 import { compose, pure } from 'recompose';
 import Language from '../common/Language';
@@ -10,22 +11,17 @@ import styles from './Top.module.scss';
 
 export const MENU_ITEMS = [
   {
-    translateId: 'MAKE_INVESTMENT',
+    translateId: 'REGISTRATION',
     route: '/',
     iconType: 'smile-o',
   },
   {
-    translateId: 'GET_A_LOAN',
+    translateId: 'HOW_IT_WORKS',
     route: '/',
     iconType: 'smile-o',
   },
   {
-    translateId: 'ABOUT_THE_PROJECT',
-    route: '/',
-    iconType: 'smile-o',
-  },
-  {
-    translateId: 'CONTACTS',
+    translateId: 'TARIFS',
     route: '/',
     iconType: 'smile-o',
   },
@@ -33,15 +29,16 @@ export const MENU_ITEMS = [
 
 const BUTTONS = [
   {
-    translateId: 'MAKE_INVESTMENT',
+    translateId: 'I_AM_INVESTOR',
   },
   {
-    translateId: 'GET_A_LOAN',
+    translateId: 'I_AM_BORROWER',
   }
 ];
 
 const Top = ({
   translate,
+  userInfo,
 }) => {
   return (
     <div className={styles.main}>
@@ -72,20 +69,24 @@ const Top = ({
                 <h1 className={styles.slogan}>{translate('SLOGAN_TITE')}</h1>
                 <div className={styles.sloganDescription}>{translate('SLOGAN_DESCRIPTION')}</div>
               </div>
-              <div className={styles.btnBlock}>
-                {
-                  BUTTONS.map(({ translateId }) => (
-                    <Button
-                      key={translateId}
-                      type="primary"
-                      className={classNames('ghostBtn', styles.btn)}
-                      size="large"
-                    >
-                      {translate(translateId)}
-                    </Button>
-                  ))
-                }
-              </div>
+              {
+                !userInfo && (
+                  <div className={styles.btnBlock}>
+                    {
+                      BUTTONS.map(({ translateId }) => (
+                        <Button
+                          key={translateId}
+                          type="primary"
+                          className={classNames('ghostBtn', styles.btn)}
+                          size="large"
+                        >
+                          {translate(translateId)}
+                        </Button>
+                      ))
+                    }
+                  </div>
+                )
+              }
             </Container>
           </div>
         </div>
@@ -96,9 +97,14 @@ const Top = ({
 
 export default compose(
   withLocalize,
+  withUser(),
   pure,
 )(Top);
 
+Top.defaultProps = {
+  userInfo: null,
+};
 Top.propTypes = {
   translate: PropTypes.func.isRequired,
+  userInfo: PropTypes.object,
 };

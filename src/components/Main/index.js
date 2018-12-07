@@ -1,10 +1,10 @@
 import React from 'react';
 import { compose, pure } from 'recompose';
-import withUser from '../../containers/withUser';
 import Top from './Top';
 import Description from './Description';
 import Achievements from './Achievements';
 import Tariffs from './Tariffs';
+import Partners from './Partners';
 
 const Main = () => {
   return (
@@ -13,11 +13,11 @@ const Main = () => {
       <Description />
       <Achievements />
       <Tariffs />
+      <Partners />
     </div>
   );
 };
 
 export default compose(
-  withUser(),
   pure,
 )(Main);

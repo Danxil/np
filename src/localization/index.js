@@ -77,24 +77,17 @@ export default {
     'Наши достижения'
   ],
   OUR_ACHIEVEMENTS_1_DESCRIPTION: [
-    'Paid to players for all time',
-    'Выплачено игокам за все время'
-  ],
-  OUR_ACHIEVEMENTS_2_TEXT: [
-    'New players',
-    'Новых игроков'
+    'Loans issued',
+    'Займов выдано'
   ],
   OUR_ACHIEVEMENTS_2_DESCRIPTION: [
-    'Every day receive their first payment',
-    'Каждый день получают свою первую выплату'
-  ],
-  OUR_ACHIEVEMENTS_3_TEXT: [
-    'people',
-    'человек'
+    'Investment collected',
+    'Инвестиций собрано',
+
   ],
   OUR_ACHIEVEMENTS_3_DESCRIPTION: [
-    'Online in average every day',
-    'Онлайн в среднем за день'
+    'Users registered',
+    'Пользователей зарегистрированно'
   ],
   '$': [
     '$',
@@ -107,5 +100,81 @@ export default {
   PER_DAY: [
     'Per day',
     'В день',
-  ]
+  ],
+  DAILY_PAYMENTS: [
+    'Daily payments',
+    'Ежедневные выплаты',
+  ],
+  MINIMAL_INVESTITION: [
+    'Minimal investition',
+    'Минимальный вклад',
+  ],
+  INVESTITION_DURATION: [
+    'Investition duration',
+    'Срок инвестиции',
+  ],
+  DAYS: [
+    'Days',
+    'Дней'
+  ],
+  NET_PROFIT: [
+    'Days',
+    'Чистая прибыль'
+  ],
+  SELECT: [
+    'Select',
+    'Выбрать',
+  ],
+  SELECTED_TARIFF: [
+    'Selected tariff',
+    'Выбранный тариф'
+  ],
+  INVESTITION_AMOUNT: [
+    'Investition amount',
+    'Размер инвестиции',
+  ],
+  DAILY_PROFIT: [
+    'Daily profit',
+    'Дневная прибыль',
+  ],
+  TOTAL_NET_PROFIT: [
+    'Total net profit',
+    'Общая чистая прибыль',
+  ],
+  INVEST: [
+    'Invest',
+    'Инвестировать',
+  ],
+  I_AM_INVESTOR: [
+    'I am investor',
+    'Я инвестор',
+  ],
+  I_AM_BORROWER: [
+    'I am borrower',
+    'Я заемщик',
+  ],
+  REGISTRATION: [
+    'Registration',
+    'Регистрация',
+  ],
+  PAYMENT_SYSTEM: [
+    'Payment system',
+    'Платежная система',
+  ],
+  PARTNER_PROGRAM: [
+    'Partner program',
+    'Партнерская программа',
+  ],
+  PARTNER_PROGRAM_TEXT: [
+    '',
+    'Для популяризациии и развития проекта у нас действует партнерская программа. Ее суть заключается в том, что с ее помощью партнеры могут привлекать других пользователей в наш проект, получая при этом бонус с каждого вклада привлеченного им пользователя'
+  ],
+  PARTNER_PROGRAM_HOW_TO_START: [
+    '',
+    'При регистрации как инвестор, вы получите ссылку, перейдя по ней и пройдя регистрацию пользователь становится вашим рефералом. Иcпользуйте эту ссылку в своих рекламных кампниях, привлекайте рефералов и получайте бонусы с их вкладов'
+  ],
+  BONUS_FOR_DEPOSIT_FROM_REFERRAL: [
+    'Bonus for deposit from referral',
+    'Бонус за депозит от реферала'
+  ],
 };

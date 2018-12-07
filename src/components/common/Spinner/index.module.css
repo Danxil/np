@@ -1,3 +1,5 @@
+@import '../../../variables.scss';
+
 .overlay {
   position: absolute;
   z-index: 10;
@@ -9,7 +11,7 @@
   justify-content: center;
   align-items: center;
   background: #000000c7;
-  color: gold;
+  color: $goldColor;
 }
 .fixed {
   position: fixed;

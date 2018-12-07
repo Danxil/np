@@ -8,18 +8,9 @@ import HowTo from '../common/HowTo';
 import PageTitle from '../common/PageTitle';
 import styles from './Description.module.scss';
 
-const DESCRIPTIONS = [
-  {
-    labelTranslateId: 'INVESTORS',
-    howToKey: 'investors',
-  },
-  {
-    labelTranslateId: 'BORROWERS',
-    howToKey: 'borrowers',
-  }
-];
+
 const HOW_TO = {
-  investors: [
+  investor: [
     {
       stepNumber: 1,
       iconClass: 'fas fa-credit-card',
@@ -49,8 +40,7 @@ const HOW_TO = {
       ]
     },
   ],
-  borrowers: [
-    {},
+  borrower: [
     {
       stepNumber: 1,
       iconClass: 'fas fa-sliders-h',
@@ -82,10 +72,10 @@ const HOW_TO = {
   ],
 };
 const DESCRIPTION_BUTTONS = {
-  investors: {
+  investor: {
     labelTranslateId: 'MAKE_INVESTMENT',
   },
-  borrowers: {
+  borrower: {
     labelTranslateId: 'GET_A_LOAN',
   },
 };
@@ -94,27 +84,17 @@ const Description = ({
   translate,
 }) => {
   return (
-    <div className={styles.descriptionsWrapper}>
-      <PageTitle>{translate('HOW_IT_WORKS')}</PageTitle>
-      <div className={styles.descriptions}>
-        {
-          DESCRIPTIONS.map(({ labelTranslateId, howToKey }) => (
-            <div className={styles.description} key={labelTranslateId}>
-              <div className={styles.content}>
-                <h2 className={styles.descriptionTitle}>{translate(labelTranslateId)}</h2>
-                <HowTo howTo={HOW_TO[howToKey]} uniqKey={howToKey} />
-              </div>
-              <Button
-                key={`descriptionBtn ${howToKey}`}
-                type="primary"
-                className={classNames('ghostBtn', styles.btn)}
-                size="large"
-              >
-                {translate(DESCRIPTION_BUTTONS[howToKey].labelTranslateId)}
-              </Button>
-            </div>
-          ))
-        }
+    <div className={styles.description}>
+      <div className={styles.content}>
+        <PageTitle className={styles.title}>{translate('HOW_IT_WORKS')}</PageTitle>
+        <HowTo howTo={HOW_TO['investor']} />
+        <Button
+          type="primary"
+          className={classNames('ghostBtn', styles.btn)}
+          size="large"
+        >
+          {translate(DESCRIPTION_BUTTONS['investor'].labelTranslateId)}
+        </Button>
       </div>
     </div>
   );

@@ -2,11 +2,12 @@
 
 .pageTitle {
   text-transform: uppercase;
-  color: white;
   text-align: center;
   position: relative;
   padding-bottom: 50px;
   padding-top: 50px;
+  font-weight: bold;
+  color: white;
   &:after {
     content: ' ';
     border-top: 1px solid white;
