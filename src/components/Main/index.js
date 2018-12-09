@@ -5,6 +5,7 @@ import Description from './Description';
 import Achievements from './Achievements';
 import Tariffs from './Tariffs';
 import Partners from './Partners';
+import RegistrationModal from './RegistrationModal';
 
 const Main = () => {
   return (
@@ -14,6 +15,7 @@ const Main = () => {
       <Achievements />
       <Tariffs />
       <Partners />
+      <RegistrationModal />
     </div>
   );
 };

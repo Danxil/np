@@ -8,11 +8,12 @@ import Container from '../common/Container';
 import { compose, pure } from 'recompose';
 import Language from '../common/Language';
 import styles from './Top.module.scss';
+import Link from '../common/Link';
 
 export const MENU_ITEMS = [
   {
     translateId: 'REGISTRATION',
-    route: '/',
+    route: '/registration',
     iconType: 'smile-o',
   },
   {
@@ -27,18 +28,8 @@ export const MENU_ITEMS = [
   },
 ]
 
-const BUTTONS = [
-  {
-    translateId: 'I_AM_INVESTOR',
-  },
-  {
-    translateId: 'I_AM_BORROWER',
-  }
-];
-
 const Top = ({
   translate,
-  userInfo,
 }) => {
   return (
     <div className={styles.main}>
@@ -50,14 +41,14 @@ const Top = ({
             <Container>
               <div className={styles.header}>
                 <div className={styles.logo}>
-                  <a>FastCredit</a>
+                  <Link to={{ pathname: '/' }}>FastCredit</Link>
                 </div>
                 <div className={styles.rightBlock}>
                   <menu className={styles.menu}>
                     {
-                      MENU_ITEMS.map(({ translateId }) => (
+                      MENU_ITEMS.map(({ translateId, route }) => (
                         <li key={translateId} className={styles.menuItem}>
-                          <a className={styles.menuLink}>{translate(translateId)}</a>
+                          <Link to={{ pathname: route }} className={styles.menuLink}>{translate(translateId)}</Link>
                         </li>
                       ))
                     }
@@ -69,24 +60,15 @@ const Top = ({
                 <h1 className={styles.slogan}>{translate('SLOGAN_TITE')}</h1>
                 <div className={styles.sloganDescription}>{translate('SLOGAN_DESCRIPTION')}</div>
               </div>
-              {
-                !userInfo && (
-                  <div className={styles.btnBlock}>
-                    {
-                      BUTTONS.map(({ translateId }) => (
-                        <Button
-                          key={translateId}
-                          type="primary"
-                          className={classNames('ghostBtn', styles.btn)}
-                          size="large"
-                        >
-                          {translate(translateId)}
-                        </Button>
-                      ))
-                    }
-                  </div>
-                )
-              }
+              <div className={styles.btnBlock}>
+                <Button
+                  type="primary"
+                  className={classNames('ghostBtn', styles.btn)}
+                  size="large"
+                >
+                  <Link to={{ pathname: '/registration' }}>{translate('MAKE_INVETMENT')}</Link>
+                </Button>
+              </div>
             </Container>
           </div>
         </div>

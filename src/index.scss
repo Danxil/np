@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 body {
   margin: 0;
   padding: 0;
@@ -68,4 +70,21 @@ iframe {
   margin-top: -13px;
   margin-left: -14px;
   border-width: 5px;
+}
+.ant-modal-header, .ant-modal-footer {
+  background: transparent;
+  border-color: #484848;
+}
+.ant-modal-content {
+  border-radius: 0;
+  background: #3a3a3a;
+}
+.ant-modal-title, .ant-modal-content, .ant-modal-content .ant-form {
+  color: white;
+}
+.ant-modal-title {
+  font-weight: bold;
+}
+.ant-input {
+  border-radius: 0;
 }

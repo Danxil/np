@@ -9,11 +9,11 @@ export default {
   ],
   SLOGAN_TITE: [
     'Online platform for investors and borrowers',
-    'Онлайн платформа для инвесторов и заемщиков',
+    'Фонд быстрых инвестиций в микрокредиты',
   ],
   SLOGAN_DESCRIPTION: [
     'Online platform for investors and borrowers',
-    'Мы являемся гарантом безопасности инвестиций вкладчиков, выдавая кредиты только проверенным заемщикам',
+    'Мы являемся гарантом бозопасности вкладов, сотрудничая только с проверенными организациями микрокредитования',
   ],
   MAKE_INVESTMENT: [
     'Make investment',
@@ -53,7 +53,7 @@ export default {
   ],
   HOW_TO_INVESTORS_STEP_4_ITEM_1: [
     'Receive daily profit from you investment as',
-    'Тем временем вы ежедневно получайте прибыль с вашего вклада',
+    'Тем временем, вы ежедневно получаете прибыль с вашего вклада',
   ],
   HOW_TO_BORROWERS_STEP_1_ITEM_1: [
     'You choose investment amount and duration',
@@ -141,8 +141,8 @@ export default {
     'Total net profit',
     'Общая чистая прибыль',
   ],
-  INVEST: [
-    'Invest',
+  MAKE_INVETMENT: [
+    'Make investment',
     'Инвестировать',
   ],
   I_AM_INVESTOR: [
@@ -176,5 +176,61 @@ export default {
   BONUS_FOR_DEPOSIT_FROM_REFERRAL: [
     'Bonus for deposit from referral',
     'Бонус за депозит от реферала'
+  ],
+  PLEASE_ENTER_YOU_NICKNAME: [
+    'Please enter your nickname',
+    'Пожалуйста, введите ваш никнейм',
+  ],
+  NICKNAME: [
+    'Nickname',
+    'Никнейм',
+  ],
+  PLEASE_ENTER_YOU_PASSWORD: [
+    'Please enter you password',
+    'Пожалуйста, введите пароль',
+  ],
+  LOG_IN: [
+    'Log in',
+    'Войти',
+  ],
+  OR: [
+    'Or',
+    'Либо',
+  ],
+  REGISTER: [
+    'Register',
+    'Зарегистрировать',
+  ],
+  NEW_USER: [
+    'new user',
+    'нового пользователя',
+  ],
+  LOG_IN_WITH_SOCIAL_NETWORKS: [
+    'Log In with social networks',
+    'Войти через социальные сети',
+  ],
+  PASSWORD: [
+    'Password',
+    'Пароль',
+  ],
+  PLEASE_REPEAT_PASSWORD: [
+    'Please repeat your password',
+    'Повторите пароль',
+  ],
+  WITH_EXISTED_USER: [
+    'with existed user',
+    'через существующего пользователя',
+  ],
+  PASSWORDS_DO_NOT_MATCH: [
+    'Passwors do not match',
+    'Пароли не совпадают',
+  ],
+  CANCEL: [
+    'Cancel',
+    'Отмена',
+  ],
+  YOU_INVITED_BY_USER: [
+    'You invited by user',
+    'Вас пригласил пользователь',
   ],
 };

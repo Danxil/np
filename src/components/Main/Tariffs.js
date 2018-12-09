@@ -105,7 +105,7 @@ const Tariffs = ({
               className={classNames('ghostBtn', styles.calcBtn)}
               size="large"
             >
-              {translate('INVEST')}
+              {translate('MAKE_INVESTMENT')}
             </Button>
           </div>
         </div>

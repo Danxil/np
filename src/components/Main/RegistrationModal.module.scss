@@ -1,0 +1,27 @@
+@import '../../variables.scss';
+
+.registration {
+  :global .ant-modal-title {
+    text-transform: uppercase;
+    text-align: center;
+  }
+  :global .ant-modal-footer {
+    text-align: center;
+    padding: 20px 0;
+    justify-content: flex-end;
+  }
+  :global .ant-modal-body {
+    text-align: center;
+  }
+  .btnWrapper {
+    & + .btnWrapper {
+      margin-left: 20px;
+    }
+  }
+  .invitedByBlock {
+    margin-bottom: 10px;
+  }
+  .invitedByText {
+    font-weight: bold;
+  }
+}

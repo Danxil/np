@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'flag-icon-css/css/flag-icon.css';
-import './index.css';
+import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

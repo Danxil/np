@@ -43,7 +43,7 @@ const AppComp = ({
         >
           <Content>
             <Switch>
-              <Route exact path="/" component={Main} />
+              <Route exact path="/:showModal?" component={Main} />
             </Switch>
           </Content>
           <Footer />
