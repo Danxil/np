@@ -11,10 +11,8 @@ const { Footer: FooterAnt } = Layout;
 const Footer = () => {
   return (
     <FooterAnt className={styles.footer}>
-      <div className={styles.logos}>
-      </div>
       <div>© 2018 fun-spin.com</div>
-      <div>
+      <div className={styles.language}>
         <Language />
       </div>
     </FooterAnt>

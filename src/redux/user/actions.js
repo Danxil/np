@@ -18,6 +18,8 @@ export const signIn = (values) => ({
   [RSAA]: {
     endpoint: `${process.env.REACT_APP_BASE_REST_URL}/auth/local`,
     method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(values),
     types: [
       { type: 'SIGN_IN_REQUEST', meta: { spinnerKeys: { LOGIN: true } } },
@@ -31,6 +33,8 @@ export const signUp = (values) => ({
   [RSAA]: {
     endpoint: `${process.env.REACT_APP_BASE_REST_URL}/sign-up`,
     method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(values),
     types: [
       { type: 'SIGN_UP_REQUEST', meta: { spinnerKeys: { LOGIN: true } } },
@@ -44,6 +48,7 @@ export const logout = () => ({
   [RSAA]: {
     endpoint: `${process.env.REACT_APP_BASE_REST_URL}/logout`,
     method: 'GET',
+    credentials: 'include',
     types: [
       'LOGOUT_REQUEST',
       'LOGOUT_SUCCESS',

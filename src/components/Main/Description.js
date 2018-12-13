@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { compose, pure } from 'recompose';
 import HowTo from '../common/HowTo';
 import PageTitle from '../common/PageTitle';
+import Link from '../common/Link';
 import styles from './Description.module.scss';
 
 
@@ -52,39 +53,31 @@ const HOW_TO = {
       stepNumber: 2,
       iconClass: 'fas fa-user-check',
       stepItemsKeys: [
-          'HOW_TO_BORROWERS_STEP_2_ITEM_1',
+        'HOW_TO_BORROWERS_STEP_2_ITEM_1',
       ]
     },
     {
       stepNumber: 3,
       iconClass: 'fas fa-handshake',
       stepItemsKeys: [
-          'HOW_TO_BORROWERS_STEP_3_ITEM_1',
+        'HOW_TO_BORROWERS_STEP_3_ITEM_1',
       ]
     },
     {
       stepNumber: 4,
       iconClass: 'fas fa-dollar-sign',
       stepItemsKeys: [
-          'HOW_TO_BORROWERS_STEP_4_ITEM_1',
+        'HOW_TO_BORROWERS_STEP_4_ITEM_1',
       ]
     },
   ],
-};
-const DESCRIPTION_BUTTONS = {
-  investor: {
-    labelTranslateId: 'MAKE_INVESTMENT',
-  },
-  borrower: {
-    labelTranslateId: 'GET_A_LOAN',
-  },
 };
 
 const Description = ({
   translate,
 }) => {
   return (
-    <div className={styles.description}>
+    <div className={classNames(styles.description, 'descriptionBlock')}>
       <div className={styles.content}>
         <PageTitle className={styles.title}>{translate('HOW_IT_WORKS')}</PageTitle>
         <HowTo howTo={HOW_TO['investor']} />
@@ -93,7 +86,7 @@ const Description = ({
           className={classNames('ghostBtn', styles.btn)}
           size="large"
         >
-          {translate(DESCRIPTION_BUTTONS['investor'].labelTranslateId)}
+          <Link to={{ pathname: '/sign-up' }}>{translate('MAKE_INVETMENT')}</Link>
         </Button>
       </div>
     </div>

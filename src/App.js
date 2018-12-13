@@ -14,8 +14,8 @@ import Providers, { history } from './redux/Providers';
 import Content from './components/Content';
 import Main from './components/Main';
 import Footer from './components/Footer';
-import SideMenu from './components/SideMenu';
 import withUser from './containers/withUser';
+import withTariffs from './containers/withTariffs';
 import localization from './localization';
 import Spinner from './components/common/Spinner';
 
@@ -23,32 +23,25 @@ import styles from './App.module.css';
 
 const AppComp = ({
   collapsedSideMenu,
-  setCollapsedSideMenuFn,
   userInfo,
 }) => {
   return (
     <Layout className="layout">
-      <SideMenu
-        collapsed={isMobile ? collapsedSideMenu : false}
-        setCollapsedSideMenu={setCollapsedSideMenuFn}
-      />
-      <Layout>
-        <div
-          className={classNames(
-            styles.content, {
-              [styles.collapsedMode]: isMobile ? collapsedSideMenu : false,
-              [styles.notAuthenticated]: !userInfo,
-            }
-          )}
-        >
-          <Content>
-            <Switch>
-              <Route exact path="/:showModal?" component={Main} />
-            </Switch>
-          </Content>
-          <Footer />
-        </div>
-      </Layout>
+      <div
+        className={classNames(
+          styles.content, {
+            [styles.collapsedMode]: isMobile ? collapsedSideMenu : false,
+            [styles.notAuthenticated]: !userInfo,
+          }
+        )}
+      >
+        <Content>
+          <Switch>
+            <Route exact path="/:showModal?" component={Main} />
+          </Switch>
+        </Content>
+        <Footer />
+      </div>
     </Layout>
   );
 };
@@ -57,11 +50,13 @@ const App = compose(
   withRouter,
   withLocalize,
   withUser(),
+  withTariffs(),
   lifecycle({
     componentDidMount() {
       let browserLanguage = (navigator.language || navigator.userLanguage).split('-')[0];
       if (browserLanguage !== 'ru') browserLanguage = 'gb';
       this.props.getUserInfo();
+      this.props.getTariffs();
       this.props.initialize({
         languages: [
           { label: 'EN', code: 'gb' },
@@ -80,7 +75,7 @@ const App = compose(
     }
   }),
   branch(
-    ({ userInfoRequestDone }) => !userInfoRequestDone,
+    ({ userInfoRequestDone, tariffs }) => !userInfoRequestDone || !tariffs.length,
     renderComponent(() => <Spinner overlay={true} transparentOverlay={true} />),
   ),
   pure,
@@ -98,6 +93,7 @@ AppComp.propTypes = {
   setCollapsedSideMenu: PropTypes.func.isRequired,
   setCollapsedSideMenuFn: PropTypes.func.isRequired,
   initialize: PropTypes.func.isRequired,
+  getTariffs: PropTypes.func.isRequired,
 };
 
 export default () => {

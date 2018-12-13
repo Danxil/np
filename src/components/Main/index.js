@@ -5,7 +5,8 @@ import Description from './Description';
 import Achievements from './Achievements';
 import Tariffs from './Tariffs';
 import Partners from './Partners';
-import RegistrationModal from './RegistrationModal';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 
 const Main = () => {
   return (
@@ -15,10 +16,11 @@ const Main = () => {
       <Achievements />
       <Tariffs />
       <Partners />
-      <RegistrationModal />
+      <SignIn />
+      <SignUp />
     </div>
   );
-};
+}
 
 export default compose(
   pure,

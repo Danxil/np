@@ -1,9 +1,15 @@
 .footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background: #101010;
   color: white;
+  position: relative;
+}
+.language {
+  position: absolute;
+  right: 0;
+  top: 15px;
 }
 @media(max-width: 666px) {
   .footer {

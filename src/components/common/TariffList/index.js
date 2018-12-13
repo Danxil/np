@@ -7,14 +7,20 @@ import styles from './index.module.scss';
 
 const Tariffs = ({
   tariffs,
-  renderDescription
+  renderDescription,
+  selectedId,
+  onSelect,
 }) => {
   return (
     <div className={styles.tariffsList}>
       {
-        tariffs.map((tariff, index) => (
-          <div key={tariff.title} className={classNames(styles.tariff, {[styles.tariffSelected]: index === 1 })}>
-            <h3 className={styles.tariffTitle}>{tariff.title}</h3>
+        tariffs.map((tariff) => (
+          <div
+            key={tariff.name}
+            className={classNames(styles.tariff, {[styles.tariffSelected]: selectedId === tariff.id })}
+            onClick={() => onSelect(tariff)}
+          >
+            <h3 className={styles.tariffTitle}>{tariff.name}</h3>
             {renderDescription(tariff)}
           </div>
         ))
@@ -30,6 +36,8 @@ export default compose(
 
 Tariffs.propTypes = {
   translate: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
   tariffs: PropTypes.array.isRequired,
   renderDescription: PropTypes.func.isRequired,
+  selectedId: PropTypes.number.isRequired,
 };

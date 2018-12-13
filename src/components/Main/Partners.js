@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import { withLocalize } from 'react-localize-redux';
 import { compose, pure } from 'recompose';
 import PageTitle from '../common/PageTitle';
+import Link from '../common/Link';
 import Container from '../common/Container';
 import styles from './Partners.module.scss';
 
@@ -12,7 +13,7 @@ const Description = ({
   translate,
 }) => {
   return (
-    <div className={styles.partners}>
+    <div className={classNames(styles.partners, 'partnersBlock')}>
       <PageTitle>{translate('PARTNER_PROGRAM')}</PageTitle>
       <Container>
         <div className={styles.text}>
@@ -32,7 +33,7 @@ const Description = ({
           className={classNames('ghostBtn', styles.btn)}
           size="large"
         >
-          {translate('REGISTRATION')}
+          <Link to={{ pathname: '/sign-up' }}>{translate('SIGN_UP')}</Link>
         </Button>
       </Container>
     </div>

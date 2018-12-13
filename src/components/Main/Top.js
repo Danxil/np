@@ -12,20 +12,26 @@ import Link from '../common/Link';
 
 export const MENU_ITEMS = [
   {
-    translateId: 'REGISTRATION',
-    route: '/registration',
+    translateId: 'SIGN_UP',
+    route: '/sign-up',
     iconType: 'smile-o',
   },
   {
     translateId: 'HOW_IT_WORKS',
-    route: '/',
+    scrollToSelector: '.descriptionBlock',
     iconType: 'smile-o',
   },
   {
-    translateId: 'TARIFS',
-    route: '/',
+    translateId: 'TARIFFS',
+    scrollToSelector: '.tariffsBlock',
     iconType: 'smile-o',
   },
+  {
+    translateId: 'PARTNER_PROGRAM',
+    route: null,
+    scrollToSelector: '.partnersBlock',
+    iconType: 'smile-o',
+  }
 ]
 
 const Top = ({
@@ -46,9 +52,25 @@ const Top = ({
                 <div className={styles.rightBlock}>
                   <menu className={styles.menu}>
                     {
-                      MENU_ITEMS.map(({ translateId, route }) => (
+                      MENU_ITEMS.map(({ translateId, route, scrollToSelector }) => (
                         <li key={translateId} className={styles.menuItem}>
-                          <Link to={{ pathname: route }} className={styles.menuLink}>{translate(translateId)}</Link>
+                          {
+                            route ? (
+                              <Link to={{ pathname: route }} className={styles.menuLink}>{translate(translateId)}</Link>
+                            ) : (
+                              <a
+                                onClick={() => {
+                                  window.scrollTo({
+                                   top: document.querySelector(scrollToSelector).offsetTop,
+                                   behavior: "smooth",
+                                  })
+                                }}
+                                className={styles.menuLink}
+                              >
+                                {translate(translateId)}
+                              </a>
+                            )
+                          }
                         </li>
                       ))
                     }
@@ -66,7 +88,7 @@ const Top = ({
                   className={classNames('ghostBtn', styles.btn)}
                   size="large"
                 >
-                  <Link to={{ pathname: '/registration' }}>{translate('MAKE_INVETMENT')}</Link>
+                  <Link to={{ pathname: '/sign-up' }}>{translate('MAKE_INVETMENT')}</Link>
                 </Button>
               </div>
             </Container>

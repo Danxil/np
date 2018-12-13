@@ -93,8 +93,8 @@ export default {
     '$',
     '$'
   ],
-  TARIFS: [
-    'Tarifs',
+  TARIFFS: [
+    'Tariffs',
     'Тарифы',
   ],
   PER_DAY: [
@@ -153,9 +153,13 @@ export default {
     'I am borrower',
     'Я заемщик',
   ],
-  REGISTRATION: [
-    'Registration',
+  SIGN_UP: [
+    'Sign up',
     'Регистрация',
+  ],
+  SIGN_IN: [
+    'Sign in',
+    'Войти',
   ],
   PAYMENT_SYSTEM: [
     'Payment system',
@@ -232,5 +236,21 @@ export default {
   YOU_INVITED_BY_USER: [
     'You invited by user',
     'Вас пригласил пользователь',
+  ],
+  PLEASE_ENTER_YOU_EMAIL: [
+    'Please enter you email',
+    'Пожалуйста, введите ваш email',
+  ],
+  ENTER_DATA_OF_YOU_ACCOUNT: [
+    'Enter data of you account',
+    'Введите данные вашего аккаунта',
+  ],
+  EMAIL_IS_NOT_VALID: [
+    'Email is not valid',
+    'Вы ввели не корректый email'
+  ],
+  INVETMENT_BODY_WILL_BE_RETURNED_AFTER_THE_END_OF_THE_INVESTMENT: [
+    'Investment body will be returned after the end of the investment',
+    'Тело инвестиции будет возвращено после окончания срока инвестиции'
   ],
 };

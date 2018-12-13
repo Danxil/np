@@ -1,6 +1,6 @@
 @import '../../variables.scss';
 
-.registration {
+.loginModal {
   :global .ant-modal-title {
     text-transform: uppercase;
     text-align: center;
@@ -14,9 +14,8 @@
     text-align: center;
   }
   .btnWrapper {
-    & + .btnWrapper {
-      margin-left: 20px;
-    }
+    margin-bottom: 20px;
+    margin-top: 50px;
   }
   .invitedByBlock {
     margin-bottom: 10px;

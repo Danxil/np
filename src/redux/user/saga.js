@@ -7,11 +7,8 @@ import React from 'react';
 import { put, takeLatest } from 'redux-saga/effects';
 
 export default function* () {
-  yield takeLatest(['SIGN_UP_SUCCESS', 'SIGN_IN_SUCCESS'], () => {
-      put(getUserInfo())
-  });
-  yield takeLatest('GET_USER_INFO_SUCCESS', ({ payload: { id: userId } }) => {
-    gtag('set', { 'user_id': userId }); // Задание идентификатора пользователя с помощью параметра user_id (текущий пользователь).
+  yield takeLatest(['SIGN_UP_SUCCESS', 'SIGN_IN_SUCCESS'], function *() {
+    yield put(getUserInfo())
   });
   yield takeLatest('SIGN_IN_FAILURE', (action) => {
     notification.error({

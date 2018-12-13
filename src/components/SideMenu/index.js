@@ -77,7 +77,7 @@ class SideMenu extends Component {
             ))
           }
           {
-            MENU_ITEMS.filter(o => o.route !== '/login' || !userInfo).map(o => (
+            MENU_ITEMS.filter(o => o.route !== '/sign-in' || !userInfo).map(o => (
               <Menu.Item className={styles.topMenuDuplicateItem} onClick={() => setCollapsedSideMenu(true)} key={o.translateId}>
                 <Link to={o.route}>
                   <Icon type={o.iconType} />

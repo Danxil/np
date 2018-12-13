@@ -1,37 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Form, Input, Icon, Button } from 'antd';
+import { Form, Input, Icon, Button, Modal } from 'antd';
 import { withLocalize, Translate } from 'react-localize-redux';
 import { compose, pure, withProps, withHandlers } from 'recompose';
 import { withRouter } from 'react-router';
-import styles from './RegistrationModal.module.scss';
+import withUser from '../../containers/withUser';
 import Spinner from '../common/Spinner';
+import Link from '../common/Link';
+import styles from './LoginModal.module.scss';
 
 const FormItem = Form.Item;
 
-const RegistrationModal = ({
+const SignUp = ({
   translate,
   form: { getFieldDecorator },
   compareToFirstPassword,
+  invitedBy,
   handleSubmit,
   showModal,
-  invitedBy,
   history,
 }) => {
   return (
     <Modal
-      className={styles.registration}
-      title={translate('REGISTRATION')}
-      visible={showModal === 'registration'}
-      footer={[
-        <div className={styles.btnWrapper} key="loginBtn" >
-          <Spinner spinnerKey="LOGIN">
-            <Button type="primary" onClick={handleSubmit}>
-              {<Translate id={'REGISTER'} />}
-            </Button>
-          </Spinner>
-        </div>
-      ]}
+      className={styles.loginModal}
+      title={translate('SIGN_UP')}
+      visible={showModal === 'sign-up'}
+      footer={
+        <Spinner spinnerKey="LOGIN">
+          <Button type="primary" onClick={handleSubmit}>
+            {<Translate id={'REGISTER'} />}
+          </Button>
+        </Spinner>
+      }
       onOk={() => {}}
       onCancel={() => {history.push(`/${location.search}`)}}
     >
@@ -44,7 +44,7 @@ const RegistrationModal = ({
               { type: 'email', message: <Translate id={'EMAIL_IS_NOT_VALID'} /> },
             ],
           })(
-            <Input prefix={<Icon type="mail" />} placeholder="Email" />
+            <Input prefix={<Icon type='mail' />} placeholder='Email' />
           )}
         </FormItem>
         <FormItem>
@@ -58,7 +58,7 @@ const RegistrationModal = ({
         </FormItem>
         <FormItem>
           {getFieldDecorator('password', {
-          rules: [{ required: true, message: <Translate id={'PLEASE_ENTER_YOU_PASSWORD'} /> }],
+            rules: [{ required: true, message: <Translate id={'PLEASE_ENTER_YOU_PASSWORD'} /> }],
           })(
             <Input prefix={<Icon type="lock" />} type="password" placeholder={translate('PASSWORD')} />
           )}
@@ -78,7 +78,7 @@ const RegistrationModal = ({
           )}
         </FormItem>
         <div className={styles.linksBlock}>
-          {<Translate id={'OR'} />} <a onClick={() => {}}>{<Translate id={'LOG_IN'} />}</a> {<Translate id={'WITH_EXISTED_USER'} />}
+          <Link to={{ pathname: '/sign-in' }}>{<Translate id={'LOG_IN'} />}</Link> {<Translate id={'WITH_EXISTED_USER'} />}
         </div>
       </Form>
     </Modal>
@@ -87,6 +87,7 @@ const RegistrationModal = ({
 
 export default compose(
   Form.create(),
+  withUser(),
   withLocalize,
   withRouter,
   withProps(({ form, match: { params: { showModal } } }) => {
@@ -100,7 +101,7 @@ export default compose(
         }
       },
       invitedBy: query.get('invitedBy'),
-      showModal: showModal,
+      showModal,
     });
   }),
   withHandlers({
@@ -113,19 +114,20 @@ export default compose(
     }
   }),
   pure,
-)(RegistrationModal);
+)(SignUp);
 
-RegistrationModal.defaultProps = {
+SignUp.defaultProps = {
   invitedBy: null,
   showModal: null,
 };
 
-RegistrationModal.propTypes = {
+SignUp.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   translate: PropTypes.func.isRequired,
+  signUp: PropTypes.func.isRequired,
   compareToFirstPassword: PropTypes.func.isRequired,
   form: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  showModal: PropTypes.string,
   invitedBy: PropTypes.string,
+  showModal: PropTypes.string,
 };
