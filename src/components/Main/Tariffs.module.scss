@@ -105,6 +105,8 @@
   height: 20px;
   box-sizing: content-box;
   box-shadow: 2px 9px 7px -9px rgba(0,0,0,0.75);
+  transition: .5s;
+  border: 2px solid transparent;
 
   &.selected {
     transform: scale(1.2);
