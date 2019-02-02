@@ -88,7 +88,7 @@ const Top = ({
                   className={classNames('ghostBtn', styles.btn)}
                   size="large"
                 >
-                  <Link to={{ pathname: '/sign-up' }}>{translate('MAKE_INVETMENT')}</Link>
+                  <Link to={{ pathname: '/sign-up' }}>{translate('MAKE_INVESTMENT')}</Link>
                 </Button>
               </div>
             </Container>

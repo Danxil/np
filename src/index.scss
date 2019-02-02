@@ -88,3 +88,11 @@ iframe {
 .ant-input {
   border-radius: 0;
 }
+.ant-layout-sider, .ant-menu {
+  background: black;
+}
+.ant-layout-sider-trigger {
+  position: absolute;
+  background: black;
+  bottom: 0;
+}

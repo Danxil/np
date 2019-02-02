@@ -82,7 +82,7 @@ export default {
   ],
   OUR_ACHIEVEMENTS_2_DESCRIPTION: [
     'Investment collected',
-    'Инвестиций собрано',
+    'Инвестировано',
 
   ],
   OUR_ACHIEVEMENTS_3_DESCRIPTION: [
@@ -141,7 +141,7 @@ export default {
     'Total net profit',
     'Общая чистая прибыль',
   ],
-  MAKE_INVETMENT: [
+  MAKE_INVESTMENT: [
     'Make investment',
     'Инвестировать',
   ],
@@ -252,5 +252,9 @@ export default {
   INVETMENT_BODY_WILL_BE_RETURNED_AFTER_THE_END_OF_THE_INVESTMENT: [
     'Investment body will be returned after the end of the investment',
     'Тело инвестиции будет возвращено после окончания срока инвестиции'
+  ],
+  DASHBOARD: [
+    'Dashboard',
+    'Дашбоард',
   ],
 };

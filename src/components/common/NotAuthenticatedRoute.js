@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router'
-import withUser from '../containers/withUser';
+import withUser from '../../containers/withUser';
 import { compose, pure } from 'recompose';
 
 const PrivateRoute = ({ component: Component, userInfo, ...rest }) => {
@@ -12,7 +12,7 @@ const PrivateRoute = ({ component: Component, userInfo, ...rest }) => {
         !userInfo ? (
           <Component {...props} />
         ) : (
-          <Redirect to={{ pathname: '/' }} />
+          <Redirect to={{ pathname: '/cabinet' }} />
         )
       }
     />

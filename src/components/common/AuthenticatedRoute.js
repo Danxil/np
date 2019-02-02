@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { Redirect, Route } from 'react-router';
-import withUser from '../containers/withUser';
+import { Redirect, Route, withRouter } from 'react-router';
+import withUser from '../../containers/withUser';
 import { pure, compose } from 'recompose';
 
 const PrivateRoute = ({ component: Component, userInfo, ...rest }) => {
@@ -12,7 +12,7 @@ const PrivateRoute = ({ component: Component, userInfo, ...rest }) => {
         userInfo ? (
           <Component {...props} />
         ) : (
-          <Redirect to={{ pathname: '/home' }} />
+          <Redirect to={{ pathname: '/' }} />
         )
       }
     />
@@ -28,4 +28,4 @@ PrivateRoute.propTypes = {
   userInfo: PropTypes.object,
 }
 
-export default compose(withUser(), pure)(PrivateRoute);
+export default compose(withRouter, withUser(), pure)(PrivateRoute);

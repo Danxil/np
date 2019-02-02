@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import classNames from 'classnames';
 import Cookie from 'js-cookie';
 import PropTypes from 'prop-types';
-import { Route, Switch, withRouter } from 'react-router';
+import { Switch, withRouter } from 'react-router';
 import { branch, compose, lifecycle, pure, renderComponent, withHandlers, withState } from 'recompose';
 import { withLocalize } from 'react-localize-redux';
 
@@ -13,11 +13,14 @@ import Providers, { history } from './redux/Providers';
 
 import Content from './components/Content';
 import Main from './components/Main';
+import Cabinet from './components/Cabinet';
 import Footer from './components/Footer';
 import withUser from './containers/withUser';
 import withTariffs from './containers/withTariffs';
 import localization from './localization';
 import Spinner from './components/common/Spinner';
+import AuthenticatedRoute from './components/common/AuthenticatedRoute';
+import NotAuthenticatedRoute from './components/common/NotAuthenticatedRoute';
 
 import styles from './App.module.css';
 
@@ -37,7 +40,8 @@ const AppComp = ({
       >
         <Content>
           <Switch>
-            <Route exact path="/:showModal?" component={Main} />
+            <NotAuthenticatedRoute exact path="/:showModal(sign\-in|sign\-up)?" component={Main} />
+            <AuthenticatedRoute path="/cabinet" component={Cabinet} />
           </Switch>
         </Content>
         <Footer />
