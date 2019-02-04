@@ -257,4 +257,8 @@ export default {
     'Dashboard',
     'Дашбоард',
   ],
+  MY_INVESTMENTS: [
+    'My investments',
+    'Мои инвестиции',
+  ]
 };

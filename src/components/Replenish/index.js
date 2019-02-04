@@ -3,17 +3,19 @@ import PropTypes from 'prop-types';
 import Calculator from '../common/Calculator';
 import { compose, pure } from 'recompose';
 import { withRouter } from 'react-router';
-import styles from './index.module.css';
+import styles from './index.module.scss';
+import Container from '../common/Container';
 
 const Replenish = () => {
   return (
     <div className={styles.replenish}>
-      Replenish
-      <Calculator
-        onDone={(args) => {
-          console.log(args)
-        }}
-      />
+      <Container>
+        <Calculator
+          onDone={(args) => {
+            console.log(args)
+          }}
+        />
+      </Container>
     </div>
   );
 }

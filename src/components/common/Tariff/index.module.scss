@@ -1,0 +1,41 @@
+@import '../../../variables.scss';
+
+.tariff {
+  text-align: center;
+  background: $mainColor;
+  padding: 20px;
+  color: white;
+  box-shadow: 2px 9px 7px -9px rgba(0,0,0,0.75);
+
+  & + & {
+    margin-left: 40px;
+  }
+}
+.tariffTitle {
+  color: $goldColor;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+.amount {
+  font-size: 50px;
+}
+.amountDescription {
+  margin-bottom: 40px;
+  font-weight: bold;
+  position: relative;
+
+  &:after {
+    display: block;
+    content: ' ';
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    margin-left: -10px;
+    width: 20px;
+    border-top: 2px solid white;
+  }
+}
+.descriptionLine {
+  margin-bottom: 10px;
+}

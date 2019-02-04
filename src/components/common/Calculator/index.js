@@ -10,6 +10,7 @@ import styles from './index.module.scss';
 import TariffList from '../TariffList';
 import withTariffs from '../../../containers/withTariffs';
 import { toFixedIfNeed } from '../../../helpers/utils';
+import PageTitle from '../PageTitle';
 
 const BILLING_SYSTEMS = [
   {
@@ -49,6 +50,7 @@ const Calculator = ({
 }) => {
   return (
     <div className={styles.calculatorComp}>
+      <PageTitle>{translate('TARIFFS')}</PageTitle>
       <TariffList
         tariffs={tariffs}
         selectedId={tariffId}

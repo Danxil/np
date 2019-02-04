@@ -7,7 +7,7 @@ import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 import { compose, pure } from 'recompose';
 import styles from './index.module.css';
-import Dashboard from '../Dashboard';
+import MyIvestments from '../MyIvestments';
 import Replenish from '../Replenish';
 
 const {
@@ -17,7 +17,7 @@ const {
 const SIDE_MENU_ITEMS = [
   {
     route: '',
-    translateId: 'DASHBOARD',
+    translateId: 'MY_INVESTMENTS',
     iconType: 'smile-o',
   },
   {
@@ -53,9 +53,9 @@ const Cabinet = ({ translate, match, location: { pathname } }) => {
         </Menu>
       </Sider>
       <Layout>
-        <Content style={{ margin: '0 16px' }}>
-          <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-            <AuthenticatedRoute path={`${match.path}`} exact component={Dashboard}/>
+        <Content>
+          <div>
+            <AuthenticatedRoute path={`${match.path}`} exact component={MyIvestments}/>
             <AuthenticatedRoute path={`${match.path}/replenish`} exact component={Replenish}/>
           </div>
         </Content>

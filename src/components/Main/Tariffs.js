@@ -7,8 +7,8 @@ import { compose, pure, withState, withProps } from 'recompose';
 import { withRouter } from 'react-router';
 import styles from './Tariffs.module.scss';
 import Calculator from '../common/Calculator';
-import PageTitle from '../common/PageTitle';
 import Container from '../common/Container';
+import PageTitle from '../common/PageTitle';
 import withTariffs from '../../containers/withTariffs';
 
 const BILLING_SYSTEMS = [
