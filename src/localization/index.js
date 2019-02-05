@@ -141,10 +141,6 @@ export default {
     'Total net profit',
     'Общая чистая прибыль',
   ],
-  MAKE_INVESTMENT: [
-    'Make investment',
-    'Инвестировать',
-  ],
   I_AM_INVESTOR: [
     'I am investor',
     'Я инвестор',
@@ -260,5 +256,9 @@ export default {
   MY_INVESTMENTS: [
     'My investments',
     'Мои инвестиции',
-  ]
+  ],
+  DAYS_TO_FINISH: [
+    'Days to finish',
+    'Дней до завершения'
+  ],
 };

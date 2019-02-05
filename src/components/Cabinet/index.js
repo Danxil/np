@@ -11,7 +11,7 @@ import MyIvestments from '../MyIvestments';
 import Replenish from '../Replenish';
 
 const {
-  Content, Sider,
+  Content, Sider, Header
 } = Layout;
 
 const SIDE_MENU_ITEMS = [
@@ -31,28 +31,30 @@ const Cabinet = ({ translate, match, location: { pathname } }) => {
   return (
     <div className={styles.cabinet}>
     <Layout style={{ minHeight: '100vh' }}>
-      <Sider
-        collapsible
-        collapsed={false}
-        onCollapse={() => {}}
-      >
-        <div className="logo" />
-        <Menu theme="dark" selectedKeys={[pathname]} mode="inline">
-          {
-            SIDE_MENU_ITEMS.map(o => {
-              const to = `${match.path}${o.route}`;
-              return (<Menu.Item key={to}>
-                <Link to={to}>
-                  <Icon type={o.iconType} />
-                  <span>{translate(o.translateId)}</span>
-                </Link>
-              </Menu.Item>)
-              }
-            )
-          }
-        </Menu>
-      </Sider>
+      <Header className={styles.header}>
+        <div className={styles.balance}>Balance: 100 $</div>
+      </Header>
       <Layout>
+        <Sider
+          collapsible
+          collapsed={false}
+          onCollapse={() => {}}
+        >
+          <Menu theme="dark" selectedKeys={[pathname]} mode="inline">
+            {
+              SIDE_MENU_ITEMS.map(o => {
+                const to = `${match.path}${o.route}`;
+                return (<Menu.Item key={to}>
+                  <Link to={to}>
+                    <Icon type={o.iconType} />
+                    <span>{translate(o.translateId)}</span>
+                  </Link>
+                </Menu.Item>)
+                }
+              )
+            }
+          </Menu>
+        </Sider>
         <Content>
           <div>
             <AuthenticatedRoute path={`${match.path}`} exact component={MyIvestments}/>

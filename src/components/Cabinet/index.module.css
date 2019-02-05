@@ -5,3 +5,10 @@
   background-attachment: fixed;
   background-size: cover;
 }
+.balance {
+  color: white;
+}
+.header {
+  text-align: right;
+  background: black;
+}

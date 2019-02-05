@@ -22,7 +22,7 @@ import Spinner from './components/common/Spinner';
 import AuthenticatedRoute from './components/common/AuthenticatedRoute';
 import NotAuthenticatedRoute from './components/common/NotAuthenticatedRoute';
 
-import styles from './App.module.css';
+import styles from './App.module.scss';
 
 const AppComp = ({
   collapsedSideMenu,

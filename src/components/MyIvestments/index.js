@@ -18,19 +18,13 @@ const MyIvestments = ({ translate }) => {
             amount="200 $"
             lines={[
               {
-                label: translate('INVESTITION_DURATION'),
-                value: '7'
-              }
-            ]}
-          />
-          <Tariff
-            tariffTitle="Base"
-            amount="200 $"
-            lines={[
+                label: translate('DAILY_PROFIT'),
+                value: '5%',
+              },
               {
-                label: translate('INVESTITION_DURATION'),
-                value: '7'
-              }
+                label: translate('DAYS_TO_FINISH'),
+                value: '7/14'
+              },
             ]}
           />
         </div>
