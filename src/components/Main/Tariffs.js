@@ -8,7 +8,6 @@ import { withRouter } from 'react-router';
 import styles from './Tariffs.module.scss';
 import Calculator from '../common/Calculator';
 import Container from '../common/Container';
-import PageTitle from '../common/PageTitle';
 import withTariffs from '../../containers/withTariffs';
 
 const BILLING_SYSTEMS = [
@@ -32,15 +31,13 @@ const BILLING_SYSTEMS = [
     image: 'free-kassa.png',
     id: 4,
   },
-]
+];
 
 const Tariffs = ({
-  translate,
   selectModelAndInvest,
 }) => {
   return (
     <div className={classNames(styles.tariffs, 'tariffsBlock')}>
-      <PageTitle>{translate('TARIFFS')}</PageTitle>
       <Container>
         <Calculator
           onDone={(args) => {

@@ -1,16 +1,19 @@
 import React from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { compose, pure } from 'recompose';
 import styles from './index.module.scss';
 
 const Tariff = ({
   tariffTitle,
+  completed,
   amount,
   amountDescription,
   lines,
 }) => {
+  console.log(classNames);
   return (
-    <div className={styles.tariff}>
+    <div className={classNames(styles.tariff, { completed } )}>
       <h3 className={styles.tariffTitle}>{tariffTitle}</h3>
       <div className={styles.amount}>{amount}</div>
       <div className={styles.amountDescription}>{amountDescription}</div>
@@ -29,6 +32,7 @@ export default compose(
 
 Tariff.defaultProps = {
   amountDescription: null,
+  completed: false,
 };
 
 Tariff.propTypes = {
@@ -36,4 +40,5 @@ Tariff.propTypes = {
   amountDescription: PropTypes.string,
   tariffTitle: PropTypes.string.isRequired,
   lines: PropTypes.array.isRequired,
+  completed: PropTypes.bool,
 };

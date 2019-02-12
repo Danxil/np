@@ -261,4 +261,20 @@ export default {
     'Days to finish',
     'Дней до завершения'
   ],
+  PROFIT_RECEIVED: [
+    'Profit received',
+    'Прибыль получена',
+  ],
+  ACTIVE_INVESTMENTS: [
+    'Active',
+    'Активные',
+  ],
+  COMPETED_INVESTMENTS: [
+    'Completed',
+    'Завершенные',
+  ],
+  COMPLETED_INVESTMENTS: [
+    'Completed',
+    'Завершенные'
+  ]
 };
