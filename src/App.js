@@ -17,6 +17,7 @@ import Cabinet from './components/Cabinet';
 import Footer from './components/Footer';
 import withUser from './containers/withUser';
 import withTariffs from './containers/withTariffs';
+import withBusinessConfig from './containers/withBusinessConfig';
 import localization from './localization';
 import Spinner from './components/common/Spinner';
 import AuthenticatedRoute from './components/common/AuthenticatedRoute';
@@ -54,17 +55,19 @@ const App = compose(
   withRouter,
   withLocalize,
   withUser(),
+  withBusinessConfig(),
   withTariffs(),
   lifecycle({
     componentDidMount() {
       let browserLanguage = (navigator.language || navigator.userLanguage).split('-')[0];
       if (browserLanguage !== 'ru') browserLanguage = 'gb';
       this.props.getUserInfo();
+      this.props.getBusinessConfig();
       this.props.getTariffs();
       this.props.initialize({
         languages: [
           { label: 'EN', code: 'gb' },
-          { label: 'RU', code: 'ru' }
+          { label: 'RU', code: 'ru' },
         ],
         translation: localization,
         options: { renderToStaticMarkup, renderInnerHtml: true },
@@ -79,7 +82,7 @@ const App = compose(
     }
   }),
   branch(
-    ({ userInfoRequestDone, tariffs }) => !userInfoRequestDone || !tariffs.length,
+    ({ userInfoRequestDone, tariffs, businessConfig }) => !userInfoRequestDone || !tariffs.length || !businessConfig,
     renderComponent(() => <Spinner overlay={true} transparentOverlay={true} />),
   ),
   pure,

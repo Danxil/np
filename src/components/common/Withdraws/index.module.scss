@@ -1,0 +1,24 @@
+.withdraws {
+  margin-bottom: 20px;
+  & :global(.ant-card-body) {
+    padding-left: 15px;
+  }
+  & :global(.ant-card-head-title) {
+    font-size: 12px;
+    text-align: left;
+  }
+}
+.card {
+  display: flex;
+  height: 80px;
+  text-align: left;
+}
+.avatar {
+  margin-right: 15px;
+}
+.slogan {
+  text-align: center;
+}
+.widthrawsList {
+  margin: 0 20px;
+}

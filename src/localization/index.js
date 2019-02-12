@@ -276,5 +276,33 @@ export default {
   COMPLETED_INVESTMENTS: [
     'Completed',
     'Завершенные'
+  ],
+  WITHDRAW: [
+    'Withdraw',
+    'Вывести',
+  ],
+  WITHDRAW_HISTORY: [
+    'Withdraw history',
+    'История выводов'
+  ],
+  WALLET_NUMBER: [
+    'Wallet number',
+    'Номер кошелька',
+  ],
+  STATUS: [
+    'Status',
+    'Статус',
+  ],
+  USER: [
+    'User',
+    'Пользователь'
+  ],
+  WITHDRAWN: [
+    'Withdrawn',
+    'Выплачено'
+  ],
+  DATE: [
+    'Date',
+    'Дата'
   ]
 };

@@ -9,6 +9,7 @@ import { compose, pure } from 'recompose';
 import styles from './index.module.css';
 import MyIvestments from '../MyIvestments';
 import Replenish from '../Replenish';
+import Withdraw from '../Withdraw';
 
 const {
   Content, Sider, Header
@@ -16,14 +17,19 @@ const {
 
 const SIDE_MENU_ITEMS = [
   {
+    route: '/replenish',
+    translateId: 'MAKE_INVESTMENT',
+    iconType: 'credit-card',
+  },
+  {
     route: '',
     translateId: 'MY_INVESTMENTS',
     iconType: 'smile-o',
   },
   {
-    route: '/replenish',
-    translateId: 'MAKE_INVESTMENT',
-    iconType: 'credit-card',
+    route: '/withdraw',
+    translateId: 'WITHDRAW',
+    iconType: 'hand-holding-usd',
   },
 ];
 
@@ -59,6 +65,7 @@ const Cabinet = ({ translate, match, location: { pathname } }) => {
           <div>
             <AuthenticatedRoute path={`${match.path}`} exact component={MyIvestments}/>
             <AuthenticatedRoute path={`${match.path}/replenish`} exact component={Replenish}/>
+            <AuthenticatedRoute path={`${match.path}/withdraw`} exact component={Withdraw}/>
           </div>
         </Content>
       </Layout>

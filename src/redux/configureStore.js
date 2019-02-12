@@ -11,6 +11,8 @@ import userSaga from './user/saga';
 import userReducer from './user';
 import spinnersReducer from './spinners';
 import tariffsReducer from './tariffs';
+import withdrawsReducer from './withdraws';
+import businessConfigReducer from './businessConfig';
 import { setSpinnerStatus } from './spinners/actions';
 import restApiInjector from './middlewares/restApiInjector';
 import spinnerMiddleware from './middlewares/spinnerMiddleware';
@@ -21,6 +23,8 @@ export default ({ history }) => {
     spinners: spinnersReducer,
     user: userReducer,
     tariffs: tariffsReducer,
+    withdraws: withdrawsReducer,
+    businessConfig: businessConfigReducer,
     localize: localizeReducer,
   });
 

@@ -1,0 +1,15 @@
+.withdraws {
+  & :global(.ant-card-body) {
+    padding-left: 15px;
+  }
+  & :global(.ant-card-head-title) {
+    font-size: 12px;
+  }
+}
+.card {
+  display: flex;
+  height: 80px;
+}
+.avatar {
+  margin-right: 15px;
+}

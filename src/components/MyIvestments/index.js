@@ -12,7 +12,7 @@ const MyIvestments = ({ translate }) => {
     <div className={styles.myInvestments}>
       <Container>
         <PageTitle>{translate('MY_INVESTMENTS')}</PageTitle>
-        <h2 className={styles.investmentsType}>{translate('ACTIVE_INVESTMENTS')}:</h2>
+        <h3 className={styles.investmentsType}>{translate('ACTIVE_INVESTMENTS')}:</h3>
         <div className={styles.investments}>
           <Tariff
             tariffTitle="Base"
@@ -33,7 +33,7 @@ const MyIvestments = ({ translate }) => {
             ]}
           />
         </div>
-        <h2 className={styles.investmentsType}>{translate('COMPLETED_INVESTMENTS')}:</h2>
+        <h3 className={styles.investmentsType}>{translate('COMPLETED_INVESTMENTS')}:</h3>
         <div className={styles.investments}>
           <Tariff
             tariffTitle="Base"
