@@ -1,5 +1,6 @@
 .withdraws {
   margin-bottom: 20px;
+
   & :global(.ant-card-body) {
     padding-left: 15px;
   }
@@ -21,4 +22,7 @@
 }
 .widthrawsList {
   margin: 0 20px;
+}
+.table {
+  background: white;
 }

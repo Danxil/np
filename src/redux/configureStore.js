@@ -8,11 +8,13 @@ import { localizeReducer } from 'react-localize-redux';
 import { combineReducers } from 'redux';
 
 import userSaga from './user/saga';
+import withdrawsSaga from './withdraws/saga';
 import userReducer from './user';
 import spinnersReducer from './spinners';
 import tariffsReducer from './tariffs';
 import withdrawsReducer from './withdraws';
 import businessConfigReducer from './businessConfig';
+import investmentsReducer from './investments';
 import { setSpinnerStatus } from './spinners/actions';
 import restApiInjector from './middlewares/restApiInjector';
 import spinnerMiddleware from './middlewares/spinnerMiddleware';
@@ -25,11 +27,13 @@ export default ({ history }) => {
     tariffs: tariffsReducer,
     withdraws: withdrawsReducer,
     businessConfig: businessConfigReducer,
+    investments: investmentsReducer,
     localize: localizeReducer,
   });
 
   const rootSaga = function* () {
     yield fork(userSaga);
+    yield fork(withdrawsSaga);
     yield fork(function* () {
       yield takeLatest(
         ({ type }) => {

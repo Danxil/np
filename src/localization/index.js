@@ -304,5 +304,29 @@ export default {
   DATE: [
     'Date',
     'Дата'
+  ],
+  THIS_FIELD_IS_REQUIRED: [
+    'This field is required',
+    'Это поле обязательно для заполнения',
+  ],
+  IN_PROGRESS: [
+    'In progress',
+    'В процессе',
+  ],
+  WITHDRAW_CREATED_SUCCESS: [
+    'Your reqquest to withdraw will be handled in the nearest time',
+    'Ваш запрос на вывод средств будет обработан в ближайшее время',
+  ],
+  LOW_BALANCE: [
+    'Low balance',
+    'Низкий баланс',
+  ],
+  EMAIL_OR_PASSWORD_IS_INCORRECT: [
+    'Email or password is incorrect',
+    'Неверный email или пароль'
+  ],
+  AMOUNT: [
+    'Amount',
+    'Сумма',
   ]
 };

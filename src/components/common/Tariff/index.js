@@ -11,7 +11,6 @@ const Tariff = ({
   amountDescription,
   lines,
 }) => {
-  console.log(classNames);
   return (
     <div className={classNames(styles.tariff, { completed } )}>
       <h3 className={styles.tariffTitle}>{tariffTitle}</h3>

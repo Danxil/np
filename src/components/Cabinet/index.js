@@ -10,6 +10,7 @@ import styles from './index.module.css';
 import MyIvestments from '../MyIvestments';
 import Replenish from '../Replenish';
 import Withdraw from '../Withdraw';
+import withUser from '../../containers/withUser';
 
 const {
   Content, Sider, Header
@@ -33,12 +34,17 @@ const SIDE_MENU_ITEMS = [
   },
 ];
 
-const Cabinet = ({ translate, match, location: { pathname } }) => {
+const Cabinet = ({
+  translate,
+  match,
+  location: { pathname },
+  userInfo,
+}) => {
   return (
     <div className={styles.cabinet}>
     <Layout style={{ minHeight: '100vh' }}>
       <Header className={styles.header}>
-        <div className={styles.balance}>Balance: 100 $</div>
+        <div className={styles.balance}>Balance: {userInfo.balance} $</div>
       </Header>
       <Layout>
         <Sider
@@ -77,6 +83,7 @@ const Cabinet = ({ translate, match, location: { pathname } }) => {
 export default compose(
   withLocalize,
   withRouter,
+  withUser(),
   pure,
 )(Cabinet);
 
@@ -90,4 +97,5 @@ Cabinet.propTypes = {
   location: PropTypes.object.isRequired,
   className: PropTypes.string,
   translate: PropTypes.func.isRequired,
+  userInfo: PropTypes.object.isRequired,
 };

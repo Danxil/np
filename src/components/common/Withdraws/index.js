@@ -43,7 +43,7 @@ const COLUMNS = [
     render: user => <Fragment><Avatar icon="user" src={user.photo} /><span>&nbsp;&nbsp;&nbsp;</span>{user.displayName}</Fragment>
   },
   {
-    title: <Translate id="WITHDRAWN" />,
+    title: <Translate id="AMOUNT" />,
     dataIndex: 'amount',
     key: 'amount',
     render: text => <Fragment>$ {text}</Fragment>
@@ -62,37 +62,36 @@ const Withdraws = ({ withdraws, maxItems }) => {
   return (
     <div className={styles.withdraws}>
       <Spinner spinnerKey="REST_API.GET_WITHDRAWS_REQUEST" overlay={true} transparentOverlay={true}>
-        <Fragment>
-          {
-            !isMobile ? (
-              <Table
-                dataSource={sortedWithdraws}
-                columns={COLUMNS}
-                pagination={false}
-                rowKey={(o) => o.createdAt}
-              />
-            ) : (
-              <List
-                className={styles.widthrawsList}
-                grid={{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 4, xl: 5, xxl: 5 }}
-                dataSource={sortedWithdraws}
-                renderItem={({ createdAt, amount, user: { displayName, photo } }) => (
-                  <List.Item>
-                    <Card title={moment(createdAt).format(DATE_FORMAT)}>
-                      <div className={styles.card}>
-                        <Avatar icon="user" src={photo} className={styles.avatar} size="large" />
-                        <div>
-                          <p>{displayName}</p>
-                          <span>$ {amount}</span>
-                        </div>
+        {
+          !isMobile ? (
+            <Table
+              dataSource={sortedWithdraws}
+              columns={COLUMNS}
+              pagination={false}
+              rowKey={(o) => o.createdAt}
+              className={styles.table}
+            />
+          ) : (
+            <List
+              className={styles.widthrawsList}
+              grid={{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 4, xl: 5, xxl: 5 }}
+              dataSource={sortedWithdraws}
+              renderItem={({ createdAt, amount, user: { displayName, photo } }) => (
+                <List.Item>
+                  <Card title={moment(createdAt).format(DATE_FORMAT)}>
+                    <div className={styles.card}>
+                      <Avatar icon="user" src={photo} className={styles.avatar} size="large" />
+                      <div>
+                        <p>{displayName}</p>
+                        <span>$ {amount}</span>
                       </div>
-                    </Card>
-                  </List.Item>
-                )}
-              />
-            )
-          }
-        </Fragment>
+                    </div>
+                  </Card>
+                </List.Item>
+              )}
+            />
+          )
+        }
       </Spinner>
     </div>
   );

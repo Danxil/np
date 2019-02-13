@@ -6,6 +6,7 @@ import {
   Form,
   Select,
   Input,
+  Alert,
 } from 'antd';
 import { compose, withState, withProps, pure } from 'recompose';
 import { withLocalize } from 'react-localize-redux';
@@ -55,6 +56,17 @@ const Withdraw = ({
       <Container>
         <PageTitle>{translate('WITHDRAW')}</PageTitle>
         <Form id="withdrawing" className={styles.withdrawingForm}>
+          {
+            lowBalance && (
+              <FormItem>
+                <Alert
+                  showIcon
+                  message={`${translate('LOW_BALANCE')}.`}
+                  type="warning"
+                />
+              </FormItem>
+            )
+          }
           <FormItem>
             <div>
               {amount}$
@@ -73,7 +85,11 @@ const Withdraw = ({
             </div>
           </FormItem>
           <FormItem>
-            <Select value={method} onChange={(val) => setMethod(val)}>
+            <Select
+              value={method}
+              disabled={lowBalance}
+              onChange={(val) => setMethod(val)}
+            >
               {
                 WITHDRAW_METHODS.map(o => (
                   <Select.Option key={JSON.stringify(o)} value={o.value}>{o.label}</Select.Option>
@@ -86,6 +102,7 @@ const Withdraw = ({
               rules: [{ required: true, message: <span>{translate('THIS_FIELD_IS_REQUIRED')}</span> }],
             })(
               <Input
+                disabled={lowBalance}
                 placeholder={translate(WITHDRAW_METHODS.find(o => o.value === method).fieldPlaceholderTranslateId)}
                 onChange={(e) => setRequisite(e.target.value)}
               />
