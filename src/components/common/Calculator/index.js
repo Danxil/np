@@ -54,17 +54,7 @@ const Calculator = ({
       <TariffList
         tariffs={tariffs}
         selectedId={tariffId}
-        renderDescription={
-          ({ percentage, duration, minInvestment }) => (<div className={styles.description}>
-            <div className={styles.percentage}>{percentage}%</div>
-            <div className={styles.model}>{translate('DAILY_PAYMENTS')}</div>
-            <div className={styles.descriptionLine}>{translate('INVESTITION_DURATION')}: {duration} <span className={styles.durationLabel}>{translate('DAYS')}</span></div>
-            <div className={styles.descriptionLine}>{translate('MINIMAL_INVESTITION')}: {minInvestment}$</div>
-            <div className={styles.descriptionLine}>{translate('TOTAL_NET_PROFIT')}: {duration * percentage}%</div>
-          </div>
-          )
-        }
-        onSelect={({ id }) => selectTariffId(id)}
+        onSelect={(id) => selectTariffId(id)}
       />
       <div className={styles.calculator}>
         <div className={styles.content}>

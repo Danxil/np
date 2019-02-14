@@ -12,7 +12,7 @@ export default function* () {
   });
   yield takeLatest('SIGN_IN_FAILURE', (action) => {
     notification.error({
-      duration: 10,
+      duration: 5,
       description: <Providers>
         <Fragment>
           <Translate id={ action.payload.status === 401 ? 'EMAIL_OR_PASSWORD_IS_INCORRECT' : 'SERVER_ERROR'} />
@@ -22,12 +22,23 @@ export default function* () {
   });
   yield takeLatest('SIGN_UP_FAILURE', (action) => {
     notification.error({
-      duration: 10,
+      duration: 5,
       description: <Providers>
         <Fragment>
           <Translate id={ action.payload.status === 400 ? 'THIS_EMAIL_IS_BUSY' : 'SERVER_ERROR'} />
         </Fragment>
       </Providers>
+    });
+  });
+  yield takeLatest(['SIGN_UP_SUCCESS', 'SIGN_IN_SUCCESS'], (action) => {
+    notification.success({
+      duration: 5,
+      description:
+        <Providers>
+          <Fragment>
+            <Translate id={action.type} />
+          </Fragment>
+        </Providers>
     });
   });
 }

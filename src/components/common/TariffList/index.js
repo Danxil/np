@@ -2,27 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withLocalize } from 'react-localize-redux';
 import { compose, pure } from 'recompose';
-import classNames from 'classnames';
+import Tariff from '../Tariff';
 import styles from './index.module.scss';
 
-const Tariffs = ({
+const TariffsList = ({
   tariffs,
-  renderDescription,
   selectedId,
   onSelect,
+  translate,
 }) => {
   return (
     <div className={styles.tariffsList}>
       {
         tariffs.map((tariff) => (
-          <div
-            key={tariff.name}
-            className={classNames(styles.tariff, {[styles.tariffSelected]: selectedId === tariff.id })}
-            onClick={() => onSelect(tariff)}
-          >
-            <h3 className={styles.tariffTitle}>{tariff.name}</h3>
-            {renderDescription(tariff)}
-          </div>
+          <Tariff
+            key={`tariff-${tariff.name}`}
+            tariffTitle={tariff.name}
+            amount={`${tariff.percentage} %`}
+            amountDescription={translate('DAILY_PAYMENTS')}
+            selected={selectedId === tariff.id}
+            onSelect={onSelect}
+            tariffId={tariff.id}
+            lines={[
+              {
+                label: translate('INVESTITION_DURATION'),
+                value: `${tariff.duration} ${translate('DAYS')}`,
+              },
+              {
+                label: translate('MINIMAL_INVESTITION'),
+                value: `${tariff.minInvestment} $`
+              },
+              {
+                label: translate('TOTAL_NET_PROFIT'),
+                value: `${tariff.duration * tariff.percentage}`,
+              },
+            ]}
+          />
         ))
       }
     </div>
@@ -32,12 +47,11 @@ const Tariffs = ({
 export default compose(
   withLocalize,
   pure,
-)(Tariffs);
+)(TariffsList);
 
-Tariffs.propTypes = {
+TariffsList.propTypes = {
   translate: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
   tariffs: PropTypes.array.isRequired,
-  renderDescription: PropTypes.func.isRequired,
   selectedId: PropTypes.number.isRequired,
 };

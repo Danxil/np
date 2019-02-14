@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import AuthenticatedRoute from '../common/AuthenticatedRoute';
 import { withLocalize } from 'react-localize-redux';
 import { withRouter } from 'react-router'
-import { Link } from 'react-router-dom'
+
 import { compose, pure } from 'recompose';
 import styles from './index.module.css';
 import MyIvestments from '../MyIvestments';
 import Replenish from '../Replenish';
 import Withdraw from '../Withdraw';
 import withUser from '../../containers/withUser';
+import Link from '../common/Link'
 
 const {
   Content, Sider, Header
@@ -18,12 +19,12 @@ const {
 
 const SIDE_MENU_ITEMS = [
   {
-    route: '/replenish',
+    route: '/',
     translateId: 'MAKE_INVESTMENT',
     iconType: 'credit-card',
   },
   {
-    route: '',
+    route: '/my-investments',
     translateId: 'MY_INVESTMENTS',
     iconType: 'smile-o',
   },
@@ -57,7 +58,7 @@ const Cabinet = ({
               SIDE_MENU_ITEMS.map(o => {
                 const to = `${match.path}${o.route}`;
                 return (<Menu.Item key={to}>
-                  <Link to={to}>
+                  <Link to={{ pathname: to }}>
                     <Icon type={o.iconType} />
                     <span>{translate(o.translateId)}</span>
                   </Link>
@@ -69,8 +70,8 @@ const Cabinet = ({
         </Sider>
         <Content>
           <div>
-            <AuthenticatedRoute path={`${match.path}`} exact component={MyIvestments}/>
-            <AuthenticatedRoute path={`${match.path}/replenish`} exact component={Replenish}/>
+            <AuthenticatedRoute path={`${match.path}`} exact component={Replenish}/>
+            <AuthenticatedRoute path={`${match.path}/my-investments`} exact component={MyIvestments}/>
             <AuthenticatedRoute path={`${match.path}/withdraw`} exact component={Withdraw}/>
           </div>
         </Content>

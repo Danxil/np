@@ -328,5 +328,19 @@ export default {
   AMOUNT: [
     'Amount',
     'Сумма',
+  ],
+  SIGN_UP_SUCCESS: [
+    'Congrats! Registration completed! Now you can make investment!'
+  ],
+  SIGN_IN_SUCCESS: [
+    'Congrats! You successfully logged in!'
+  ],
+  THIS_EMAIL_IS_BUSY: [
+    'This email is busy',
+    'Этот email занят'
+  ],
+  NOTHING_YET: [
+    'Nothing yet',
+    'Пока пусто'
   ]
 };
