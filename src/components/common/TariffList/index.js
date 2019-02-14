@@ -34,7 +34,7 @@ const TariffsList = ({
               },
               {
                 label: translate('TOTAL_NET_PROFIT'),
-                value: `${tariff.duration * tariff.percentage}`,
+                value: `${tariff.duration * tariff.percentage} $`,
               },
             ]}
           />

@@ -8,6 +8,8 @@ import Link from '../common/Link';
 import Container from '../common/Container';
 import PageTitle from '../common/PageTitle';
 import withInvestments from '../../containers/withInvestments';
+import { toFixedIfNeed } from '../../helpers/utils';
+
 
 const MyIvestments = ({ translate, investments }) => {
   const completedInvestments = investments.filter(({ daysLeft }) => !daysLeft);
@@ -31,11 +33,11 @@ const MyIvestments = ({ translate, investments }) => {
                       lines={[
                         {
                           label: translate('DAILY_PROFIT'),
-                          value: `${investment.tariff.percentage} %`,
+                          value: `${investment.tariff.percentage / 100 * investment.amount} $`,
                         },
                         {
                           label: translate('PROFIT_RECEIVED'),
-                          value: `${(investment.tariff.duration - investment.daysLeft) * (investment.tariff.percentage * investment.amount)} $`
+                          value: `${toFixedIfNeed((investment.tariff.duration - investment.daysLeft) * (investment.tariff.percentage / 100 * investment.amount))} $`
                         },
                         {
                           label: translate('DAYS_TO_FINISH'),
@@ -47,7 +49,7 @@ const MyIvestments = ({ translate, investments }) => {
                 }
               </div>
             </Fragment>
-          ) : <div className={styles.emptyLabel}>{translate('NOTHING_YET')}. <Link to={{ pathname: '/cabinet/' }}>{translate('MAKE_INVESTMENT')}</Link></div>
+          ) : null
         }
         {
           completedInvestments.length ? (
@@ -58,17 +60,18 @@ const MyIvestments = ({ translate, investments }) => {
                   completedInvestments.map((investment) => (
                     <Tariff
                       key={`investment-${investment.id}`}
-                      tariffTitle="Base"
-                      amount="200$"
+                      tariffTitle={investment.tariff.name}
+                      amount={`${investment.amount} $`}
                       completed
+                      tariffId={investment.tariff.id}
                       lines={[
                         {
                           label: translate('DAILY_PROFIT'),
-                          value: `${investment.tariff.percentage} %`,
+                          value: `${investment.tariff.percentage / 100 * investment.amount} $`,
                         },
                         {
                           label: translate('PROFIT_RECEIVED'),
-                          value: `${investment.tariff.duration * (investment.tariff.percentage * investment.amount)} $`
+                          value: `${toFixedIfNeed(investment.tariff.duration * (investment.tariff.percentage / 100 * investment.amount))} $`
                         },
                       ]}
                     />
@@ -77,6 +80,11 @@ const MyIvestments = ({ translate, investments }) => {
               </div>
             </Fragment>
           ) : null
+        }
+        {
+          (!activeInvestments.length && !completedInvestments.length) && (
+            <div className={styles.emptyLabel}>{translate('NOTHING_YET')}. <Link to={{ pathname: '/cabinet/' }}>{translate('MAKE_INVESTMENT')}</Link></div>
+          )
         }
       </Container>
     </div>

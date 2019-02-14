@@ -12,6 +12,7 @@ import Replenish from '../Replenish';
 import Withdraw from '../Withdraw';
 import withUser from '../../containers/withUser';
 import Link from '../common/Link'
+import { toFixedIfNeed } from '../../helpers/utils';
 
 const {
   Content, Sider, Header
@@ -45,7 +46,7 @@ const Cabinet = ({
     <div className={styles.cabinet}>
     <Layout style={{ minHeight: '100vh' }}>
       <Header className={styles.header}>
-        <div className={styles.balance}>Balance: {userInfo.balance} $</div>
+        <div className={styles.balance}>Balance: {toFixedIfNeed(userInfo.balance)} $</div>
       </Header>
       <Layout>
         <Sider

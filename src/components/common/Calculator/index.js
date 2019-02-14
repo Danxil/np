@@ -76,8 +76,8 @@ const Calculator = ({
               />
             </div>
             <div className={styles.calcLine}>{translate('INVESTITION_DURATION')}: {tariff.duration} <span className={styles.durationLabel}>{translate('DAYS')}</span></div>
-            <div className={styles.calcLine}>{translate('DAILY_PROFIT')}: {toFixedIfNeed(amount * (tariff.percentage * 0.01))}$</div>
-            <div className={styles.calcLine}>{translate('TOTAL_NET_PROFIT')}: {toFixedIfNeed(amount * (tariff.percentage * 0.01) * tariff.duration)}$</div>
+            <div className={styles.calcLine}>{translate('DAILY_PROFIT')}: {toFixedIfNeed(amount * (tariff.percentage * 0.01))} $</div>
+            <div className={styles.calcLine}>{translate('TOTAL_NET_PROFIT')}: {toFixedIfNeed(amount * (tariff.percentage * 0.01) * tariff.duration)} $</div>
             <div className={styles.calcLine}>{translate('INVETMENT_BODY_WILL_BE_RETURNED_AFTER_THE_END_OF_THE_INVESTMENT')}</div>
           </div>
           <div className={styles.sectionTitle}>

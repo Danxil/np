@@ -61,7 +61,7 @@ const Withdraw = ({
               <FormItem>
                 <Alert
                   showIcon
-                  message={`${translate('LOW_BALANCE')}.`}
+                  message={`${translate('LOW_BALANCE')}. ${translate('INVEST_TO_GET_MONEY')}!`}
                   type="warning"
                 />
               </FormItem>
@@ -76,7 +76,7 @@ const Withdraw = ({
                 step={1}
                 defaultValue={1}
                 min={1}
-                max={balance}
+                max={Math.floor(balance)}
                 tipFormatter={(value) => (<span>{value}$</span>)}
                 onChange={(val) => setAmount(val)}
                 value={amount}

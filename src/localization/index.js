@@ -321,6 +321,10 @@ export default {
     'Low balance',
     'Низкий баланс',
   ],
+  INVEST_TO_GET_MONEY: [
+    'Invest to get money',
+    'Инвестируйте, что бы получить прибыль',
+  ],
   EMAIL_OR_PASSWORD_IS_INCORRECT: [
     'Email or password is incorrect',
     'Неверный email или пароль'
@@ -330,10 +334,12 @@ export default {
     'Сумма',
   ],
   SIGN_UP_SUCCESS: [
-    'Congrats! Registration completed! Now you can make investment!'
+    'Registration completed, now you can make investment',
+    'Регистрация завершена, теперь вы можете делать инвестиции'
   ],
   SIGN_IN_SUCCESS: [
-    'Congrats! You successfully logged in!'
+    'You successfully logged in',
+    'Вы успешно залогинились'
   ],
   THIS_EMAIL_IS_BUSY: [
     'This email is busy',
