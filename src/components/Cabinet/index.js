@@ -3,8 +3,7 @@ import { Layout, Menu, Icon } from 'antd';
 import PropTypes from 'prop-types';
 import AuthenticatedRoute from '../common/AuthenticatedRoute';
 import { withLocalize } from 'react-localize-redux';
-import { withRouter } from 'react-router'
-
+import { withRouter } from 'react-router-dom';
 import { compose, pure } from 'recompose';
 import styles from './index.module.css';
 import MyIvestments from '../MyIvestments';

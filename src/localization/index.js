@@ -348,5 +348,9 @@ export default {
   NOTHING_YET: [
     'Nothing yet',
     'Пока пусто'
+  ],
+  WITHDRAWS: [
+    'Withdraws',
+    'Выводы средств',
   ]
 };

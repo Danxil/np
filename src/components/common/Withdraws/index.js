@@ -101,20 +101,18 @@ Withdraws.propTypes = {
   withdraws: PropTypes.arrayOf(PropTypes.object).isRequired,
   getWithdraws: PropTypes.func.isRequired,
   translate: PropTypes.func.isRequired,
-  withFakes: PropTypes.bool,
   filter: PropTypes.object,
   maxItems: PropTypes.number,
 };
 export default compose(
   defaultProps({
     maxItems: 10,
-    withFakes: false,
     filter: {},
   }),
   withWithdraws(),
   lifecycle({
     componentDidMount () {
-      this.props.getWithdraws({ filter: this.props.filter, withFakes: this.props.withFakes });
+      this.props.getWithdraws({ filter: this.props.filter });
     },
   }),
   withLocalize,

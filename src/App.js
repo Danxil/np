@@ -22,6 +22,7 @@ import localization from './localization';
 import Spinner from './components/common/Spinner';
 import AuthenticatedRoute from './components/common/AuthenticatedRoute';
 import NotAuthenticatedRoute from './components/common/NotAuthenticatedRoute';
+import AdminStatistic from './components/AdminStatistic';
 
 import styles from './App.module.scss';
 
@@ -43,6 +44,7 @@ const AppComp = ({
           <Switch>
             <NotAuthenticatedRoute exact path="/:showModal(sign\-in|sign\-up)?" component={Main} />
             <AuthenticatedRoute path="/cabinet" component={Cabinet} />
+            <AuthenticatedRoute path="/admin-statistic" component={AdminStatistic} />
           </Switch>
         </Content>
         <Footer />

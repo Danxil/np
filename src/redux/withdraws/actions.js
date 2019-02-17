@@ -1,9 +1,9 @@
 import { RSAA } from 'redux-api-middleware';
 
-export const getWithdraws = ({ filter, withFakes }) => {
+export const getWithdraws = ({ filter }) => {
   return {
     [RSAA]: {
-      endpoint: `${process.env.REACT_APP_BASE_REST_URL}/withdraws?filter=${JSON.stringify(filter)}&withFakes=${JSON.stringify(withFakes)}`,
+      endpoint: `${process.env.REACT_APP_BASE_REST_URL}/withdraws?filter=${JSON.stringify(filter)}`,
       credentials: 'include',
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },

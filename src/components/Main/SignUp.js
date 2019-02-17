@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Input, Icon, Button, Modal } from 'antd';
 import { withLocalize, Translate } from 'react-localize-redux';
 import { compose, pure, withProps, withHandlers } from 'recompose';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import withUser from '../../containers/withUser';
 import Spinner from '../common/Spinner';
 import Link from '../common/Link';

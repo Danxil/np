@@ -9,12 +9,13 @@ import { combineReducers } from 'redux';
 
 import userSaga from './user/saga';
 import withdrawsSaga from './withdraws/saga';
-import userReducer from './user';
-import spinnersReducer from './spinners';
-import tariffsReducer from './tariffs';
-import withdrawsReducer from './withdraws';
-import businessConfigReducer from './businessConfig';
-import investmentsReducer from './investments';
+import user from './user';
+import spinners from './spinners';
+import tariffs from './tariffs';
+import withdraws from './withdraws';
+import businessConfig from './businessConfig';
+import adminStatistic from './adminStatistic';
+import investments from './investments';
 import { setSpinnerStatus } from './spinners/actions';
 import restApiInjector from './middlewares/restApiInjector';
 import spinnerMiddleware from './middlewares/spinnerMiddleware';
@@ -22,12 +23,13 @@ import spinnerMiddleware from './middlewares/spinnerMiddleware';
 export default ({ history }) => {
   const rootReducer = combineReducers({
     router: connectRouter(history),
-    spinners: spinnersReducer,
-    user: userReducer,
-    tariffs: tariffsReducer,
-    withdraws: withdrawsReducer,
-    businessConfig: businessConfigReducer,
-    investments: investmentsReducer,
+    spinners,
+    user,
+    tariffs,
+    withdraws,
+    businessConfig,
+    investments,
+    adminStatistic,
     localize: localizeReducer,
   });
 

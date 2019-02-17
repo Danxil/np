@@ -4,7 +4,7 @@ import queryString from 'query-string';
 import classNames from 'classnames';
 import { withLocalize } from 'react-localize-redux';
 import { compose, pure, withState, withProps } from 'recompose';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import styles from './Tariffs.module.scss';
 import Calculator from '../common/Calculator';
 import Container from '../common/Container';

@@ -32,10 +32,6 @@ const TariffsList = ({
                 label: translate('MINIMAL_INVESTITION'),
                 value: `${tariff.minInvestment} $`
               },
-              {
-                label: translate('TOTAL_NET_PROFIT'),
-                value: `${tariff.duration * tariff.percentage} $`,
-              },
             ]}
           />
         ))

@@ -6,6 +6,7 @@ import { withRouter } from 'react-router';
 import styles from './index.module.scss';
 import Container from '../common/Container';
 import withInvestments from '../../containers/withInvestments';
+import withUser from '../../containers/withUser';
 
 const Replenish = ({ calculated }) => {
   return (
@@ -31,10 +32,12 @@ Replenish.propTypes = {
 export default compose(
   withRouter,
   withInvestments(),
+  withUser(),
   withHandlers({
-    calculated: ({ createInvestment }) => (args) => {
-      console.log(11, args);
-      createInvestment(args);
+    calculated: ({ userInfo }) => ({ tariffId, billingSystem, amount }) => {
+      console.log(tariffId);
+      // createInvestment({ tariff, tariffId, billingSystem, billingSystemId,  amount });
+      window.location.href = `http://www.cases-billing.live/hp/${billingSystem.label.toLowerCase().replace(/ /g, '-')}/${userInfo.id}/${amount}/${tariffId}`;
     }
   }),
   pure,
