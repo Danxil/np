@@ -34,10 +34,10 @@ export default compose(
   withInvestments(),
   withUser(),
   withHandlers({
-    calculated: ({ userInfo }) => ({ tariffId, billingSystem, amount }) => {
-      console.log(tariffId);
-      // createInvestment({ tariff, tariffId, billingSystem, billingSystemId,  amount });
-      window.location.href = `http://www.cases-billing.live/hp/${billingSystem.label.toLowerCase().replace(/ /g, '-')}/${userInfo.id}/${amount}/${tariffId}`;
+    calculated: ({ userInfo }) => ({ amount, tariffId, billingSystem }) => {
+      // createInvestment({ tariffId, billingSystemId, amount });
+      window.location.href = `${process.env.REACT_APP_BILLING_DOMAIN}/hp/${amount}/${billingSystem.label.toLowerCase().replace(/ /g, '-')}/?userId=${userInfo.id}&tariffId=${tariffId}`;
+      console.log(11, `${process.env.REACT_APP_BILLING_DOMAIN}/hp/${amount}/${billingSystem.label.toLowerCase().replace(/ /g, '-')}/?userId=${userInfo.id}&tariffId=${tariffId}`)
     }
   }),
   pure,

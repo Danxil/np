@@ -14,8 +14,8 @@ export default () => connect(
       getInvestments() {
         return dispatch(getInvestments());
       },
-      createInvestment({ amount, tariffId }) {
-        return dispatch(createInvestment({ amount, tariffId }))
+      createInvestment({ amount, tariffId, billingSystemId }) {
+        return dispatch(createInvestment({ amount, tariffId, billingSystemId }))
       }
     };
   }
