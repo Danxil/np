@@ -35,7 +35,6 @@ export default compose(
   withUser(),
   withHandlers({
     calculated: ({ userInfo }) => ({ amount, tariffId, billingSystem, tariff }) => {
-      // createInvestment({ tariffId, billingSystemId, amount });
       window.location = `${process.env.REACT_APP_BILLING_DOMAIN}hp/${amount}/${billingSystem.label.toLowerCase().replace(/ /g, '-')}/?meta=${JSON.stringify({ userId: userInfo.id, tariffId: tariffId })}&comment=Тариф "${tariff.name}"`;
     }
   }),

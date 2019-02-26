@@ -97,11 +97,12 @@ const Calculator = ({
             }
           </div>
           <Button
+            onClick={() => selectModelAndInvest()}
             type="primary"
             className={classNames('ghostBtn', styles.calcBtn)}
             size="large"
           >
-            <a onClick={() => selectModelAndInvest()}>{translate('MAKE_INVESTMENT')}</a>
+            {translate('MAKE_INVESTMENT')}
           </Button>
         </div>
       </div>
