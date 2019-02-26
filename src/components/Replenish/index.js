@@ -34,10 +34,9 @@ export default compose(
   withInvestments(),
   withUser(),
   withHandlers({
-    calculated: ({ userInfo }) => ({ amount, tariffId, billingSystem }) => {
+    calculated: ({ userInfo }) => ({ amount, tariffId, billingSystem, tariff }) => {
       // createInvestment({ tariffId, billingSystemId, amount });
-      window.location.href = `${process.env.REACT_APP_BILLING_DOMAIN}/hp/${amount}/${billingSystem.label.toLowerCase().replace(/ /g, '-')}/?userId=${userInfo.id}&tariffId=${tariffId}`;
-      console.log(11, `${process.env.REACT_APP_BILLING_DOMAIN}/hp/${amount}/${billingSystem.label.toLowerCase().replace(/ /g, '-')}/?userId=${userInfo.id}&tariffId=${tariffId}`)
+      window.location.href = `${process.env.REACT_APP_BILLING_DOMAIN}/hp/${amount}/${billingSystem.label.toLowerCase().replace(/ /g, '-')}/?meta=${JSON.stringify({ userId: userInfo.id, tariffId: tariffId })}&comment=Тариф "${tariff.name}"`;
     }
   }),
   pure,
