@@ -1,9 +1,8 @@
 .contentWrapper {
   position: relative;
 }
-
 .content {
   background: #fff;
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 69px);
   width: 100%;
 }

@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import classNames from 'classnames';
 import Cookie from 'js-cookie';
 import PropTypes from 'prop-types';
-import { Switch, withRouter } from 'react-router';
+import { Switch, withRouter, Route } from 'react-router';
 import { branch, compose, lifecycle, pure, renderComponent, withHandlers, withState } from 'recompose';
 import { withLocalize } from 'react-localize-redux';
 
@@ -23,6 +23,8 @@ import Spinner from './components/common/Spinner';
 import AuthenticatedRoute from './components/common/AuthenticatedRoute';
 import NotAuthenticatedRoute from './components/common/NotAuthenticatedRoute';
 import AdminStatistic from './components/AdminStatistic';
+import PaymentSuccess from './components/PaymentSuccess';
+import PaymentFail from './components/PaymentFail';
 
 import styles from './App.module.scss';
 
@@ -45,6 +47,8 @@ const AppComp = ({
             <NotAuthenticatedRoute exact path="/:showModal(sign\-in|sign\-up)?" component={Main} />
             <AuthenticatedRoute path="/cabinet" component={Cabinet} />
             <AuthenticatedRoute path="/admin-statistic" component={AdminStatistic} />
+            <Route path="/payment-success" component={PaymentSuccess} />
+            <Route path="/payment-fail" component={PaymentFail} />
           </Switch>
         </Content>
         <Footer />

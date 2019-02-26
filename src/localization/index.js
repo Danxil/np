@@ -352,5 +352,25 @@ export default {
   WITHDRAWS: [
     'Withdraws',
     'Выводы средств',
-  ]
+  ],
+  PAYMENT_SUCCESS: [
+    'Payment success',
+    'Оплата произведена успешно'
+  ],
+  TO_THE_CABINET: [
+    'To the cabinet',
+    'В кабинет'
+  ],
+  PAYMENT_SUCCESS_TEXT: [
+    'Investment case will appear on the "My Investments" page soon',
+    'Инвестиционный кейс появится на странице "Мои инвестиции" в ближайшее время',
+  ],
+  PAYMENT_FAIL: [
+    'Payment fail',
+    'Не удалось произвести оплату'
+  ],
+  PAYMENT_FAIL_TEXT: [
+    'Try again',
+    'Попробуйте повторить попытку еще раз',
+  ],
 };
