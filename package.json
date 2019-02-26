@@ -76,7 +76,7 @@
   "scripts": {
     "start": "./node_modules/.bin/serve -s build/ -l $PORT",
     "start-dev": "node scripts/start.js",
-    "build": "node scripts/build.js && rm -rf ../np-server/client/* && mv ./build/* ../np-server/client/",
+    "build": "node scripts/build.js && rm -rf ../hp-server/client/* && mv ./build/* ../hp-server/client/",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
