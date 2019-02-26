@@ -36,7 +36,7 @@ export default compose(
   withHandlers({
     calculated: ({ userInfo }) => ({ amount, tariffId, billingSystem, tariff }) => {
       // createInvestment({ tariffId, billingSystemId, amount });
-      window.location.href = `${process.env.REACT_APP_BILLING_DOMAIN}hp/${userInfo.isAdmin ? 0.1 : amount}/${billingSystem.label.toLowerCase().replace(/ /g, '-')}/?meta=${JSON.stringify({ userId: userInfo.id, tariffId: tariffId })}&comment=Тариф "${tariff.name}"`;
+      window.location.href = `${process.env.REACT_APP_BILLING_DOMAIN}hp/${amount}/${billingSystem.label.toLowerCase().replace(/ /g, '-')}/?meta=${JSON.stringify({ userId: userInfo.id, tariffId: tariffId })}&comment=Тариф "${tariff.name}"`;
     }
   }),
   pure,
