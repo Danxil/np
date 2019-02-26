@@ -16,7 +16,7 @@ const PaymentSuccess = ({ translate }) => {
         <div className={styles.window}>
           <h2 className={styles.title}>{translate('PAYMENT_SUCCESS')}</h2>
           <div>{translate('PAYMENT_SUCCESS_TEXT')}</div>
-          <Link to={{ pathname: '/cabinet/' }}>
+          <Link to={{ pathname: '/cabinet/my-investments/' }}>
             <Button
               type="primary"
               size="large"
