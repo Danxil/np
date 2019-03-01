@@ -71,3 +71,19 @@ export const confirmWelcome = () => {
     }
   };
 };
+
+export const getReferrals = () => {
+  return {
+    [RSAA]: {
+      endpoint: `${process.env.REACT_APP_BASE_REST_URL}/get-referrals`,
+      credentials: 'include',
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      types: [
+        'GET_REFERRALS_REQUEST',
+        'GET_REFERRALS_SUCCESS',
+        'GET_REFERRALS_FAILURE'
+      ]
+    }
+  };
+};

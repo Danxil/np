@@ -377,8 +377,16 @@ export default {
     'For partners',
     'Партнерам',
   ],
-  YOUR_REFERAL_LINK: [
-    'Your referal link',
+  YOUR_REFERRAL_LINK: [
+    'Your referral link',
     'Ваша реферальная ссылка',
+  ],
+  REVENUE: [
+    'Revenue',
+    'Прибыль',
+  ],
+  YOUR_REFERRALS: [
+    'Your referrals',
+    'Ваши рефералы',
   ]
 };
