@@ -23,7 +23,7 @@ const getColumns = ({ USER_REFERENCE_PERCENTAGE }) => [
     title: <Translate id="REVENUE" />,
     dataIndex: 'totalInvested',
     key: 'totalInvested',
-    render: totalInvested => <Fragment>{totalInvested * (USER_REFERENCE_PERCENTAGE / 100)}</Fragment>
+    render: totalInvested => <Fragment>$ {totalInvested * (USER_REFERENCE_PERCENTAGE / 100)}</Fragment>
   },
 ];
 
