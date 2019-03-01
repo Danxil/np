@@ -388,5 +388,9 @@ export default {
   YOUR_REFERRALS: [
     'Your referrals',
     'Ваши рефералы',
+  ],
+  SERVER_ERROR: [
+    'Server error',
+    'Ошибка на сервере',
   ]
 };
