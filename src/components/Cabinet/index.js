@@ -5,13 +5,14 @@ import AuthenticatedRoute from '../common/AuthenticatedRoute';
 import { withLocalize } from 'react-localize-redux';
 import { withRouter } from 'react-router-dom';
 import { compose, pure } from 'recompose';
-import styles from './index.module.css';
+import styles from './index.module.scss';
 import MyIvestments from '../MyIvestments';
 import Replenish from '../Replenish';
 import Withdraw from '../Withdraw';
 import withUser from '../../containers/withUser';
 import Link from '../common/Link'
 import { toFixedIfNeed } from '../../helpers/utils';
+import ForPartners from '../ForPartners';
 
 const {
   Content, Sider, Header
@@ -31,6 +32,11 @@ const SIDE_MENU_ITEMS = [
   {
     route: '/withdraw',
     translateId: 'WITHDRAW',
+    iconType: 'hand-holding-usd',
+  },
+  {
+    route: '/for-partners',
+    translateId: 'FOR_PARTNERS',
     iconType: 'hand-holding-usd',
   },
 ];
@@ -73,6 +79,7 @@ const Cabinet = ({
             <AuthenticatedRoute path={`${match.path}`} exact component={Replenish}/>
             <AuthenticatedRoute path={`${match.path}/my-investments`} exact component={MyIvestments}/>
             <AuthenticatedRoute path={`${match.path}/withdraw`} exact component={Withdraw}/>
+            <AuthenticatedRoute path={`${match.path}/for-partners`} component={ForPartners} />
           </div>
         </Content>
       </Layout>

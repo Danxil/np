@@ -15,7 +15,7 @@ const SignUp = ({
   translate,
   form: { getFieldDecorator },
   compareToFirstPassword,
-  invitedBy,
+  invitedByNick,
   handleSubmit,
   showModal,
   history,
@@ -36,7 +36,11 @@ const SignUp = ({
       onCancel={() => {history.push(`/${location.search}`)}}
     >
       <Form>
-        { invitedBy && <div className={styles.invitedByBlock}><span className={styles.invitedByText}>{translate('YOU_INVITED_BY_USER')}</span>: {invitedBy}</div> }
+        {
+          invitedByNick && (
+            <div className={styles.invitedByBlock}><span className={styles.invitedByText}>{translate('YOU_INVITED_BY_USER')}</span>: {invitedByNick}</div>
+          )
+        }
         <FormItem>
           {getFieldDecorator('email', {
             rules: [
@@ -90,8 +94,8 @@ export default compose(
   withUser(),
   withLocalize,
   withRouter,
-  withProps(({ form, match: { params: { showModal } } }) => {
-    let query = new URLSearchParams(location.search);
+  withProps(() => ({ query: new URLSearchParams(location.search) })),
+  withProps(({ form, query, match: { params: { showModal } } }) => {
     return ({
       compareToFirstPassword: (rule, value, callback) => {
         if (value && value !== form.getFieldValue('password')) {
@@ -100,15 +104,16 @@ export default compose(
           callback();
         }
       },
-      invitedBy: query.get('invitedBy'),
+      invitedByNick: query.get('invitedByNick'),
+      invitedById: query.get('invitedById'),
       showModal,
     });
   }),
   withHandlers({
-    handleSubmit: ({ signUp, form: { validateFields } }) => () => {
+    handleSubmit: ({ query, signUp, form: { validateFields } }) => () => {
       validateFields((err, values) => {
         if (!err) {
-          signUp(values);
+          signUp({ ...values, invitedById: query.get('invitedById') || null });
         }
       });
     }
@@ -119,6 +124,7 @@ export default compose(
 SignUp.defaultProps = {
   invitedBy: null,
   showModal: null,
+  invitedByNick: null,
 };
 
 SignUp.propTypes = {
@@ -130,4 +136,5 @@ SignUp.propTypes = {
   history: PropTypes.object.isRequired,
   invitedBy: PropTypes.string,
   showModal: PropTypes.string,
+  invitedByNick: PropTypes.string,
 };
