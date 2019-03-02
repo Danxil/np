@@ -4,7 +4,11 @@
   .text {
     margin: 40px 0 80px;
   }
-}
-.table {
-  background: white;
+  table {
+    background: white;
+
+    th, td {
+      text-align: center;
+    }
+  }
 }
