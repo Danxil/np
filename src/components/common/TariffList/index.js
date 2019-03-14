@@ -18,7 +18,7 @@ const TariffsList = ({
           <Tariff
             key={`tariff-${tariff.name}`}
             tariffTitle={tariff.name}
-            amount={`${tariff.percentage} %`}
+            amount={`${tariff.percentage * tariff.duration} %`}
             amountDescription={translate('DAILY_PAYMENTS')}
             selected={selectedId === tariff.id}
             onSelect={onSelect}

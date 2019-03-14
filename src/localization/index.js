@@ -166,12 +166,12 @@ export default {
     'Партнерская программа',
   ],
   PARTNER_PROGRAM_TEXT: [
-    '',
+    'To promote and develop the project, we have an referral program. With its help partners can attract other users to our project, receiving a bonus from each purchase of each referral',
     'Для популяризациии и развития проекта у нас действует партнерская программа. Ее суть заключается в том, что с ее помощью партнеры могут привлекать других пользователей в наш проект, получая при этом бонус с каждого вклада привлеченного им пользователя'
   ],
   PARTNER_PROGRAM_HOW_TO_START: [
-    '',
-    'При регистрации как инвестор, вы получите ссылку, открыв ее и пройдя регистрацию новый пользователь становится вашим рефералом. Иcпользуйте эту ссылку в своих рекламных кампниях, привлекайте рефералов и получайте бонусы с их вкладов'
+    'When registering, you will receive a link. Use this link in your ad campaigns. Attract referrals and get bonuses from their deposits',
+    'При регистрации, вы получите ссылку. Иcпользуйте эту ссылку в своих рекламных кампниях, зарегистрировавшись по ней, новый пользователь становится вашим рефералом. Привлекайте рефералов и получайте бонусы с их вкладов'
   ],
   BONUS_FOR_DEPOSIT_FROM_REFERRAL: [
     'Bonus for deposit from referral',
