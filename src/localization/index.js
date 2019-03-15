@@ -8,12 +8,12 @@ export default {
     'Контакты',
   ],
   SLOGAN_TITE: [
-    'Online platform for investors and borrowers',
-    'Фонд быстрых инвестиций в микрокредиты',
+    'Platform of fast loans and investments',
+    'Биржа быстрых займов и инвестиций',
   ],
   SLOGAN_DESCRIPTION: [
     'Online platform for investors and borrowers',
-    'Мы являемся гарантом бозопасности вкладов, сотрудничая только с проверенными организациями микрокредитования',
+    'Мы даем возможность получить займ онлайн, на прозрачных условиях, а также инвестировать свои средства, выдавая займы только проверенным заемщикам',
   ],
   MAKE_INVESTMENT: [
     'Make investment',
@@ -41,19 +41,19 @@ export default {
   ],
   HOW_TO_INVESTORS_STEP_1_ITEM_1: [
     'You choose investment amount and duration',
-    'Вы выбираете размер и срок влкада и вносите выбранную сумму через платежную систему'
+    'Вы выбираете инвестиционный план и с помощью платежной системы, вносите сумму, которую вы хотите инвестировать'
   ],
   HOW_TO_INVESTORS_STEP_2_ITEM_1: [
     'Choose investment amount and duration',
-    'Ваш вклад поступает в общий капитал платформы',
+    'В кабинете инвестора, из списка одобренных заявок на получение займа, вы выбираете ту, в которую хотите инвестировать. Выбор происходит путем оценивания уровня благонадежности заемщика, размера и срока займа',
   ],
   HOW_TO_INVESTORS_STEP_3_ITEM_1: [
     'Choose investment amount and duration',
-    'Капитал приумножается посредством выдачи займов частным лицам под проценты',
+    'Деньги поступают на счет заемщика. Тем временем, не дожидаясь завершения срока займа, вы ежедневно получаете отчисления по процентной ставке, которые можно выводить в любое время',
   ],
   HOW_TO_INVESTORS_STEP_4_ITEM_1: [
     'Receive daily profit from you investment as',
-    'Тем временем, вы ежедневно получаете прибыль с вашего вклада',
+    'После окончания срока займа, сразу, либо в течении некоторого времени (зависит от уровня благонадежности заемщика) на ваш счет поступит тело займа. В случае возникновения задержки более чем 14 дней, вы получите сраховочную компенсацию, если она предусмотрена вашим инвестиционным планом',
   ],
   HOW_TO_BORROWERS_STEP_1_ITEM_1: [
     'You choose investment amount and duration',
@@ -97,6 +97,10 @@ export default {
     'Tariffs',
     'Тарифы',
   ],
+  INVESTMENT_PLANS: [
+    'Investment plans',
+    'Инвестиционные планы',
+  ],
   PER_DAY: [
     'Per day',
     'В день',
@@ -105,9 +109,9 @@ export default {
     'Daily payments',
     'Ежедневные выплаты',
   ],
-  MINIMAL_INVESTITION: [
-    'Minimal investition',
-    'Минимальный вклад',
+  MINIMAL_INVESTMENT: [
+    'Minimal investment',
+    'Минимальная инвестиция',
   ],
   INVESTITION_DURATION: [
     'Investition duration',
@@ -135,7 +139,11 @@ export default {
   ],
   DAILY_PROFIT: [
     'Daily profit',
-    'Дневная прибыль',
+    'Ежедневная прибыль',
+  ],
+  DAILY: [
+    'Daily',
+    'Ежедневно',
   ],
   TOTAL_NET_PROFIT: [
     'Total net profit',
@@ -245,9 +253,9 @@ export default {
     'Email is not valid',
     'Вы ввели не корректый email'
   ],
-  INVETMENT_BODY_WILL_BE_RETURNED_AFTER_THE_END_OF_THE_INVESTMENT: [
-    'Investment body will be returned after the end of the investment',
-    'Тело инвестиции будет возвращено после окончания срока инвестиции'
+  INVETMENT_BODY_WILL_BE_RETURNED_AFTER_THE_END_OF_THE_LOAN_TIME: [
+    'Investment body will be returned after the end of the loan time',
+    'Тело инвестиции будет возвращено после окончания срока займа'
   ],
   DASHBOARD: [
     'Dashboard',
@@ -392,5 +400,53 @@ export default {
   SERVER_ERROR: [
     'Server error',
     'Ошибка на сервере',
-  ]
+  ],
+  LOAN_TIME: [
+    'Loan time',
+    'Время займа',
+  ],
+  LOAN_AMOUNT: [
+    'Loan amount',
+    'Сумма займа',
+  ],
+  BORROWERS_RELIABILITY: [
+    'Borrowers reliability',
+    'Благонадежность заемщиков',
+  ],
+  BEGINNER_BORROWERS_INFO: [
+    '',
+    'Заемщики с уровнем BEGINNER это новые заемщики, подтвердившие свою платежеспособность, но которые еще ни разу не пользовались нашим сервисом. Существует некоторая вероятность задержки возврата займа'
+  ],
+  BASE_BORROWERS_INFO: [
+    '',
+    'Заемщики с уровнем BASE это заемщики, которые как минимум единожды успешно получили и вернули займ без задержек. Верояность возникновения задержки при возврате займа гораздо ниже, чем у новых пользователей'
+  ],
+  ADVANCED_BORROWERS_INFO: [
+    '',
+    'Заемщики с уровнем ADVANCED это заемщики, которые регулярно пользуются нашим сервисом и возвращают займы без задержек. Вероятность возникновения проблем с возвратом займа крайне мала'
+  ],
+  EXPERT_BORROWERS_INFO: [
+    '',
+    'Заемщики с уровнем EXPERT это заемщики, с котрыми мы давно успешно сотрудничаем. Вероятность возникновения проблем с возвратом займа практически отсутствует'
+  ],
+  INSURANCE: [
+    'Insurance',
+    'Страховка',
+  ],
+  NON_RETURN_INSURANCE_INFO: [
+    '',
+    'В случае если займ не удасться вернуть в течении 14 дней после завершения срока займа, вы получите компенсацию равную 50% от тела займа с вычетом начислений по процентной ставки'
+  ],
+  WHAT_ARE_YOU_INTERESTED_IN: [
+    'What are you interested in',
+    'Что вас интересует',
+  ],
+  INVEST: [
+    'Invest',
+    'Инвестировать',
+  ],
+  TAKE_A_LOAN: [
+    'Take a loan',
+    'Взять займ',
+  ],
 };

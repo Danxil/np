@@ -5,6 +5,7 @@ import { withLocalize, Translate } from 'react-localize-redux';
 import { compose, pure, withProps, withHandlers } from 'recompose';
 import { withRouter } from 'react-router';
 import withUser from '../../containers/withUser';
+import { getReasignedSearchQuery } from '../../helpers/utils';
 import Spinner from '../common/Spinner';
 import Link from '../common/Link';
 import styles from './LoginModal.module.scss';
@@ -15,14 +16,13 @@ const SignIn = ({
   translate,
   form: { getFieldDecorator },
   handleSubmit,
-  showModal,
-  history,
+  cancelLogin,
 }) => {
   return (
     <Modal
       className={styles.loginModal}
       title={translate('ENTER_DATA_OF_YOU_ACCOUNT')}
-      visible={showModal === 'sign-in'}
+      visible
       footer={
         <Spinner spinnerKey="LOGIN">
           <Button type="primary" onClick={handleSubmit}>
@@ -31,7 +31,7 @@ const SignIn = ({
         </Spinner>
       }
       onOk={() => {}}
-      onCancel={() => {history.push(`/${location.search}`)}}
+      onCancel={cancelLogin}
     >
       <Form>
         <FormItem>
@@ -52,7 +52,7 @@ const SignIn = ({
           )}
         </FormItem>
         <div className={styles.linksBlock}>
-          <Link to={{ pathname: '/sign-up' }}>{<Translate id={'REGISTER'} />}</Link> {<Translate id={'NEW_USER'} />}
+          <Link to={{ pathname: './', search: getReasignedSearchQuery({ showModal: 'sign-up' }) }}>{<Translate id={'REGISTER'} />}</Link> {<Translate id={'NEW_USER'} />}
         </div>
       </Form>
     </Modal>
@@ -64,8 +64,8 @@ export default compose(
   withUser(),
   withLocalize,
   withRouter,
-  withProps(({ form, match: { params: { showModal } } }) => {
-    let query = new URLSearchParams(location.search);
+  withProps(({ form }) => {
+    const query = new URLSearchParams(location.search);
     return ({
       compareToFirstPassword: (rule, value, callback) => {
         if (value && value !== form.getFieldValue('password')) {
@@ -74,7 +74,6 @@ export default compose(
           callback();
         }
       },
-      showModal,
       invitedBy: query.get('invitedBy'),
     });
   }),
@@ -92,7 +91,6 @@ export default compose(
 
 SignIn.defaultProps = {
   invitedBy: null,
-  showModal: null,
 };
 
 SignIn.propTypes = {
@@ -100,7 +98,6 @@ SignIn.propTypes = {
   translate: PropTypes.func.isRequired,
   compareToFirstPassword: PropTypes.func.isRequired,
   form: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
+  cancelLogin: PropTypes.func.isRequired,
   invitedBy: PropTypes.string,
-  showModal: PropTypes.string,
 };

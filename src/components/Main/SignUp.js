@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Input, Icon, Button, Modal } from 'antd';
 import { withLocalize, Translate } from 'react-localize-redux';
 import { compose, pure, withProps, withHandlers } from 'recompose';
+import { getReasignedSearchQuery } from '../../helpers/utils';
 import { withRouter } from 'react-router-dom';
 import withUser from '../../containers/withUser';
 import Spinner from '../common/Spinner';
@@ -17,14 +18,13 @@ const SignUp = ({
   compareToFirstPassword,
   invitedByNick,
   handleSubmit,
-  showModal,
-  history,
+  cancelLogin,
 }) => {
   return (
     <Modal
       className={styles.loginModal}
       title={translate('SIGN_UP')}
-      visible={showModal === 'sign-up'}
+      visible
       footer={
         <Spinner spinnerKey="LOGIN">
           <Button type="primary" onClick={handleSubmit}>
@@ -33,7 +33,7 @@ const SignUp = ({
         </Spinner>
       }
       onOk={() => {}}
-      onCancel={() => {history.push(`/${location.search}`)}}
+      onCancel={cancelLogin}
     >
       <Form>
         {
@@ -82,7 +82,7 @@ const SignUp = ({
           )}
         </FormItem>
         <div className={styles.linksBlock}>
-          <Link to={{ pathname: '/sign-in' }}>{<Translate id={'LOG_IN'} />}</Link> {<Translate id={'WITH_EXISTED_USER'} />}
+          <Link to={{ pathname: './', search: getReasignedSearchQuery({ showModal: 'sign-in' }) }}>{<Translate id={'LOG_IN'} />}</Link> {<Translate id={'WITH_EXISTED_USER'} />}
         </div>
       </Form>
     </Modal>
@@ -123,7 +123,6 @@ export default compose(
 
 SignUp.defaultProps = {
   invitedBy: null,
-  showModal: null,
   invitedByNick: null,
 };
 
@@ -133,8 +132,7 @@ SignUp.propTypes = {
   signUp: PropTypes.func.isRequired,
   compareToFirstPassword: PropTypes.func.isRequired,
   form: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
+  cancelLogin: PropTypes.func.isRequired,
   invitedBy: PropTypes.string,
-  showModal: PropTypes.string,
   invitedByNick: PropTypes.string,
 };

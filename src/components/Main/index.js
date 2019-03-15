@@ -1,26 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { compose, pure } from 'recompose';
+import classNames from 'classnames';
 import Top from './Top';
 import Description from './Description';
 import Achievements from './Achievements';
-import Tariffs from './Tariffs';
+import InvestmentPlans from './InvestmentPlans';
 import Partners from './Partners';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
+import Login from './Login';
+import styles from './index.module.scss';
 
-const Main = () => {
+const Main = ({ match: { params: { visitorType } } }) => {
   return (
-    <div>
+    <div className={styles.main}>
       <Top />
-      <Description />
-      <Achievements />
-      <Tariffs />
-      <Partners />
-      <SignIn />
-      <SignUp />
+      <div className={classNames(styles.item, 'item', { [styles.visible]: visitorType === 'investor' })}>
+        <Description />
+        <Achievements />
+        <InvestmentPlans />
+        <Partners />
+      </div>
+      <div className={classNames(styles.item, 'item', { [styles.visible]: visitorType === 'borrower' })}>
+      </div>
+      <Login />
     </div>
   );
 }
+
+Main.propTypes = {
+  match: PropTypes.object.isRequired,
+};
 
 export default compose(
   pure,

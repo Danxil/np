@@ -6,7 +6,6 @@ import classNames from 'classnames';
 import { compose, pure } from 'recompose';
 import HowTo from '../common/HowTo';
 import PageTitle from '../common/PageTitle';
-import Link from '../common/Link';
 import styles from './Description.module.scss';
 
 
@@ -21,14 +20,14 @@ const HOW_TO = {
     },
     {
       stepNumber: 2,
-      iconClass: 'fas fa-suitcase',
+      iconClass: 'fas fa-clipboard-list',
       stepItemsKeys: [
           'HOW_TO_INVESTORS_STEP_2_ITEM_1',
       ]
     },
     {
       stepNumber: 3,
-      iconClass: 'fas fa-chart-line',
+      iconClass: 'fas fa-percent',
       stepItemsKeys: [
           'HOW_TO_INVESTORS_STEP_3_ITEM_1',
       ]
@@ -83,10 +82,16 @@ const Description = ({
         <HowTo howTo={HOW_TO['investor']} />
         <Button
           type="primary"
-          className={classNames('ghostBtn', styles.btn)}
+          className={classNames(styles.btn)}
           size="large"
+          onClick={() => {
+            window.scrollTo({
+             top: document.querySelector('.investmentPlans').offsetTop,
+             behavior: "smooth",
+            })
+          }}
         >
-          <Link to={{ pathname: '/sign-up' }}>{translate('MAKE_INVESTMENT')}</Link>
+          {translate('MAKE_INVESTMENT')}
         </Button>
       </div>
     </div>

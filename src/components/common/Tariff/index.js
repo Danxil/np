@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Icon, Tooltip } from 'antd';
 import PropTypes from 'prop-types';
 import { compose, pure, withHandlers } from 'recompose';
 import styles from './index.module.scss';
@@ -31,7 +32,19 @@ const Tariff = ({
       <div className={styles.amountDescription}>{amountDescription}</div>
       {
         lines.map((line) => (
-          <div key={line.label} className={styles.descriptionLine}>{line.label}: {line.value}</div>
+          <div key={line.label} className={styles.descriptionLine}>
+            <div className={styles.descriptionValue}>{line.value}</div>
+            <div className={styles.descriptionLabel}>
+              {line.label}
+              {
+                line.info && (
+                  <Tooltip title={line.info}>
+                    <Icon type="question-circle" className={styles.info} />
+                  </Tooltip>
+                )
+              }
+            </div>
+          </div>
         ))
       }
     </div>

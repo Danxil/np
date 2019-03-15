@@ -38,6 +38,7 @@
 .howToPlayStep {
   display: flex;
   padding: 50px 20px;
+  align-items: center;
   @media(max-width: 800px) {
     align-items: center;
     flex-direction: column !important;
@@ -51,7 +52,7 @@
 }
 .howToPlayText {
   text-align: left;
-  width: 300px;
+  width: 560px;
 }
 .stepNumber {
   font-weight: bold;
@@ -67,12 +68,13 @@
 .stepOdd {
   flex-direction: row;
   .howToPlayText {
-    padding-left: 50px;
+    padding-left: 70px;
   }
 }
 .stepEven {
   flex-direction: row-reverse;
   .howToPlayText {
-    padding-right: 50px;
+    text-align: right;
+    padding-right: 70px;
   }
 }

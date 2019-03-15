@@ -7,7 +7,7 @@ import { compose, pure, withState, withProps } from 'recompose';
 import { Slider, Button } from 'antd';
 import { withRouter } from 'react-router';
 import styles from './index.module.scss';
-import TariffList from '../TariffList';
+import TariffList from './TariffList';
 import withTariffs from '../../../containers/withTariffs';
 import { toFixedIfNeed } from '../../../helpers/utils';
 import PageTitle from '../PageTitle';
@@ -50,7 +50,7 @@ const Calculator = ({
 }) => {
   return (
     <div className={styles.calculatorComp}>
-      <PageTitle>{translate('TARIFFS')}</PageTitle>
+      <PageTitle>{translate('INVESTMENT_PLANS')}</PageTitle>
       <TariffList
         tariffs={tariffs}
         selectedId={tariffId}
@@ -69,16 +69,14 @@ const Calculator = ({
               <Slider
                 step={5}
                 onChange={(value) => {selectAmount(value)}}
-                min={tariff.minInvestment}
+                min={tariff.minReplenishment}
                 max={2000}
                 tipFormatter={(value) => (<span>{value}$</span>)}
                 value={amount}
               />
             </div>
-            <div className={styles.calcLine}>{translate('INVESTITION_DURATION')}: {tariff.duration} <span className={styles.durationLabel}>{translate('DAYS')}</span></div>
             <div className={styles.calcLine}>{translate('DAILY_PROFIT')}: {toFixedIfNeed(amount * (tariff.percentage * 0.01))} $</div>
-            <div className={styles.calcLine}>{translate('TOTAL_NET_PROFIT')}: {toFixedIfNeed(amount * (tariff.percentage * 0.01) * tariff.duration)} $</div>
-            <div className={styles.calcLine}>{translate('INVETMENT_BODY_WILL_BE_RETURNED_AFTER_THE_END_OF_THE_INVESTMENT')}</div>
+            <div className={styles.calcLine}>{translate('INVETMENT_BODY_WILL_BE_RETURNED_AFTER_THE_END_OF_THE_LOAN_TIME')}</div>
           </div>
           <div className={styles.sectionTitle}>
             {translate('PAYMENT_SYSTEM')}: <span className={styles.sectionValue}>{billingSystem.label}</span>
@@ -99,7 +97,7 @@ const Calculator = ({
           <Button
             onClick={() => selectModelAndInvest()}
             type="primary"
-            className={classNames('ghostBtn', styles.calcBtn)}
+            className={classNames(styles.calcBtn)}
             size="large"
           >
             {translate('MAKE_INVESTMENT')}
@@ -123,7 +121,7 @@ export default compose(
   })),
   withState('amount', 'setAmount', ({ tariff }) => {
     const query = queryString.parse(location.search);
-    return parseInt(query.amount) || tariff.minInvestment
+    return parseInt(query.amount) || tariff.minReplenishment
   }),
   withState('billingSystemId', 'setBillingSystemId', () => {
     const query = queryString.parse(location.search);
@@ -141,7 +139,7 @@ export default compose(
     selectTariffId(id) {
       const newTariff = tariffs.find(o => o.id === id);
       setTariffId(id);
-      selectAmount(newTariff.minInvestment);
+      selectAmount(newTariff.minReplenishment);
     },
   })),
   withProps(({

@@ -7,6 +7,7 @@ import { compose, pure } from 'recompose';
 import PageTitle from '../common/PageTitle';
 import Link from '../common/Link';
 import Container from '../common/Container';
+import { getReasignedSearchQuery } from '../../helpers/utils';
 import styles from './Partners.module.scss';
 
 const Description = ({
@@ -30,10 +31,10 @@ const Description = ({
         </div>
         <Button
           type="primary"
-          className={classNames('ghostBtn', styles.btn)}
+          className={classNames(styles.btn)}
           size="large"
         >
-          <Link to={{ pathname: '/sign-up' }}>{translate('SIGN_UP')}</Link>
+          <Link to={{ search: getReasignedSearchQuery({ showModal: 'sign-up'}) }}>{translate('SIGN_UP')}</Link>
         </Button>
       </Container>
     </div>

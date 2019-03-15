@@ -3,10 +3,10 @@
 .tariff {
   text-align: center;
   background: $mainColor;
-  padding: 20px 5px;
+  padding: 20px 0 0;
   width: 250px;
   color: white;
-  transition: 0.5s;
+  transition: transform 0.5s;
   box-shadow: 2px 9px 7px -9px rgba(0,0,0,0.75);
 
   & + & {
@@ -24,6 +24,9 @@
       transform: scale(1.2);
       background: #583c3c;
       position: relative;
+      .descriptionLine {
+        background: #654242;
+      }
 
       &:hover {
         transform: scale(1.2);
@@ -82,6 +85,26 @@
   }
 }
 .descriptionLine {
-  margin-bottom: 10px;
+  margin-bottom: 3px;
+  padding: 5px;
   font-size: 13px;
+  background: #de584d;
+
+  .descriptionValue {
+    font-weight: bold;
+    margin-bottom: 5px;
+
+  }
+  .descriptionLabel {
+    position: relative;
+  }
+
+  .info {
+    position: absolute;
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: inherit;
+    font-size: 10px;
+    top: 5px;
+  }
 }
