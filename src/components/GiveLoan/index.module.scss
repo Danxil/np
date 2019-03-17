@@ -1,0 +1,60 @@
+@import '../../variables.scss';
+
+.giveLoan {
+  padding-bottom: 50px;
+  :global .ant-tabs {
+    box-shadow: 2px 8px 7px -9px rgba(0, 0, 0, 0.75);
+    background: white;
+    padding: 30px 20px;
+  }
+  :global .ant-tabs-nav, :global .ant-tabs-tab-active {
+    font-weight: bold;
+  }
+  .table {
+    margin-top: 20px;
+  }
+  .info {
+    color: $blueColor;
+  }
+  .infoLine {
+    padding-bottom: 5px;
+    text-align: center;
+    .infoLabel {
+      font-weight: 500;
+    }
+    .infoValue {
+      font-weight: bold;
+    }
+  }
+  .tabTitle {
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: 18px;
+    .infoValue, .infoLabel {
+      font-weight: bold;
+    }
+    .infoValue {
+      color: $blueColor;
+    }
+  }
+  .insurance {
+    .infoValue {
+      color: $blueColor;
+    }
+  }
+  .tariffBalance {
+    padding-bottom: 20px;
+
+    .plusBtn {
+      margin-top: 20px;
+    }
+  }
+  :global .ghostBtn {
+    border-color: $blueColor;
+    color: $blueColor;
+
+    &:hover, &:active, &:focus {
+      color: white;
+    }
+  }
+}

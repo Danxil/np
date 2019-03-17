@@ -85,7 +85,7 @@ const InvestorsCalculator = ({
                     },
                     {
                       label: translate('INSURANCE'),
-                      value: tariff.name === 'BEGINNER' || tariff.name === 'BASE' ? '-' : <Icon type="check" />,
+                      value: !tariff.insurance ? '-' : <Icon type="check" />,
                       info: translate(`NON_RETURN_INSURANCE_INFO`)
                     },
                   ]}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu } from 'antd';
 import PropTypes from 'prop-types';
 import AuthenticatedRoute from '../common/AuthenticatedRoute';
 import { withLocalize } from 'react-localize-redux';
@@ -13,6 +13,7 @@ import withUser from '../../containers/withUser';
 import Link from '../common/Link'
 import { toFixedIfNeed } from '../../helpers/utils';
 import ForPartners from '../ForPartners';
+import GiveLoan from '../GiveLoan';
 
 const {
   Content, Sider, Header
@@ -21,23 +22,23 @@ const {
 const SIDE_MENU_ITEMS = [
   {
     route: '/',
-    translateId: 'MAKE_INVESTMENT',
-    iconType: 'credit-card',
+    translateId: 'REPLENISH_BALANCE',
+  },
+  {
+    route: '/give-a-loan',
+    translateId: 'GIVE_A_LOAN',
   },
   {
     route: '/my-investments',
-    translateId: 'MY_INVESTMENTS',
-    iconType: 'smile-o',
+    translateId: 'GIVEN_LOANS',
   },
   {
     route: '/withdraw',
     translateId: 'WITHDRAW',
-    iconType: 'hand-holding-usd',
   },
   {
     route: '/for-partners',
     translateId: 'FOR_PARTNERS',
-    iconType: 'hand-holding-usd',
   },
 ];
 
@@ -51,7 +52,7 @@ const Cabinet = ({
     <div className={styles.cabinet}>
     <Layout style={{ minHeight: '100vh' }}>
       <Header className={styles.header}>
-        <div className={styles.balance}>Balance: {toFixedIfNeed(userInfo.balance)} $</div>
+        <div className={styles.balance}>{translate('PROFIT')}: {toFixedIfNeed(userInfo.balance)} $</div>
       </Header>
       <Layout>
         <Sider
@@ -65,7 +66,6 @@ const Cabinet = ({
                 const to = `${match.path}${o.route}`;
                 return (<Menu.Item key={to}>
                   <Link to={{ pathname: to }}>
-                    <Icon type={o.iconType} />
                     <span>{translate(o.translateId)}</span>
                   </Link>
                 </Menu.Item>)
@@ -80,6 +80,7 @@ const Cabinet = ({
             <AuthenticatedRoute path={`${match.path}/my-investments`} exact component={MyIvestments}/>
             <AuthenticatedRoute path={`${match.path}/withdraw`} exact component={Withdraw}/>
             <AuthenticatedRoute path={`${match.path}/for-partners`} component={ForPartners} />
+            <AuthenticatedRoute path={`${match.path}/give-a-loan`} component={GiveLoan} />
           </div>
         </Content>
       </Layout>

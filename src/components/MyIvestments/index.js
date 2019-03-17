@@ -17,7 +17,7 @@ const MyIvestments = ({ translate, investments }) => {
   return (
     <div className={styles.myInvestments}>
       <Container>
-        <PageTitle>{translate('MY_INVESTMENTS')}</PageTitle>
+        <PageTitle>{translate('GIVEN_LOANS')}</PageTitle>
         {
           activeInvestments.length ? (
             <Fragment>
@@ -83,7 +83,7 @@ const MyIvestments = ({ translate, investments }) => {
         }
         {
           (!activeInvestments.length && !completedInvestments.length) && (
-            <div className={styles.emptyLabel}>{translate('NOTHING_YET')}. <Link to={{ pathname: '/cabinet/' }}>{translate('MAKE_INVESTMENT')}</Link></div>
+            <div className={styles.emptyLabel}>{translate('NOTHING_YET')}. <Link to={{ pathname: '/cabinet/give-a-loan' }}>{translate('GIVE_A_LOAN')}</Link></div>
           )
         }
       </Container>

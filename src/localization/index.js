@@ -504,4 +504,56 @@ export default {
     'Email',
     'Email'
   ],
+  REPLENISH_BALANCE: [
+    'Replenish balance',
+    'Пополнить баланс',
+  ],
+  PROFIT: [
+    'Profit',
+    'Прибыль',
+  ],
+  GIVEN_LOANS: [
+    'Given loans',
+    'Выданные займы',
+  ],
+  BORROWERS_LEVEL: [
+    'Borrowers level',
+    'Уровень заемщиков'
+  ],
+  BORROWER_RELIABILITY: [
+    'Borrower reliability',
+    'Благонадежность заемщика'
+  ],
+  RELIABILITY: [
+    'Reliability',
+    'Благонадежность',
+  ],
+  INVESTMENT_PLAN: [
+    'Investment plan',
+    'Инвестиционный план'
+  ],
+  GIVE: [
+    'Give',
+    'Выдать',
+  ],
+  YOUR_BALANCE_IN_CURRENT_INVESTMENT_PLAN: [
+    'Your balance in current investment plan',
+    'Ваш баланс в текущем инвестиционном плане'
+  ],
+  DAYS_1: [
+    'Days',
+    'День',
+  ],
+  DAYS_2: [
+    'Days',
+    'Дня',
+  ],
+  DAYS_3: [
+    'Days',
+    'Дней',
+  ],
+  REPLENISH: [
+    'Replenish',
+    'Пополнить'
+  ]
 };

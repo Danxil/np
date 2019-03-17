@@ -15,12 +15,12 @@ import styles from './index.module.scss';
 export const MENU_ITEMS = [
   {
     translateId: 'SIGN_UP',
-    route: { pathname: './', search: { showModal: 'sign-up' } },
+    route: { search: getReasignedSearchQuery({ showModal: 'sign-up' }) },
     iconType: 'smile-o',
   },
   {
     translateId: 'SIGN_IN',
-    route: { pathname: './', search: { showModal: 'sign-in' } },
+    route: { search: getReasignedSearchQuery({ showModal: 'sign-in' }) },
     iconType: 'smile-o',
   },
   {
@@ -60,10 +60,14 @@ const Top = ({
                 <menu className={styles.menu}>
                   {
                     MENU_ITEMS.map(({ translateId, route, scrollToSelector }) => {
-                      return (<li key={translateId} className={styles.menuItem}>
+                      return (
+                      <li
+                        key={translateId}
+                        className={styles.menuItem}
+                      >
                         {
                           route ? (
-                            <Link to={{ ...route, search: getReasignedSearchQuery(route.search) }} className={styles.menuLink}>{translate(translateId)}</Link>
+                            <Link to={route} className={styles.menuLink}>{translate(translateId)}</Link>
                           ) : (
                             <a
                               onClick={() => {

@@ -112,7 +112,7 @@ const BorrowersCalculator = ({
                     {translate('LOAN_DURATION')}: {duration} {translate('DAYS')}
                   </div>
                   <Slider
-                    step={1}
+                    step={5}
                     onChange={(value) => {setDuration(value)}}
                     min={tariff.minDuration}
                     max={tariff.maxDuration}
