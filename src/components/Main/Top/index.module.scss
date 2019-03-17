@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import '../../../variables.scss';
 
 .bg {
   position: relative;
@@ -140,7 +140,7 @@
 .sloganLogo {
   text-transform: capitalize;
   font-size: 35px;
-  color: #d9524a;
+  color: $mainColor;
 }
 .sloganDescription {
   color: white;

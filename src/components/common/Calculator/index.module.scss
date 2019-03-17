@@ -1,5 +1,8 @@
 @import '../../../variables.scss';
 
+.tariffs {
+  padding-bottom: 100px;
+}
 .calculatorComp {
 }
 .percentage {
@@ -110,4 +113,21 @@
   height: 100%;
   width: 100%;
   object-fit: contain;
+}
+.tariffsList {
+  display: flex;
+  margin-top: 60px;
+}
+.borrowerLevelsDescription {
+  text-align: center;
+  color: white;
+  padding-bottom: 20px;
+}
+.form {
+  margin: 50px auto 0;
+  max-width: 400px;
+
+  .sectionTitle {
+    padding-bottom: 20px;
+  }
 }

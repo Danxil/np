@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { Button } from 'antd';
 import { withLocalize } from 'react-localize-redux';
 import { compose, pure } from 'recompose';
-import PageTitle from '../common/PageTitle';
-import Link from '../common/Link';
-import Container from '../common/Container';
-import { getReasignedSearchQuery } from '../../helpers/utils';
-import styles from './Partners.module.scss';
+import PageTitle from '../../common/PageTitle';
+import Link from '../../common/Link';
+import Container from '../../common/Container';
+import { getReasignedSearchQuery } from '../../../helpers/utils';
+import styles from './index.module.scss';
 
 const Description = ({
   translate,

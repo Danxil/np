@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Calculator from '../common/Calculator';
+import { InvestorsCalculator } from '../common/Calculator';
 import { compose, pure, withHandlers } from 'recompose';
 import { withRouter } from 'react-router';
 import styles from './index.module.scss';
@@ -12,7 +12,7 @@ const Replenish = ({ calculated }) => {
   return (
     <div className={styles.replenish}>
       <Container>
-        <Calculator
+        <InvestorsCalculator
           onDone={calculated}
         />
       </Container>

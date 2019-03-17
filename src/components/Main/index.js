@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { compose, pure } from 'recompose';
+import { withRouter } from 'react-router';
 import classNames from 'classnames';
 import Top from './Top';
-import Description from './Description';
-import Achievements from './Achievements';
-import InvestmentPlans from './InvestmentPlans';
-import Partners from './Partners';
+import ForInvestors from './ForInvestors';
+import ForBorrowers from './ForBorrowers';
 import Login from './Login';
 import styles from './index.module.scss';
 
@@ -14,13 +13,17 @@ const Main = ({ match: { params: { visitorType } } }) => {
   return (
     <div className={styles.main}>
       <Top />
-      <div className={classNames(styles.item, 'item', { [styles.visible]: visitorType === 'investor' })}>
-        <Description />
-        <Achievements />
-        <InvestmentPlans />
-        <Partners />
-      </div>
-      <div className={classNames(styles.item, 'item', { [styles.visible]: visitorType === 'borrower' })}>
+      <div className={classNames(styles.item, 'item')}>
+        {
+          visitorType === 'borrower' && (
+            <ForBorrowers />
+          )
+        }
+        {
+          visitorType === 'investor' && (
+            <ForInvestors />
+          )
+        }
       </div>
       <Login />
     </div>
@@ -32,5 +35,6 @@ Main.propTypes = {
 };
 
 export default compose(
+  withRouter,
   pure,
 )(Main);

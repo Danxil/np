@@ -1,0 +1,53 @@
+@import '../../../variables.scss';
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: space-around;
+}
+.btn {
+  width: 200px;
+  display: inline-block;
+  width: 150px;
+  border-color: $mainColor;
+
+  &:hover, &:focus, &:active {
+    background: $mainColor;
+    border-color: $mainColor;
+  }
+}
+.title {
+  &:after {
+    display: none !important;
+  }
+}
+.btnBlock {
+  position: relative;
+
+  &.activeBtnBlock {
+    &:after, &:before {
+      content: '';
+      display: block;
+      border: solid #d9524a;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
+      position: absolute;
+      left: 50%;
+      margin-left: -5px;
+    }
+
+    &:after {
+      bottom: -20px;
+      transform: rotate(-135deg);
+    }
+
+    &:before {
+      top: -20px;
+      transform: rotate(45deg);
+    }
+
+    .btn {
+      background: $mainColor;
+    }
+  }
+}

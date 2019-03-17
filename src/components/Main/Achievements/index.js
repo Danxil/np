@@ -4,9 +4,9 @@ import moment from 'moment';
 import { withLocalize } from 'react-localize-redux';
 import classNames from 'classnames';
 import { compose, pure } from 'recompose';
-import styles from './Achievements.module.scss';
-import PageTitle from '../common/PageTitle';
-import Container from '../common/Container';
+import styles from './index.module.scss';
+import PageTitle from '../../common/PageTitle';
+import Container from '../../common/Container';
 
 const ACHIEVEMENTS = [
   {

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Form, Input, Icon, Button, Modal } from 'antd';
 import { withLocalize, Translate } from 'react-localize-redux';
 import { compose, pure, withProps, withHandlers } from 'recompose';
-import { getReasignedSearchQuery } from '../../helpers/utils';
+import { getReasignedSearchQuery } from '../../../helpers/utils';
 import { withRouter } from 'react-router-dom';
-import withUser from '../../containers/withUser';
-import Spinner from '../common/Spinner';
-import Link from '../common/Link';
-import styles from './LoginModal.module.scss';
+import withUser from '../../../containers/withUser';
+import Spinner from '../../common/Spinner';
+import Link from '../../common/Link';
+import styles from './index.module.scss';
 
 const FormItem = Form.Item;
 

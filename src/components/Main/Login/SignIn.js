@@ -4,11 +4,11 @@ import { Form, Input, Icon, Button, Modal } from 'antd';
 import { withLocalize, Translate } from 'react-localize-redux';
 import { compose, pure, withProps, withHandlers } from 'recompose';
 import { withRouter } from 'react-router';
-import withUser from '../../containers/withUser';
-import { getReasignedSearchQuery } from '../../helpers/utils';
-import Spinner from '../common/Spinner';
-import Link from '../common/Link';
-import styles from './LoginModal.module.scss';
+import withUser from '../../../containers/withUser';
+import { getReasignedSearchQuery } from '../../../helpers/utils';
+import Spinner from '../../common/Spinner';
+import Link from '../../common/Link';
+import styles from './index.module.scss';
 
 const FormItem = Form.Item;
 

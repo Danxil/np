@@ -57,20 +57,19 @@ export default {
   ],
   HOW_TO_BORROWERS_STEP_1_ITEM_1: [
     'You choose investment amount and duration',
-    'Вы выбираете размер, срок займа и способ получения'
+    'Для начала, вы выбираете размер, срок займа и способ получения средств с помощью калькулятора'
   ],
   HOW_TO_BORROWERS_STEP_2_ITEM_1: [
     'Choose investment amount and duration',
-    'Далее вы заполнятете форму с персональными данными и прикрепляете скан/фото вашего паспорта. В течении рабочего дня наши специалисты  проверяют ваши данные и кредитную историю',
+    'После чего вам необходимо зарегистрироваться, заполнить форму с персональными данными и прикрепить скан, либо фото вашего паспорта',
   ],
   HOW_TO_BORROWERS_STEP_3_ITEM_1: [
-    'Receive daily profit from you investment as',
-    'В случае успешного прохождения проверки, вы получаете договор в элетронном виде, который необходимо распечатать, подписать и отправить обратно через интерфейс платформы',
+    'Choose investment amount and duration',
+    'Наша система оценит ваш уровень благонадежности основываясь на вашей кредитной истории. В случае если ваш уровень благонадежности позволяет взять выбраннуй сумму на указанный срок, средства поступят на ваш счет в ближайшее время. В противном случае, вам будет предложено взять меньшую сумму, либо указать меньший срок',
   ],
-
   HOW_TO_BORROWERS_STEP_4_ITEM_1: [
     'Receive daily profit from you investment as',
-    'После этого вы получите денги выбарнным вами способом и номер счета для погашения долга в отведенный срок',
+    'В день окончания срока займа вам нужно будет внести расчитанную сумму любым, из доступных в кабинете способов, после чего ваш кредит будет закрыт',
   ],
   OUR_ACHIEVEMENTS: [
     'Our achievements',
@@ -449,4 +448,44 @@ export default {
     'Take a loan',
     'Взять займ',
   ],
+  HOW_TO_TAKE_A_LOAN: [
+    'How to take a loan',
+    'Как получить займ',
+  ],
+  HOW_TO_GIVE_A_LOAN: [
+    'How to give a loan',
+    'Как выдать займ',
+  ],
+  GIVE_A_LOAN: [
+    'Give a loan',
+    'Выдать займ',
+  ],
+  BORROWER_LEVELS: [
+    'Borrower level',
+    'Уровни заемщиков',
+  ],
+  DAILY_PERCENTAGE_RATE: [
+    'Daily percentage rate',
+    'Дневная процентная ставка'
+  ],
+  BORROWER_LEVELS_DESCRIPTION: [
+    'After registering and checking your credit history, you will be assigned to the beginner level of the borrower. After each successful loan, your level of trustworthiness will increase, and with it your level of borrower will increaso as well',
+    'После регистрации и проверки вашей кредитной истории, вам будет присвоен начальный уровень заемщика. После каждого успешного возврата займа ваш уровень благонадежности будет повышаться, а с ним и ваш уровень заемщика'
+  ],
+  LOAN_DURATION: [
+    'Loan duration',
+    'Срок займа',
+  ],
+  AMOUNT_TO_RETURN: [
+    'Amount to return',
+    'Сумма к возврату',
+  ],
+  CARD_OR_ACCOUNT_NUMBER: [
+    'Card or account number',
+    'Номер карты или счета'
+  ],
+  PLEASE_FILL_THIS_FIELD: [
+    'Please fill this field',
+    'Пожалуйста, заполните это поле'
+  ]
 };

@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { getReasignedSearchQuery } from '../../helpers/utils';
+import { getReasignedSearchQuery } from '../../../helpers/utils';
 import { compose, pure, lifecycle, branch, renderNothing, withProps, withHandlers } from 'recompose';
 import { withRouter } from 'react-router';
 import queryString from 'query-string';
-import withUser from '../../containers/withUser';
-import withBusinessConfig from '../../containers/withBusinessConfig';
+import withUser from '../../../containers/withUser';
+import withBusinessConfig from '../../../containers/withBusinessConfig';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 

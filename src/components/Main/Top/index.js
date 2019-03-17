@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withLocalize } from 'react-localize-redux';
-import { getReasignedSearchQuery } from '../../helpers/utils';
-import withUser from '../../containers/withUser';
-import Container from '../common/Container';
-import SelectVisitorType from './SelectVisitorType';
+import { withRouter } from 'react-router';
 import { compose, pure } from 'recompose';
-import Language from '../common/Language';
-import styles from './Top.module.scss';
-import Link from '../common/Link';
+import { getReasignedSearchQuery } from '../../../helpers/utils';
+import withUser from '../../../containers/withUser';
+import Container from '../../common/Container';
+import Language from '../../common/Language';
+import Link from '../../common/Link';
+import SelectVisitorType from './SelectVisitorType';
+
+import styles from './index.module.scss';
 
 export const MENU_ITEMS = [
   {
@@ -97,6 +99,7 @@ const Top = ({
 
 export default compose(
   withLocalize,
+  withRouter,
   withUser(),
   pure,
 )(Top);

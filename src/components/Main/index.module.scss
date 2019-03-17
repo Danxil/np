@@ -2,10 +2,5 @@
 
 .main {
   .item {
-    height: 0;
-    overflow: hidden;
-    &.visible {
-      height: auto;
-    }
   }
 }
