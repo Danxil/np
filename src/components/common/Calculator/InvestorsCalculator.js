@@ -49,7 +49,6 @@ const InvestorsCalculator = ({
   billingSystem,
   selectModelAndInvest,
 }) => {
-  console.log(11, billingSystem)
   return (
     <div className={classNames(styles.tariffs, 'investmentPlans')}>
       <Container>

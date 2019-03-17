@@ -34,7 +34,7 @@ const SignIn = ({
       onCancel={cancelLogin}
     >
       <Form>
-        <FormItem>
+        <FormItem label={translate('EMAIL')} required={false}>
           {getFieldDecorator('email', {
             rules: [
               { required: true, message: <Translate id={'PLEASE_ENTER_YOU_EMAIL'} />},
@@ -44,7 +44,7 @@ const SignIn = ({
             <Input prefix={<Icon type="mail" />} placeholder="Email" />
           )}
         </FormItem>
-        <FormItem>
+        <FormItem label={translate('PASSWORD')} required={false}>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: <Translate id={'PLEASE_ENTER_YOU_PASSWORD'} />}],
           })(

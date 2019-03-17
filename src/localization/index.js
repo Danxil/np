@@ -470,7 +470,7 @@ export default {
   ],
   BORROWER_LEVELS_DESCRIPTION: [
     'After registering and checking your credit history, you will be assigned to the beginner level of the borrower. After each successful loan, your level of trustworthiness will increase, and with it your level of borrower will increaso as well',
-    'После регистрации и проверки вашей кредитной истории, вам будет присвоен начальный уровень заемщика. После каждого успешного возврата займа ваш уровень благонадежности будет повышаться, а с ним и ваш уровень заемщика'
+    'После регистрации и проверки вашей кредитной истории, вам будет присвоен начальный уровень заемщика. После каждого успешного займа ваш уровень благонадежности будет повышаться, а с ним и ваш уровень заемщика'
   ],
   LOAN_DURATION: [
     'Loan duration',
@@ -487,5 +487,21 @@ export default {
   PLEASE_FILL_THIS_FIELD: [
     'Please fill this field',
     'Пожалуйста, заполните это поле'
-  ]
+  ],
+  INVESTOR: [
+    'Investor',
+    'Инвестор'
+  ],
+  BORROWER: [
+    'Borrower',
+    'Заемщик'
+  ],
+  ACCOUNT_TYPE: [
+    'Account type',
+    'Тип аккаунта'
+  ],
+  EMAIL: [
+    'Email',
+    'Email'
+  ],
 };

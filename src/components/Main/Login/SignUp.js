@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Icon, Button, Modal } from 'antd';
+import { Form, Input, Icon, Button, Modal, Radio } from 'antd';
 import { withLocalize, Translate } from 'react-localize-redux';
 import { compose, pure, withProps, withHandlers } from 'recompose';
 import { getReasignedSearchQuery } from '../../../helpers/utils';
@@ -19,6 +19,7 @@ const SignUp = ({
   invitedByNick,
   handleSubmit,
   cancelLogin,
+  match: { params: { visitorType } },
 }) => {
   return (
     <Modal
@@ -41,7 +42,15 @@ const SignUp = ({
             <div className={styles.invitedByBlock}><span className={styles.invitedByText}>{translate('YOU_INVITED_BY_USER')}</span>: {invitedByNick}</div>
           )
         }
-        <FormItem>
+        <FormItem label={translate('ACCOUNT_TYPE')} required={false}>
+          {getFieldDecorator('accountType', { initialValue: visitorType })(
+            <Radio.Group buttonStyle="solid">
+              <Radio.Button size="small" value="borrower">{translate('BORROWER')}</Radio.Button>
+              <Radio.Button size="small" value="investor">{translate('INVESTOR')}</Radio.Button>
+            </Radio.Group>
+          )}
+        </FormItem>
+        <FormItem label={translate('EMAIL')} required={false}>
           {getFieldDecorator('email', {
             rules: [
               { required: true, message: <Translate id={'PLEASE_ENTER_YOU_EMAIL'} /> },
@@ -51,23 +60,14 @@ const SignUp = ({
             <Input prefix={<Icon type='mail' />} placeholder='Email' />
           )}
         </FormItem>
-        <FormItem>
-          {getFieldDecorator('nickname', {
-            rules: [
-              { required: true, message: <Translate id={'PLEASE_ENTER_YOU_NICKNAME'} />},
-            ],
-          })(
-            <Input prefix={<Icon type="user" />} placeholder={translate('NICKNAME')} />
-          )}
-        </FormItem>
-        <FormItem>
+        <FormItem label={translate('PASSWORD')} required={false}>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: <Translate id={'PLEASE_ENTER_YOU_PASSWORD'} /> }],
           })(
             <Input prefix={<Icon type="lock" />} type="password" placeholder={translate('PASSWORD')} />
           )}
         </FormItem>
-        <FormItem>
+        <FormItem label={translate('PLEASE_REPEAT_PASSWORD')} required={false}>
           {getFieldDecorator('repeatPassword', {
             rules: [
               {
@@ -110,11 +110,20 @@ export default compose(
     });
   }),
   withHandlers({
-    handleSubmit: ({ query, signUp, form: { validateFields } }) => () => {
+    handleSubmit: ({
+      query,
+      signUp,
+      form: { validateFields },
+      match: { params: { visitorType } },
+      history,
+    }) => () => {
       validateFields((err, values) => {
-        if (!err) {
-          signUp({ ...values, invitedById: query.get('invitedById') || null });
+        if (err) return;
+        const invitedById = query.get('invitedById') || null;
+        if (visitorType !== values.accountType) {
+          history.push('./?');
         }
+        signUp({ ...values, invitedById });
       });
     }
   }),
@@ -133,6 +142,7 @@ SignUp.propTypes = {
   compareToFirstPassword: PropTypes.func.isRequired,
   form: PropTypes.object.isRequired,
   cancelLogin: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
   invitedBy: PropTypes.string,
   invitedByNick: PropTypes.string,
 };
