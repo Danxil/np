@@ -8,8 +8,22 @@
 }
 .balance {
   color: white;
+  padding-right: 10px;
 }
 .header {
   text-align: right;
   background: black;
+  display: flex;
+  justify-content: space-between;
+}
+.rightBlock {
+  display: flex;
+
+  a {
+    color: white;
+  }
+
+  .item {
+    margin-left: 10px;
+  }
 }

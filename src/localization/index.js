@@ -555,5 +555,29 @@ export default {
   REPLENISH: [
     'Replenish',
     'Пополнить'
+  ],
+  LOAN_ALREADY_ISSUED: [
+    'Loan already issued',
+    'Займ уже выдан'
+  ],
+  LIST_WILL_BE_UPDATED_IN: [
+    'List will be updated in',
+    'Список будет обновлен через'
+  ],
+  SEC: [
+    'Sec.',
+    'Сек.'
+  ],
+  LOG_OUT: [
+    'Log out',
+    'Выйти',
+  ],
+  GIVE_A_LOAN_CONFIRMATION_TEXT: [
+    'Dou you want to give this loan?',
+    'Вы хотите выдать этот займ?'
+  ],
+  YES: [
+    'Yes',
+    'Да'
   ]
 };

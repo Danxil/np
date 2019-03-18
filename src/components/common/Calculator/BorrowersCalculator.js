@@ -99,7 +99,7 @@ const BorrowersCalculator = ({
                     {translate('LOAN_AMOUNT')}: {amount}$
                   </div>
                   <Slider
-                    step={1}
+                    step={5}
                     onChange={(value) => {setAmount(value)}}
                     min={tariff.minCredit}
                     max={tariff.maxCredit}
@@ -112,7 +112,7 @@ const BorrowersCalculator = ({
                     {translate('LOAN_DURATION')}: {duration} {translate('DAYS')}
                   </div>
                   <Slider
-                    step={5}
+                    step={1}
                     onChange={(value) => {setDuration(value)}}
                     min={tariff.minDuration}
                     max={tariff.maxDuration}
@@ -183,14 +183,14 @@ export default compose(
   withRouter,
   withTariffs(),
   withBusinessConfig(),
+  withProps(() => ({
+    query: queryString.parse(location.search),
+  })),
   withState('tariffId', 'setTariffId', ({ tariffs }) => {
     return tariffs[0].id;
   }),
   withProps(({ tariffId, tariffs }) => ({
     tariff: tariffs.find(o => o.id === tariffId),
-  })),
-  withProps(() => ({
-    query: queryString.parse(location.search),
   })),
   withState('amount', 'setAmount', ({ tariff, query }) => {
     return parseInt(query.amount) || tariff.maxCredit
@@ -199,7 +199,8 @@ export default compose(
     return parseInt(query.duration) || tariff.maxDuration
   }),
   withState('billingSystemId', 'setBillingSystemId', ({ query }) => {
-    return parseInt(query.billingSystemId) || BILLING_SYSTEMS[0].id;
+    const queryBillingSystemId = parseInt(query.billingSystemId);
+    return BILLING_SYSTEMS.find(o => o.id === queryBillingSystemId) ? queryBillingSystemId : BILLING_SYSTEMS[0].id;
   }),
   withProps(({ billingSystemId }) => ({
     billingSystem: BILLING_SYSTEMS.find(o => o.id === billingSystemId),

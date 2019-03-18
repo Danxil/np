@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { Redirect, Route } from 'react-router'
+import { Redirect, Route, withRouter } from 'react-router'
 import withUser from '../../containers/withUser';
 import { compose, pure } from 'recompose';
 
@@ -28,4 +28,4 @@ PrivateRoute.propTypes = {
   userInfo: PropTypes.object,
 }
 
-export default compose(withUser(), pure)(PrivateRoute);
+export default compose(withRouter, withUser(), pure)(PrivateRoute);

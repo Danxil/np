@@ -32,4 +32,14 @@
   :global .ant-form-item {
     margin-bottom: 10px;
   }
+  :global .ant-modal-content {
+    border-radius: 0;
+    background: #3a3a3a;
+  }
+  :global .ant-modal-title, :global .ant-modal-content, :global .ant-modal-content .ant-form {
+    color: white;
+  }
+  :global .ant-modal-title {
+    font-weight: bold;
+  }
 }

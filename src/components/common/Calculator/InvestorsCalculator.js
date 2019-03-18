@@ -151,21 +151,22 @@ export default compose(
   withLocalize,
   withRouter,
   withTariffs(),
-  withState('tariffId', 'setTariffId', ({ tariffs }) => {
-    const query = queryString.parse(location.search);
-    return parseInt(query.tariffId) || tariffs[0].id;
+  withProps(() => ({
+    query: queryString.parse(location.search),
+  })),
+  withState('tariffId', 'setTariffId', ({ query, tariffs }) => {
+    const queryTariffId = parseInt(query.tariffId);
+    return tariffs.find(o => o.id === queryTariffId) ? queryTariffId : tariffs[0].id;
   }),
   withProps(({ tariffId, tariffs }) => ({
     tariff: tariffs.find(o => o.id === tariffId),
-  })),
-  withProps(() => ({
-    query: queryString.parse(location.search),
   })),
   withState('amount', 'setAmount', ({ tariff, query }) => {
     return parseInt(query.amount) || tariff.maxCredit
   }),
   withState('billingSystemId', 'setBillingSystemId', ({ query }) => {
-    return parseInt(query.billingSystemId) || BILLING_SYSTEMS[0].id;
+    const queryBillingSystemId = parseInt(query.billingSystemId);
+    return BILLING_SYSTEMS.find(o => o.id === queryBillingSystemId) ? queryBillingSystemId : BILLING_SYSTEMS[0].id;
   }),
   withProps(({ billingSystemId }) => ({
     billingSystem: BILLING_SYSTEMS.find(o => o.id === billingSystemId),

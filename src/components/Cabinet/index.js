@@ -1,10 +1,11 @@
 import React from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 import PropTypes from 'prop-types';
 import AuthenticatedRoute from '../common/AuthenticatedRoute';
 import { withLocalize } from 'react-localize-redux';
 import { withRouter } from 'react-router-dom';
 import { compose, pure } from 'recompose';
+import classNames from 'classnames';
 import styles from './index.module.scss';
 import MyIvestments from '../MyIvestments';
 import Replenish from '../Replenish';
@@ -47,12 +48,21 @@ const Cabinet = ({
   match,
   location: { pathname },
   userInfo,
+  logout,
 }) => {
   return (
     <div className={styles.cabinet}>
     <Layout style={{ minHeight: '100vh' }}>
       <Header className={styles.header}>
-        <div className={styles.balance}>{translate('PROFIT')}: {toFixedIfNeed(userInfo.balance)} $</div>
+        <div className={styles.logo}></div>
+        <div className={styles.rightBlock}>
+          <div className={classNames(styles.balance, styles.item)}>{translate('PROFIT')}: {toFixedIfNeed(userInfo.balance)} $</div>
+          <div className={classNames(styles.logOut, styles.item)}>
+            <a onClick={logout}>
+              {translate('LOG_OUT')}&nbsp;<Icon type="logout" />
+            </a>
+          </div>
+        </div>
       </Header>
       <Layout>
         <Sider
@@ -105,6 +115,7 @@ Cabinet.propTypes = {
   match: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   className: PropTypes.string,
+  logout: PropTypes.func.isRequired,
   translate: PropTypes.func.isRequired,
   userInfo: PropTypes.object.isRequired,
 };

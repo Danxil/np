@@ -114,15 +114,10 @@ export default compose(
       query,
       signUp,
       form: { validateFields },
-      match: { params: { visitorType } },
-      history,
     }) => () => {
       validateFields((err, values) => {
         if (err) return;
         const invitedById = query.get('invitedById') || null;
-        if (visitorType !== values.accountType) {
-          history.push('./?');
-        }
         signUp({ ...values, invitedById });
       });
     }
