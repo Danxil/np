@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 import { withLocalize } from 'react-localize-redux';
 import Language from '../common/Language';
 import { compose, pure } from 'recompose';
-import styles from './index.module.css';
+import styles from './index.module.scss';
 
 const { Footer: FooterAnt } = Layout;
 

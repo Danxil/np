@@ -84,6 +84,7 @@ const SignUp = ({
         {
           getFieldValue('accountType') === 'borrower' && (
             <FormItem
+              required={false}
               label={translate('UPLOAD_SCANS_OR_PHOTO_OF_YOU_PASSPORT')}
             >
               <div className="dropbox">
@@ -97,6 +98,11 @@ const SignUp = ({
                       }
                       return e && e.fileList;
                     },
+                    rules: [
+                      {
+                        required: true, message: <Translate id={'PLEASE_FILL_THIS_FIELD'} />
+                      },
+                    ],
                   })(
                     <Upload.Dragger
                       name="files"

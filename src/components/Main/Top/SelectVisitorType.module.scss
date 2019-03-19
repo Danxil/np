@@ -9,10 +9,12 @@
   display: inline-block;
   width: 150px;
   border-color: $mainColor;
-
   &:hover, &:focus, &:active {
     background: $mainColor;
     border-color: $mainColor;
+  }
+  @media(max-width: $mediaWidth) {
+    width: 120px;
   }
 }
 .title {

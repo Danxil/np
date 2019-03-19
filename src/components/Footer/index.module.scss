@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .footer {
   display: flex;
   justify-content: center;
@@ -10,18 +12,20 @@
   position: absolute;
   right: 0;
   top: 15px;
+  @media(max-width: $mediaWidth) {
+    top: 10px;
+  }
 }
-@media(max-width: 666px) {
+@media(max-width: $mediaWidth) {
   .footer {
     text-align: center;
-    padding: 15px 50px 10px;
     flex-direction: column;
   }
 }
 .logos {
   width: 100,
 }
-@media(max-width: 666px) {
+@media(max-width: $mediaWidth) {
   .logos {
     display: none;
   }

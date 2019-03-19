@@ -6,6 +6,8 @@ import {
   signUp,
   confirmWelcome,
   getReferrals,
+  getNotVerifiedUsers,
+  unverifyUser,
 } from '../redux/user/actions';
 
 export default () => connect(
@@ -13,10 +15,12 @@ export default () => connect(
     user: {
       userInfo,
       userInfoRequestDone,
+      users,
     }
   }) => ({
     userInfo,
     userInfoRequestDone,
+    users,
   }),
   (dispatch) => {
     return {
@@ -37,6 +41,12 @@ export default () => connect(
       },
       getReferrals() {
         return dispatch(getReferrals());
+      },
+      getNotVerifiedUsers() {
+        return dispatch(getNotVerifiedUsers());
+      },
+      unverifyUser({ userId }) {
+        return dispatch(unverifyUser({ userId }));
       },
     };
   }

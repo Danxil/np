@@ -87,3 +87,33 @@ export const getReferrals = () => {
     }
   };
 };
+export const unverifyUser = ({ userId }) => {
+  return {
+    [RSAA]: {
+      endpoint: `${process.env.REACT_APP_BASE_REST_URL}/users/${userId}/unverify`,
+      credentials: 'include',
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      types: [
+        'UNVERIFY_USER_REQUEST',
+        'UNVERIFY_USER_SUCCESS',
+        'UNVERIFY_USER_FAILURE'
+      ]
+    }
+  };
+};
+export const getNotVerifiedUsers = () => {
+  return {
+    [RSAA]: {
+      endpoint: `${process.env.REACT_APP_BASE_REST_URL}/users`,
+      credentials: 'include',
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      types: [
+        'GET_NOT_VERIFIED_USERS_REQUEST',
+        'GET_NOT_VERIFIED_USERS_SUCCESS',
+        'GET_NOT_VERIFIED_USERS_FAILURE'
+      ]
+    }
+  };
+};

@@ -12,7 +12,7 @@ import withUser from '../../containers/withUser';
 
 const TakeLoan = ({ calculated }) => {
   return (
-    <div className={styles.replenish}>
+    <div className={styles.takeLoan}>
       <Container>
         <BorrowersCalculator
           onDone={calculated}
@@ -39,11 +39,9 @@ export default compose(
   branch(
     ({ userInfo }) => userInfo.verified === null,
     renderComponent(({ translate }) => (
-      <div>
+      <div className={styles.verificationMessage}>
         <Container>
-          <div className={styles.verificationMessage}>
-            <PageTitle>{translate('PLEASE_WAIT_FOR_VERIFICATION')}</PageTitle>
-          </div>
+          <PageTitle>{translate('PLEASE_WAIT_FOR_VERIFICATION')}</PageTitle>
         </Container>
       </div>
     )),
@@ -51,11 +49,9 @@ export default compose(
   branch(
     ({ userInfo }) => userInfo.verified === false,
     renderComponent(({ translate }) => (
-      <div>
+      <div className={styles.verificationMessage}>
         <Container>
-          <div className={styles.verificationMessage}>
-            <PageTitle>{translate('VERIFICATION_NOT_PASSED')}</PageTitle>
-          </div>
+          <PageTitle>{translate('VERIFICATION_NOT_PASSED')}</PageTitle>
         </Container>
       </div>
     )),

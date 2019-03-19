@@ -1,5 +1,5 @@
 import { notification } from 'antd';
-import { getUserInfo } from './actions';
+import { getUserInfo, getNotVerifiedUsers } from './actions';
 import { Fragment } from 'react';
 import { Translate } from 'react-localize-redux';
 import Providers from '../Providers';
@@ -14,6 +14,11 @@ export default function* () {
     'CREATE_INVESTMENT_SUCCESS',
   ], function *() {
     yield put(getUserInfo())
+  });
+  yield takeLatest([
+    'UNVERIFY_USER_SUCCESS',
+  ], function *() {
+    yield put(getNotVerifiedUsers())
   });
   yield takeLatest('SIGN_IN_FAILURE', (action) => {
     notification.error({

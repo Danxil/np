@@ -1,6 +1,7 @@
 const initialState = {
   userInfo: null,
   userInfoRequestDone: false,
+  users: [],
 };
 
 const userReducer = (
@@ -18,6 +19,8 @@ const userReducer = (
       return { ...state, userInfo: payload };
     case 'GET_REFERRALS_SUCCESS':
       return { ...state, userInfo: { ...state.userInfo, referrals: payload } };
+    case 'GET_NOT_VERIFIED_USERS_SUCCESS':
+      return { ...state, users: payload };
     default:
       return state;
   }

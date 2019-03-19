@@ -1,21 +1,22 @@
 import React, { Fragment } from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Drawer, Affix } from 'antd';
 import PropTypes from 'prop-types';
 import AuthenticatedRoute from '../common/AuthenticatedRoute';
 import { withLocalize } from 'react-localize-redux';
 import { withRouter } from 'react-router-dom';
-import { compose, pure } from 'recompose';
+import { compose, pure, withState } from 'recompose';
 import classNames from 'classnames';
 import styles from './index.module.scss';
 import MyIvestments from '../MyIvestments';
-import TakeLoan from '../TakeLoan';
 import Replenish from '../Replenish';
 import Withdraw from '../Withdraw';
 import withUser from '../../containers/withUser';
 import Link from '../common/Link'
+import Language from '../common/Language'
 import { toFixedIfNeed } from '../../helpers/utils';
 import ForPartners from '../ForPartners';
 import GiveLoan from '../GiveLoan';
+import TakeLoan from '../TakeLoan';
 
 const {
   Content, Sider, Header
@@ -46,12 +47,16 @@ const SIDE_MENU_ITEMS = {
   ],
   borrower: [
     {
-      route: '/for-partners',
-      translateId: 'FOR_PARTNERS',
-    },
-    {
       route: '/',
       translateId: 'TAKE_LOAN',
+    },
+    {
+      route: '/my-loans',
+      translateId: 'MY_LOANS',
+    },
+    {
+      route: '/for-partners',
+      translateId: 'FOR_PARTNERS',
     },
   ],
 };
@@ -62,6 +67,8 @@ const Cabinet = ({
   location: { pathname },
   userInfo,
   logout,
+  setShowSideMenu,
+  showSideMenu,
 }) => {
   return (
     <div className={styles.cabinet}>
@@ -79,12 +86,19 @@ const Cabinet = ({
               )
             }
             <div className={classNames(styles.logOut, styles.item)}>
-              {userInfo.email}&nbsp;&nbsp;<a onClick={logout}><Icon type="logout" /></a>
+              <span className={styles.email}>{userInfo.email}&nbsp;&nbsp;</span><a onClick={logout}><Icon type="logout" /></a>
             </div>
+            <Affix offsetTop={10}>
+              <i
+                className={classNames('fas fa-bars', styles.mobileMenuLink)}
+                onClick={() => setShowSideMenu(!showSideMenu)}
+              />
+            </Affix>
           </div>
         </Header>
         <Layout>
           <Sider
+            className={styles.leftSideMenu}
             collapsible
             collapsed={false}
             onCollapse={() => {}}
@@ -98,8 +112,7 @@ const Cabinet = ({
                       <span>{translate(o.translateId)}</span>
                     </Link>
                   </Menu.Item>)
-                  }
-                )
+                })
               }
             </Menu>
           </Sider>
@@ -114,13 +127,39 @@ const Cabinet = ({
             }
             {
               userInfo.accountType === 'borrower' && (<Fragment>
-                <AuthenticatedRoute path={`${match.path}`} exact component={TakeLoan}/>
+                <AuthenticatedRoute path={`${match.path}`} exact component={TakeLoan} />
+                <AuthenticatedRoute path={`${match.path}/my-loans`} exact component={TakeLoan} />
               </Fragment>)
             }
             <AuthenticatedRoute path={`${match.path}/for-partners`} component={ForPartners} />
           </Content>
         </Layout>
       </Layout>
+      <Drawer
+        placement="right"
+        onClose={() => setShowSideMenu(false)}
+        visible={showSideMenu}
+      >
+        {
+          SIDE_MENU_ITEMS[userInfo.accountType].map(o => {
+            const to = `${match.path}${o.route}`;
+            return (
+              <div
+                key={to}
+                className={styles.mobileMenuItem}
+                onClick={() => setShowSideMenu(false)}
+              >
+                <Link to={{ pathname: to }}>
+                  <span>{translate(o.translateId)}</span>
+                </Link>
+              </div>
+            )
+          })
+        }
+        <div className={styles.language}>
+          <Language />
+        </div>
+      </Drawer>
     </div>
   );
 }
@@ -128,6 +167,7 @@ const Cabinet = ({
 export default compose(
   withLocalize,
   withRouter,
+  withState('showSideMenu', 'setShowSideMenu', false),
   withUser(),
   pure,
 )(Cabinet);
@@ -142,6 +182,8 @@ Cabinet.propTypes = {
   location: PropTypes.object.isRequired,
   className: PropTypes.string,
   logout: PropTypes.func.isRequired,
+  setShowSideMenu: PropTypes.func.isRequired,
   translate: PropTypes.func.isRequired,
   userInfo: PropTypes.object.isRequired,
+  showSideMenu: PropTypes.bool.isRequired,
 };

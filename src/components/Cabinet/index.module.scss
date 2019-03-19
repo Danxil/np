@@ -1,6 +1,9 @@
+@import '../../variables.scss';
+
 .cabinet {
   position: relative;
   color: white;
+  display: contents;
   h1, h2, h3, h4, :global(.ant-form-item) {
     color: white !important;
   }
@@ -8,12 +11,16 @@
 .balance {
   color: white;
   padding-right: 10px;
+  white-space: nowrap;
 }
 .header {
   text-align: right;
   background: black;
   display: flex;
   justify-content: space-between;
+  @media(max-width: $mediaWidth) {
+    padding: 0 20px;
+  }
 }
 .rightBlock {
   display: flex;
@@ -25,8 +32,54 @@
   .item {
     margin-left: 10px;
   }
+  .logOut {
+    @media(max-width: $mediaWidth) {
+      margin-right: 20px;
+    }
+  }
 }
 .content {
   padding-bottom: 50px;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    width: 100%;
+  }
+}
+.verificationMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.leftSideMenu {
+  @media(max-width: $mediaWidth) {
+    display: none;
+  }
+}
+.mobileMenuLink {
+  color: white;
+  font-size: 40px;
+  display: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 50;
+  @media(max-width: $mediaWidth) {
+    display: block;
+  }
+}
+.mobileMenuItem {
+  font-size: 20px;
+  margin-top: 20px;
+  a {
+    color: white;
+  }
+}
+.language {
+  margin-top: 20px;
+}
+.email {
+  @media(max-width: $mediaWidth) {
+    display: none;
+  }
 }

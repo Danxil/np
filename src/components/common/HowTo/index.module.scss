@@ -39,10 +39,10 @@
   display: flex;
   padding: 50px 20px;
   align-items: center;
-  @media(max-width: 800px) {
+  @media(max-width: $mediaWidth) {
     align-items: center;
     flex-direction: column !important;
-    margin-top: 0;
+    margin-top: 20px;
     & .howToPlayImage {
       margin-left: 0 !important;
       margin-right: 0 !important;
@@ -52,7 +52,11 @@
 }
 .howToPlayText {
   text-align: left;
-  width: 560px;
+  max-width: 560px;
+  @media(max-width: $mediaWidth) {
+    text-align: center !important;
+    margin-top: 40px;
+  }
 }
 .stepNumber {
   font-weight: bold;
@@ -69,6 +73,9 @@
   flex-direction: row;
   .howToPlayText {
     padding-left: 70px;
+    @media(max-width: $mediaWidth) {
+      padding-left: 0;
+    }
   }
 }
 .stepEven {
@@ -76,5 +83,8 @@
   .howToPlayText {
     text-align: right;
     padding-right: 70px;
+    @media(max-width: $mediaWidth) {
+      padding-right: 0;
+    }
   }
 }

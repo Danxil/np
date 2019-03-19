@@ -629,8 +629,8 @@ export default {
     'Пожалуста, ожидайте пока ваши данные и кредитная истори проверяются'
   ],
   VERIFICATION_NOT_PASSED: [
-    'Unfortunately we can not give you a loan, try to improve your credit',
-    'К сожалению, мы не можем выдать вам займ, посторайтесь улучшить вашу кредитную',
+    'Unfortunately we can not give you a loan, try to improve your credit history',
+    'К сожалению, мы не можем выдать вам займ, посторайтесь улучшить свою кредитную историю',
   ],
   UPLOAD_SCANS_OR_PHOTO_OF_YOU_PASSPORT: [
     'Scans/photos of each filled page of your passport',
@@ -643,5 +643,13 @@ export default {
   SUPPORT_FOR_A_SINGLE_OR_BULK_UPLOAD: [
     'Support for a single or bulk upload',
     'Поддержка разовой или массовой загрузки',
+  ],
+  ADMIN_STATISTIC: [
+    'Admin statistic',
+    'Admin statistic',
+  ],
+  MY_LOANS: [
+    'My loans',
+    'Мои займы'
   ]
 };

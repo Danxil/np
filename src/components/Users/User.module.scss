@@ -1,0 +1,21 @@
+@import '../../variables.scss';
+
+.user {
+  text-align: left;
+  background: white;
+  margin-bottom: 50px;
+  padding: 20px;
+  .content {
+    position: relative;
+  }
+  .notVerified {
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    color: $yellowColor;
+  }
+  .socialIdField {
+    max-width: 400px;
+  }
+}
