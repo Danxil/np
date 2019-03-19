@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Icon, Button, Modal, Radio } from 'antd';
+import { Form, Input, Icon, Button, Modal, Radio, Upload } from 'antd';
 import { withLocalize, Translate } from 'react-localize-redux';
 import { compose, pure, withProps, withHandlers } from 'recompose';
 import { getReasignedSearchQuery } from '../../../helpers/utils';
@@ -14,9 +14,9 @@ const FormItem = Form.Item;
 
 const SignUp = ({
   translate,
-  form: { getFieldDecorator },
+  form: { getFieldDecorator, getFieldValue },
   compareToFirstPassword,
-  invitedByNick,
+  invitedById,
   handleSubmit,
   cancelLogin,
   match: { params: { visitorType } },
@@ -38,8 +38,8 @@ const SignUp = ({
     >
       <Form>
         {
-          invitedByNick && (
-            <div className={styles.invitedByBlock}><span className={styles.invitedByText}>{translate('YOU_INVITED_BY_USER')}</span>: {invitedByNick}</div>
+          invitedById && (
+            <div className={styles.invitedByBlock}><span className={styles.invitedByText}>{translate('YOU_INVITED_BY_USER')}</span>: {invitedById}</div>
           )
         }
         <FormItem label={translate('ACCOUNT_TYPE')} required={false}>
@@ -81,6 +81,40 @@ const SignUp = ({
             <Input prefix={<Icon type="lock" />} type="password" placeholder={translate('PLEASE_REPEAT_PASSWORD')} />
           )}
         </FormItem>
+        {
+          getFieldValue('accountType') === 'borrower' && (
+            <FormItem
+              label={translate('UPLOAD_SCANS_OR_PHOTO_OF_YOU_PASSPORT')}
+            >
+              <div className="dropbox">
+                {
+                  getFieldDecorator('fileList', {
+                    valuePropName: 'fileList',
+                    getValueFromEvent: (e) => {
+                      console.log('Upload event:', e);
+                      if (Array.isArray(e)) {
+                        return e;
+                      }
+                      return e && e.fileList;
+                    },
+                  })(
+                    <Upload.Dragger
+                      name="files"
+                      action="/upload.do"
+                      beforeUpload={() => false}
+                    >
+                      <p className="ant-upload-drag-icon">
+                        <Icon type="inbox" />
+                      </p>
+                      <p className="ant-upload-text">{translate('CLICK_OR_DRAG_FILE_TO_THIS_AREA_TO_YPLOAD')}</p>
+                      <p className="ant-upload-hint">{translate('SUPPORT_FOR_A_SINGLE_OR_BULK_UPLOAD')}</p>
+                    </Upload.Dragger>
+                  )
+                }
+              </div>
+            </FormItem>
+          )
+        }
         <div className={styles.linksBlock}>
           <Link to={{ pathname: './', search: getReasignedSearchQuery({ showModal: 'sign-in' }) }}>{<Translate id={'LOG_IN'} />}</Link> {<Translate id={'WITH_EXISTED_USER'} />}
         </div>
@@ -104,7 +138,6 @@ export default compose(
           callback();
         }
       },
-      invitedByNick: query.get('invitedByNick'),
       invitedById: query.get('invitedById'),
       showModal,
     });
@@ -127,7 +160,6 @@ export default compose(
 
 SignUp.defaultProps = {
   invitedBy: null,
-  invitedByNick: null,
 };
 
 SignUp.propTypes = {
@@ -139,5 +171,5 @@ SignUp.propTypes = {
   cancelLogin: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
   invitedBy: PropTypes.string,
-  invitedByNick: PropTypes.string,
+  invitedById: PropTypes.string,
 };

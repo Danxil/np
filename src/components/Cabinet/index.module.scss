@@ -1,7 +1,6 @@
 .cabinet {
   position: relative;
   color: white;
-
   h1, h2, h3, h4, :global(.ant-form-item) {
     color: white !important;
   }
@@ -26,4 +25,8 @@
   .item {
     margin-left: 10px;
   }
+}
+.content {
+  padding-bottom: 50px;
+  min-height: 100vh;
 }

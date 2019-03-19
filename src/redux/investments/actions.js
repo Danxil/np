@@ -16,14 +16,14 @@ export const getInvestments = () => {
   };
 };
 
-export const createInvestment = ({ amount, tariffId, billingSystemId }) => {
+export const createInvestment = ({ amount, tariffId, duration, reliability }) => {
   return {
     [RSAA]: {
       endpoint: `${process.env.REACT_APP_BASE_REST_URL}/investments`,
       credentials: 'include',
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount, tariffId, billingSystemId }),
+      body: JSON.stringify({ amount, tariffId, duration, reliability }),
       types: [
         'CREATE_INVESTMENT_REQUEST',
         'CREATE_INVESTMENT_SUCCESS',

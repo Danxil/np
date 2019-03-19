@@ -42,4 +42,14 @@
   :global .ant-modal-title {
     font-weight: bold;
   }
+  :global .ant-upload-list-item {
+    color: white;
+    :global .ant-upload-list-item-info {
+      background: transparent;
+    }
+  }
+  :global(.ant-upload-list-item-info .anticon), :global(.ant-upload-list-item .anticon-close) {
+    color: white;
+  }
+
 }

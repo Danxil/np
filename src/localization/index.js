@@ -121,7 +121,7 @@ export default {
     'Дней'
   ],
   NET_PROFIT: [
-    'Days',
+    'Net profit',
     'Чистая прибыль'
   ],
   SELECT: [
@@ -340,9 +340,13 @@ export default {
     'Amount',
     'Сумма',
   ],
-  SIGN_UP_SUCCESS: [
-    'Registration completed, now you can make investment',
-    'Регистрация завершена, теперь вы можете делать инвестиции'
+  SIGN_UP_INVESTOR_SUCCESS: [
+    'Registration completed, now you can issue loans',
+    'Регистрация завершена, теперь вы можете выдавать займы'
+  ],
+  SIGN_UP_BORROWER_SUCCESS: [
+    'Registration completed, please wait for verification',
+    'Регистрация завершена, ожидайте завершения верификации'
   ],
   SIGN_IN_SUCCESS: [
     'You successfully logged in',
@@ -413,19 +417,19 @@ export default {
     'Благонадежность заемщиков',
   ],
   BEGINNER_BORROWERS_INFO: [
-    '',
+    'Borrowers with a BEGINNER level are new borrowers who have confirmed their solvency, but who have never used our service yet. There is some possibility of delayed loan repayment',
     'Заемщики с уровнем BEGINNER это новые заемщики, подтвердившие свою платежеспособность, но которые еще ни разу не пользовались нашим сервисом. Существует некоторая вероятность задержки возврата займа'
   ],
   BASE_BORROWERS_INFO: [
-    '',
+    'Borrowers with a BASE level are borrowers who at least once successfully received and returned the loan without delay. The likelihood of a delay in returning a loan is much lower than that of new users',
     'Заемщики с уровнем BASE это заемщики, которые как минимум единожды успешно получили и вернули займ без задержек. Верояность возникновения задержки при возврате займа гораздо ниже, чем у новых пользователей'
   ],
   ADVANCED_BORROWERS_INFO: [
-    '',
+    'Borrowers with ADVANCED level are borrowers who regularly use our service and return loans without delay. The likelihood of problems with the return of the loan is extremely small',
     'Заемщики с уровнем ADVANCED это заемщики, которые регулярно пользуются нашим сервисом и возвращают займы без задержек. Вероятность возникновения проблем с возвратом займа крайне мала'
   ],
   EXPERT_BORROWERS_INFO: [
-    '',
+    'EXPERT borrowers are borrowers with whom we have been successfully cooperating for a long time. The likelihood of problems with the return of the loan is almost absent',
     'Заемщики с уровнем EXPERT это заемщики, с котрыми мы давно успешно сотрудничаем. Вероятность возникновения проблем с возвратом займа практически отсутствует'
   ],
   INSURANCE: [
@@ -433,7 +437,7 @@ export default {
     'Страховка',
   ],
   NON_RETURN_INSURANCE_INFO: [
-    '',
+    'If the loan fails to be returned within 14 days after the end of the loan term, you will receive a compensation equal to 50% of the loan body',
     'В случае если займ не удасться вернуть в течении 14 дней после завершения срока займа, вы получите компенсацию равную 50% от тела займа с вычетом начислений по процентной ставки'
   ],
   WHAT_ARE_YOU_INTERESTED_IN: [
@@ -512,8 +516,8 @@ export default {
     'Profit',
     'Прибыль',
   ],
-  GIVEN_LOANS: [
-    'Given loans',
+  ISSUED_LOANS: [
+    'Issued loans',
     'Выданные займы',
   ],
   BORROWERS_LEVEL: [
@@ -579,5 +583,65 @@ export default {
   YES: [
     'Yes',
     'Да'
+  ],
+  LOAN_ISSUED_SUCCESEFUL_MESSAGE: [
+    'The loan was successfully issued and is available for viewing on the corresponding page',
+    'Займ успешно выдан и доступен для просмотра на соответствующей странице'
+  ],
+  CURRENT_BALANCE: [
+    'Current balance',
+    'Текущий баланс',
+  ],
+  SELECTED_INVESTMENT_PLAN: [
+    'Selected investment plan',
+    'Выбранный инвестиционный план',
+  ],
+  BORROWER_RELIABILITY_DESCRIPTION: [
+    'This indicator depends on the credit history. The better the credit history, the higher the level of reliability',
+    'Этот показатель звисит от кредитной истории, чем лучше кредитная история, тем выше уровень благонадежности'
+  ],
+  LOAN_AMOUNT_DESCRIPTION: [
+    'The amount of loan that the borrower needs',
+    'Сумма займа, которая необходима заемщику',
+  ],
+  LOAN_DURATION_DESCRIPTION: [
+    'The period for which the borrower takes a loan',
+    'Срок, на который заемщик берет займ',
+  ],
+  DAILY_PROFIT_DESCRIPTION: [
+    'Profit from the interest rate of the loan that you will receive every day',
+    'Прибыль с процентной ставки займа, которую вы будете получать каждый день',
+  ],
+  NET_PROFIT_DESCRIPTION: [
+    'Net income that you receive for the entire loan period',
+    'Чистая прибыль, которую вы получите за весь срок займа'
+  ],
+  TAKE_LOAN: [
+    'Take a loan',
+    'Взять займ'
+  ],
+  YOUR_CURRENT_BORROWER_LEVEL: [
+    'Your current borrower level is',
+    'Ваш текущий уровень заемщика'
+  ],
+  PLEASE_WAIT_FOR_VERIFICATION: [
+    'Please wait while your data and credit history are verified',
+    'Пожалуста, ожидайте пока ваши данные и кредитная истори проверяются'
+  ],
+  VERIFICATION_NOT_PASSED: [
+    'Unfortunately we can not give you a loan, try to improve your credit',
+    'К сожалению, мы не можем выдать вам займ, посторайтесь улучшить вашу кредитную',
+  ],
+  UPLOAD_SCANS_OR_PHOTO_OF_YOU_PASSPORT: [
+    'Scans/photos of each filled page of your passport',
+    'Сканы/фото каждой заполненной страницы вашего паспорта',
+  ],
+  CLICK_OR_DRAG_FILE_TO_THIS_AREA_TO_YPLOAD: [
+    'Click or drag file to this area to upload',
+    'Нажмите или перетащите файлы в эту область, чтобы загрузить',
+  ],
+  SUPPORT_FOR_A_SINGLE_OR_BULK_UPLOAD: [
+    'Support for a single or bulk upload',
+    'Поддержка разовой или массовой загрузки',
   ]
 };

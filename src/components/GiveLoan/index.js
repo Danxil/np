@@ -5,12 +5,15 @@ import classNames from 'classnames';
 import { Tabs, Icon, Tooltip, Button } from 'antd';
 import { withLocalize } from 'react-localize-redux';
 import { withRouter } from 'react-router';
+import Link from '../common/Link';
 import styles from './index.module.scss';
 import Container from '../common/Container';
 import PageTitle from '../common/PageTitle';
 import withUser from '../../containers/withUser';
 import withTariffs from '../../containers/withTariffs';
+import withInvestments from '../../containers/withInvestments';
 import LoansGenerator from './LoansGenerator';
+import { getReasignedSearchQuery } from '../../helpers/utils';
 
 const TabPane = Tabs.TabPane;
 
@@ -21,6 +24,7 @@ const GiveLoan = ({
   setActiveTabKey,
   defaultActiveKey,
   activeTabKey,
+  createInvestment,
 }) => {
   return (
     <div className={styles.giveLoan}>
@@ -57,7 +61,9 @@ const GiveLoan = ({
                             {tariffBalance}$
                           </span>
                           <div className={styles.plusBtn}>
-                            <Button size="small" type="primary" >{translate('REPLENISH')}</Button>
+                            <Link to={{ pathname: '/cabinet/', search: getReasignedSearchQuery({ tariffId: tariff.id }) }}>
+                              <Button size="small" type="primary" >{translate('REPLENISH')}</Button>
+                            </Link>
                           </div>
                         </div>
                         <div className={styles.infoLine}>
@@ -109,7 +115,11 @@ const GiveLoan = ({
                           }
                         </div>
                         <div className={styles.table}>
-                          <LoansGenerator {...tariff} tariffBalance={tariffBalance} />
+                          <LoansGenerator
+                            {...tariff}
+                            tariffBalance={tariffBalance}
+                            onGiveLoan={createInvestment}
+                          />
                         </div>
                       </Fragment>
                     )
@@ -130,6 +140,7 @@ GiveLoan.defaultProps = {
 GiveLoan.propTypes = {
   tariffs: PropTypes.array.isRequired,
   translate: PropTypes.func.isRequired,
+  createInvestment: PropTypes.func.isRequired,
   setActiveTabKey: PropTypes.func.isRequired,
   userInfo: PropTypes.object.isRequired,
   defaultActiveKey: PropTypes.string.isRequired,
@@ -141,6 +152,7 @@ export default compose(
   withRouter,
   withUser(),
   withTariffs(),
+  withInvestments(),
   withProps(({ tariffs }) => ({
     defaultActiveKey: `tariffId${tariffs[0].id}`,
   })),

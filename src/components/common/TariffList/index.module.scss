@@ -1,0 +1,9 @@
+@import '../../../variables.scss';
+
+.tariffsList {
+  display: flex;
+  margin-top: 60px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}

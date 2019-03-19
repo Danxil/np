@@ -29,51 +29,53 @@ const getColumns = ({ USER_REFERENCE_PERCENTAGE }) => [
 
 const ForPartners = ({
   translate,
-  userInfo: { id, displayName, referrals },
+  userInfo: { id, referrals },
   businessConfig: { USER_REFERENCE_PERCENTAGE },
 }) => {
   return (
     <div className={styles.forPartners}>
       <Container>
         <PageTitle>{translate('FOR_PARTNERS')}</PageTitle>
-        <h3>{translate('YOUR_REFERRAL_LINK')}</h3>
-        <Input
-          readOnly
-          size="large"
-          value={`${location.origin}/sign-up/?invitedById=${id}&invitedByNick=${displayName}`}
-        />
-        <div className={styles.text}>{translate('PARTNER_PROGRAM_HOW_TO_START')}</div>
-        <h3>{translate('YOUR_REFERRALS')}</h3>
-        <Spinner spinnerKey="REST_API.GET_WITHDRAWS_REQUEST" overlay={true} transparentOverlay={true}>
-          {
-            !isMobile ? (
-              <Table
-                dataSource={referrals}
-                columns={getColumns({ USER_REFERENCE_PERCENTAGE })}
-                pagination={false}
-                rowKey={(o) => o.createdAt}
-                className={styles.table}
-              />
-            ) : (
-              <List
-                className={styles.widthrawsList}
-                grid={{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 4, xl: 5, xxl: 5 }}
-                dataSource={referrals}
-                renderItem={({ totalInvested, displayName }) => (
-                  <List.Item>
-                    <Card title={displayName}>
-                      <div className={styles.card}>
-                        <div>
-                          <span>$ {totalInvested}</span>
+        <div className={styles.content}>
+          <h3>{translate('YOUR_REFERRAL_LINK')}</h3>
+          <Input
+            readOnly
+            size="large"
+            value={`${location.origin}/?invitedById=${id}&showModal=sign-up`}
+          />
+          <div className={styles.text}>{translate('PARTNER_PROGRAM_HOW_TO_START')}</div>
+          <h3>{translate('YOUR_REFERRALS')}</h3>
+          <Spinner spinnerKey="REST_API.GET_WITHDRAWS_REQUEST" overlay={true} transparentOverlay={true}>
+            {
+              !isMobile ? (
+                <Table
+                  dataSource={referrals}
+                  columns={getColumns({ USER_REFERENCE_PERCENTAGE })}
+                  pagination={false}
+                  rowKey={(o) => o.createdAt}
+                  className={styles.table}
+                />
+              ) : (
+                <List
+                  className={styles.widthrawsList}
+                  grid={{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 4, xl: 5, xxl: 5 }}
+                  dataSource={referrals}
+                  renderItem={({ totalInvested, displayName }) => (
+                    <List.Item>
+                      <Card title={displayName}>
+                        <div className={styles.card}>
+                          <div>
+                            <span>$ {totalInvested}</span>
+                          </div>
                         </div>
-                      </div>
-                    </Card>
-                  </List.Item>
-                )}
-              />
-            )
-          }
-        </Spinner>
+                      </Card>
+                    </List.Item>
+                  )}
+                />
+              )
+            }
+          </Spinner>
+        </div>
       </Container>
     </div>
   );

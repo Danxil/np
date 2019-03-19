@@ -16,8 +16,6 @@ const userReducer = (
       return { ...state, userInfo: null };
     case 'USER_UPDATED':
       return { ...state, userInfo: payload };
-    case 'CREATE_WITHDRAW_SUCCESS':
-      return { ...state, userInfo: { ...state.userInfo, balance: state.userInfo.balance - payload.amount } };
     case 'GET_REFERRALS_SUCCESS':
       return { ...state, userInfo: { ...state.userInfo, referrals: payload } };
     default:

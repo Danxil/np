@@ -8,11 +8,13 @@ import { Slider, Button, Form, Input } from 'antd';
 import { withRouter } from 'react-router';
 import styles from './index.module.scss';
 import withTariffs from '../../../containers/withTariffs';
+import withUser from '../../../containers/withUser';
 import withBusinessConfig from '../../../containers/withBusinessConfig';
 import { getReasignedSearchQuery, toFixedIfNeed } from '../../../helpers/utils';
 import PageTitle from '../PageTitle';
 import Container from '../Container';
 import Tariff from '../Tariff';
+import TariffList from '../TariffList';
 
 const FormItem = Form.Item;
 
@@ -55,14 +57,24 @@ const BorrowersCalculator = ({
   businessConfig: { COMISSION_PERCENTAGE },
   form: { getFieldDecorator },
   query,
+  userInfo,
 }) => {
   return (
-    <div className={classNames(styles.tariffs, 'investmentPlans')}>
+    <div className={classNames('investmentPlans')}>
       <Container>
         <div className={styles.calculatorComp}>
-          <PageTitle>{translate('BORROWER_LEVELS')}</PageTitle>
-          <div className={styles.borrowerLevelsDescription}>{translate('BORROWER_LEVELS_DESCRIPTION')}</div>
-          <div className={styles.tariffsList}>
+          <PageTitle>{translate('TAKE_A_LOAN')}</PageTitle>
+          {
+            !userInfo && (
+              <div className={styles.borrowerLevelsDescription}>{translate('BORROWER_LEVELS_DESCRIPTION')}</div>
+            )
+          }
+          {
+            userInfo && userInfo.verified && (
+              <div className={styles.borrowerLevelsDescription}>{translate('YOUR_CURRENT_BORROWER_LEVEL')}</div>
+            )
+          }
+          <TariffList>
             {
               tariffs.map((tariff) => (
                 <Tariff
@@ -90,7 +102,7 @@ const BorrowersCalculator = ({
                 />
               ))
             }
-          </div>
+          </TariffList>
           <div className={styles.calculator}>
             <div className={styles.content}>
               <div className={styles.calcLines}>
@@ -182,6 +194,7 @@ export default compose(
   withLocalize,
   withRouter,
   withTariffs(),
+  withUser(),
   withBusinessConfig(),
   withProps(() => ({
     query: queryString.parse(location.search),
@@ -236,6 +249,9 @@ export default compose(
   pure,
 )(BorrowersCalculator);
 
+BorrowersCalculator.defaultProps = {
+  userInfo: null,
+};
 BorrowersCalculator.propTypes = {
   setAmount: PropTypes.func.isRequired,
   selectTariffId: PropTypes.func.isRequired,
@@ -251,6 +267,7 @@ BorrowersCalculator.propTypes = {
   businessConfig: PropTypes.object.isRequired,
   query: PropTypes.object.isRequired,
   form: PropTypes.object.isRequired,
+  userInfo: PropTypes.object,
   duration: PropTypes.number.isRequired,
   setDuration: PropTypes.func.isRequired,
 };

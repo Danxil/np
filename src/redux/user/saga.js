@@ -7,7 +7,12 @@ import React from 'react';
 import { put, takeLatest } from 'redux-saga/effects';
 
 export default function* () {
-  yield takeLatest(['SIGN_UP_SUCCESS', 'SIGN_IN_SUCCESS'], function *() {
+  yield takeLatest([
+    'SIGN_UP_SUCCESS',
+    'SIGN_IN_SUCCESS',
+    'CREATE_WITHDRAW_SUCCESS',
+    'CREATE_INVESTMENT_SUCCESS',
+  ], function *() {
     yield put(getUserInfo())
   });
   yield takeLatest('SIGN_IN_FAILURE', (action) => {
@@ -30,13 +35,24 @@ export default function* () {
       </Providers>
     });
   });
-  yield takeLatest(['SIGN_UP_SUCCESS', 'SIGN_IN_SUCCESS'], (action) => {
+  yield takeLatest(['SIGN_IN_SUCCESS'], () => {
     notification.success({
       duration: 5,
       description:
         <Providers>
           <Fragment>
-            <Translate id={action.type} />
+            <Translate id={'SIGN_IN_SUCCESS'} />
+          </Fragment>
+        </Providers>
+    });
+  });
+  yield takeLatest(['SIGN_UP_SUCCESS'], (action) => {
+    notification.success({
+      duration: 5,
+      description:
+        <Providers>
+          <Fragment>
+            <Translate id={`SIGN_UP_${action.payload.accountType.toUpperCase()}_SUCCESS`} />
           </Fragment>
         </Providers>
     });

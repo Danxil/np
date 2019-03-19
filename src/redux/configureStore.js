@@ -8,6 +8,7 @@ import { localizeReducer } from 'react-localize-redux';
 import { combineReducers } from 'redux';
 
 import userSaga from './user/saga';
+import investmentsSaga from './investments/saga';
 import withdrawsSaga from './withdraws/saga';
 import user from './user';
 import spinners from './spinners';
@@ -36,6 +37,7 @@ export default ({ history }) => {
   const rootSaga = function* () {
     yield fork(userSaga);
     yield fork(withdrawsSaga);
+    yield fork(investmentsSaga);
     yield fork(function* () {
       yield takeLatest(
         ({ type }) => {

@@ -7,6 +7,7 @@ import styles from './index.module.scss';
 import Link from '../common/Link';
 import Container from '../common/Container';
 import PageTitle from '../common/PageTitle';
+import TariffList from '../common/TariffList';
 import withInvestments from '../../containers/withInvestments';
 import { toFixedIfNeed } from '../../helpers/utils';
 
@@ -17,12 +18,12 @@ const MyIvestments = ({ translate, investments }) => {
   return (
     <div className={styles.myInvestments}>
       <Container>
-        <PageTitle>{translate('GIVEN_LOANS')}</PageTitle>
+        <PageTitle>{translate('ISSUED_LOANS')}</PageTitle>
         {
           activeInvestments.length ? (
             <Fragment>
               <h3 className={styles.investmentsType}>{translate('ACTIVE_INVESTMENTS')}:</h3>
-              <div className={styles.investments}>
+              <TariffList>
                 {
                   activeInvestments.map((investment) => (
                     <Tariff
@@ -32,12 +33,16 @@ const MyIvestments = ({ translate, investments }) => {
                       tariffId={investment.tariff.id}
                       lines={[
                         {
+                          label: translate('BORROWER_RELIABILITY'),
+                          value: `${investment.reliability} %`,
+                        },
+                        {
                           label: translate('DAILY_PROFIT'),
                           value: `${investment.tariff.percentage / 100 * investment.amount} $`,
                         },
                         {
                           label: translate('PROFIT_RECEIVED'),
-                          value: `${toFixedIfNeed((investment.tariff.duration - investment.daysLeft) * (investment.tariff.percentage / 100 * investment.amount))} $`
+                          value: `${toFixedIfNeed((investment.duration - investment.daysLeft) * (investment.tariff.percentage / 100 * investment.amount))} $`
                         },
                         {
                           label: translate('DAYS_TO_FINISH'),
@@ -47,7 +52,7 @@ const MyIvestments = ({ translate, investments }) => {
                     />
                   ))
                 }
-              </div>
+              </TariffList>
             </Fragment>
           ) : null
         }
@@ -55,7 +60,7 @@ const MyIvestments = ({ translate, investments }) => {
           completedInvestments.length ? (
             <Fragment>
               <h3 className={styles.investmentsType}>{translate('COMPLETED_INVESTMENTS')}:</h3>
-              <div className={styles.investments}>
+              <TariffList>
                 {
                   completedInvestments.map((investment) => (
                     <Tariff
@@ -66,18 +71,22 @@ const MyIvestments = ({ translate, investments }) => {
                       tariffId={investment.tariff.id}
                       lines={[
                         {
+                          label: translate('BORROWER_RELIABILITY'),
+                          value: `${investment.reliability} %`,
+                        },
+                        {
                           label: translate('DAILY_PROFIT'),
                           value: `${toFixedIfNeed(investment.tariff.percentage / 100 * investment.amount)} $`,
                         },
                         {
                           label: translate('PROFIT_RECEIVED'),
-                          value: `${toFixedIfNeed(investment.tariff.duration * (investment.tariff.percentage / 100 * investment.amount))} $`
+                          value: `${toFixedIfNeed(investment.duration * (investment.tariff.percentage / 100 * investment.amount))} $`
                         },
                       ]}
                     />
                   ))
                 }
-              </div>
+              </TariffList>
             </Fragment>
           ) : null
         }

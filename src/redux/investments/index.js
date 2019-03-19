@@ -11,8 +11,6 @@ const reducer = (
       return initialState;
     case 'GET_INVESTMENTS_SUCCESS':
       return { ...state, list: payload };
-    case 'CREATE_INVESTMENTS_SUCCESS':
-      return { ...state, list: [...state.list, { ...payload }] };
     default:
       return state;
   }

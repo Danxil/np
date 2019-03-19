@@ -3,6 +3,9 @@
 .lowBalance {
   color: $redColor;
 }
+.profit {
+  color: $greenColor;
+}
 tr {
   transform: scale(1);
   overflow: hidden;
@@ -30,4 +33,7 @@ tr {
 }
 .loanConfirmationValue {
   font-weight: bold;
+}
+:global .ant-tabs-nav-scroll {
+  text-align: center;
 }

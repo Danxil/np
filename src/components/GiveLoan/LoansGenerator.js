@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Table, Button, Tooltip, Affix, Progress, Modal } from 'antd';
-import { withLocalize, Translate } from 'react-localize-redux';
+import { Table, Button, Tooltip, Affix, Progress, Modal, Icon } from 'antd';
+import { withLocalize } from 'react-localize-redux';
 import Countdown from 'react-countdown-now';
 import { withRouter } from 'react-router';
 import classNames from 'classnames';
@@ -28,17 +28,17 @@ const LoansGenerator = ({
 }) => {
   const columns = [
     {
-      title: <Translate id="BORROWER_RELIABILITY" />,
+      title: <Tooltip title={translate('BORROWER_RELIABILITY_DESCRIPTION')}>{translate('BORROWER_RELIABILITY')}&nbsp;<Icon type="question-circle" className={styles.info} /></Tooltip>,
       dataIndex: 'reliability',
       key: 'reliability',
       render: (reliability) => `${reliability} %`
     },
     {
-      title: <Translate id="LOAN_AMOUNT" />,
+      title: <Tooltip title={translate('LOAN_AMOUNT_DESCRIPTION')}>{translate('LOAN_AMOUNT')}&nbsp;<Icon type="question-circle" className={styles.info} /></Tooltip>,
       dataIndex: 'amount',
       key: 'amount',
       render: (amount) => tariffBalance < amount ? (
-        <Tooltip title={<Translate id={'LOW_BALANCE'} />}>
+        <Tooltip title={translate('LOW_BALANCE')}>
           <span className={classNames(styles.lowBalance)}>{amount} $</span>
         </Tooltip>
       ) : (
@@ -46,22 +46,22 @@ const LoansGenerator = ({
       )
     },
     {
-      title: <Translate id="LOAN_DURATION" />,
+      title: <Tooltip title={translate('DAILY_PROFIT_DESCRIPTION')}>{translate('DAILY_PROFIT')}&nbsp;<Icon type="question-circle" className={styles.info} /></Tooltip>,
+      dataIndex: 'dailyProfit',
+      key: 'dailyProfit',
+      render: (dailyProfit) => (<span>{dailyProfit} $</span>)
+    },
+    {
+      title: <Tooltip title={translate('LOAN_DURATION_DESCRIPTION')}>{translate('LOAN_DURATION')}&nbsp;<Icon type="question-circle" className={styles.info} /></Tooltip>,
       dataIndex: 'duration',
       key: 'duration',
       render: (duration) => `${duration} ${translate(duration.toString()[duration.toString().length - 1] == 1 ? 'DAYS_1' : (duration.toString()[duration.toString().length - 1] <= 4 ? 'DAYS_2' : 'DAYS_3')).toLowerCase()}`,
     },
     {
-      title: <Translate id="DAILY_PROFIT" />,
-      dataIndex: 'dailyProfit',
-      key: 'dailyProfit',
-      render: (dailyProfit) => `${dailyProfit} $`
-    },
-    {
-      title: <Translate id="NET_PROFIT" />,
+      title: <Tooltip title={translate('NET_PROFIT_DESCRIPTION')}>{translate('NET_PROFIT')}&nbsp;<Icon type="question-circle" className={styles.info} /></Tooltip>,
       dataIndex: 'netProfit',
       key: 'netProfit',
-      render: (netProfit) => `${netProfit} $`
+      render: (netProfit) => (<span className={classNames(styles.profit)}>+ {netProfit} $</span>)
     },
     {
       title: null,
@@ -71,10 +71,10 @@ const LoansGenerator = ({
         <Fragment>
           {
             parseInt(loan.amount) > tariffBalance ? (
-              <Tooltip title={<Translate id={'LOW_BALANCE'} />}>
-                <Button disabled className="ghostBtn" type="primary"><Translate id="GIVE" title="Small" /></Button>
+              <Tooltip title={translate('LOW_BALANCE')}>
+                <Button disabled className="ghostBtn" type="primary">{translate('GIVE')}</Button>
               </Tooltip>
-            ) : <Button onClick={() => confirmGiveLoan(loan)} className="ghostBtn" type="primary"><Translate id="GIVE" title="Small" /></Button>
+            ) : <Button onClick={() => confirmGiveLoan(loan)} className="ghostBtn" type="primary">{translate('GIVE')}</Button>
           }
           {
             loan.notAvailiable && (
@@ -115,6 +115,7 @@ LoansGenerator.defaultProps = {
 LoansGenerator.propTypes = {
   loans: PropTypes.array.isRequired,
   translate: PropTypes.func.isRequired,
+  onGiveLoan: PropTypes.func.isRequired,
   confirmGiveLoan: PropTypes.func.isRequired,
   removeDisabledLoans: PropTypes.func.isRequired,
   countdownCompleted: PropTypes.func.isRequired,
@@ -147,8 +148,8 @@ export default compose(
         reliability: _.random(minReliability, maxReliability),
         amount: Math.ceil(_.random(minCredit, maxCredit) / 5) * 5,
         duration: _.random(minDuration, maxDuration),
-        dailyProfit: toFixedIfNeed(percentage * (amount / 100)),
-        netProfit: toFixedIfNeed(percentage * (amount / 100) * duration),
+        dailyProfit: toFixedIfNeed(amount * (percentage / 100)),
+        netProfit: toFixedIfNeed(amount * (percentage / 100) * duration),
         tariffId,
         key: `loan${id}`,
         notAvailiable: false,
@@ -185,7 +186,13 @@ export default compose(
       loan.notAvailiable = true;
       setLoans([...loans, generateLoan()]);
     },
-    confirmGiveLoan: ({ translate }) => ({ amount, reliability, duration, dailyProfit, netProfit }) => {
+    confirmGiveLoan: ({ translate, onGiveLoan, id: tariffId, }) => ({
+      amount,
+      reliability,
+      duration,
+      dailyProfit,
+      netProfit,
+    }) => {
       Modal.confirm({
         title: translate('GIVE_A_LOAN_CONFIRMATION_TEXT'),
         okText: translate('YES'),
@@ -210,7 +217,7 @@ export default compose(
           </Fragment>
         ),
         onOk() {
-          console.log('OK');
+          onGiveLoan({ amount, duration, tariffId, reliability });
         },
         onCancel() {
           console.log('Cancel');
@@ -220,7 +227,6 @@ export default compose(
   }),
   lifecycle({
     componentDidMount() {
-
       const self = this;
       function runInterval() {
         self.props.disableRandomLoan();

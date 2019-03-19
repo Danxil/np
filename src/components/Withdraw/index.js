@@ -55,72 +55,74 @@ const Withdraw = ({
     <div className={styles.withdrawing}>
       <Container>
         <PageTitle>{translate('WITHDRAW')}</PageTitle>
-        <Form id="withdrawing" className={styles.withdrawingForm}>
-          {
-            lowBalance && (
-              <FormItem>
-                <Alert
-                  showIcon
-                  message={`${translate('LOW_BALANCE')}. ${translate('INVEST_TO_GET_MONEY')}!`}
-                  type="warning"
+        <div className={styles.content}>
+          <Form id="withdrawing" className={styles.withdrawingForm}>
+            {
+              lowBalance && (
+                <FormItem>
+                  <Alert
+                    showIcon
+                    message={`${translate('LOW_BALANCE')}. ${translate('INVEST_TO_GET_MONEY')}!`}
+                    type="warning"
+                  />
+                </FormItem>
+              )
+            }
+            <FormItem>
+              <div>
+                {amount}$
+              </div>
+              <div>
+                <Slider
+                  step={1}
+                  defaultValue={1}
+                  min={1}
+                  max={Math.floor(balance)}
+                  tipFormatter={(value) => (<span>{value}$</span>)}
+                  onChange={(val) => setAmount(val)}
+                  value={amount}
+                  disabled={lowBalance}
                 />
-              </FormItem>
-            )
-          }
-          <FormItem>
-            <div>
-              {amount}$
-            </div>
-            <div>
-              <Slider
-                step={1}
-                defaultValue={1}
-                min={1}
-                max={Math.floor(balance)}
-                tipFormatter={(value) => (<span>{value}$</span>)}
-                onChange={(val) => setAmount(val)}
-                value={amount}
+              </div>
+            </FormItem>
+            <FormItem>
+              <Select
+                value={method}
                 disabled={lowBalance}
-              />
-            </div>
-          </FormItem>
-          <FormItem>
-            <Select
-              value={method}
-              disabled={lowBalance}
-              onChange={(val) => setMethod(val)}
-            >
-              {
-                WITHDRAW_METHODS.map(o => (
-                  <Select.Option key={JSON.stringify(o)} value={o.value}>{o.label}</Select.Option>
-                ))
-              }
-            </Select>
-          </FormItem>
-          <FormItem>
-            {getFieldDecorator('requisite', {
-              rules: [{ required: true, message: <span>{translate('THIS_FIELD_IS_REQUIRED')}</span> }],
-            })(
-              <Input
+                onChange={(val) => setMethod(val)}
+              >
+                {
+                  WITHDRAW_METHODS.map(o => (
+                    <Select.Option key={JSON.stringify(o)} value={o.value}>{o.label}</Select.Option>
+                  ))
+                }
+              </Select>
+            </FormItem>
+            <FormItem>
+              {getFieldDecorator('requisite', {
+                rules: [{ required: true, message: <span>{translate('THIS_FIELD_IS_REQUIRED')}</span> }],
+              })(
+                <Input
+                  disabled={lowBalance}
+                  placeholder={translate(WITHDRAW_METHODS.find(o => o.value === method).fieldPlaceholderTranslateId)}
+                  onChange={(e) => setRequisite(e.target.value)}
+                />
+              )}
+            </FormItem>
+            <FormItem className={styles.btnBlock}>
+              <Button
+                type="primary"
+                htmlType="submit"
+                onClick={handleSubmit}
                 disabled={lowBalance}
-                placeholder={translate(WITHDRAW_METHODS.find(o => o.value === method).fieldPlaceholderTranslateId)}
-                onChange={(e) => setRequisite(e.target.value)}
-              />
-            )}
-          </FormItem>
-          <FormItem className={styles.btnBlock}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              onClick={handleSubmit}
-              disabled={lowBalance}
-            >
-              {translate('WITHDRAW')}
-            </Button>
-          </FormItem>
-        </Form>
-        <h3>{translate('WITHDRAW_HISTORY')}:</h3>
-        <WithdrawsCommon filter={{ userId }} />
+              >
+                {translate('WITHDRAW')}
+              </Button>
+            </FormItem>
+          </Form>
+          <h3>{translate('WITHDRAW_HISTORY')}:</h3>
+          <WithdrawsCommon filter={{ userId }} />
+        </div>
       </Container>
     </div>
   );
