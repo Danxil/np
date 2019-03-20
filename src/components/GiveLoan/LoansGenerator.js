@@ -181,8 +181,8 @@ export default compose(
       const id = ++LOAN_START_ID;
       return ({
         reliability: _.random(minReliability, maxReliability),
-        amount: Math.ceil(_.random(minCredit, maxCredit) / 5) * 5,
-        duration: _.random(minDuration, maxDuration),
+        amount,
+        duration,
         dailyProfit: toFixedIfNeed(amount * (percentage / 100)),
         netProfit: toFixedIfNeed(amount * (percentage / 100) * duration),
         tariffId,

@@ -21,11 +21,11 @@ const BILLING_SYSTEMS = [
     image: 'payeer.png',
     id: 1,
   },
-  // {
-  //   label: 'PERFECT MONEY',
-  //   image: 'perfect-money.png',
-  //   id: 2,
-  // },
+  {
+    label: 'PERFECT MONEY',
+    image: 'perfect-money.png',
+    id: 2,
+  },
   {
     label: 'ADV CASH',
     image: 'adv-cash.png',

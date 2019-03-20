@@ -11,7 +11,7 @@ const { Footer: FooterAnt } = Layout;
 const Footer = () => {
   return (
     <FooterAnt className={styles.footer}>
-      <div>© 2018 fun-spin.com</div>
+      <div>© 2018 fast-credit.in</div>
       <div className={styles.language}>
         <Language />
       </div>
