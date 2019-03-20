@@ -374,7 +374,7 @@ export default {
   ],
   PAYMENT_SUCCESS_TEXT: [
     'Investment case will appear on the "My Investments" page soon',
-    'Инвестиционный кейс появится на странице "Мои инвестиции" в ближайшее время',
+    'Money will arrive at your balance soon and you will be able to issue a loan',
   ],
   PAYMENT_FAIL: [
     'Payment fail',
