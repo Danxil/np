@@ -23,6 +23,9 @@
     }
     .infoValue {
       font-weight: bold;
+      @media(max-width: $mediaWidth) {
+        display: block;
+      }
     }
   }
   .tabTitle {

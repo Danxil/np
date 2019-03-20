@@ -16,7 +16,7 @@ const SignUp = ({
   translate,
   form: { getFieldDecorator, getFieldValue },
   compareToFirstPassword,
-  invitedById,
+  invitedByDisplayName,
   handleSubmit,
   cancelLogin,
   match: { params: { visitorType } },
@@ -38,8 +38,8 @@ const SignUp = ({
     >
       <Form>
         {
-          invitedById && (
-            <div className={styles.invitedByBlock}><span className={styles.invitedByText}>{translate('YOU_INVITED_BY_USER')}</span>: {invitedById}</div>
+          invitedByDisplayName && (
+            <div className={styles.invitedByBlock}><span className={styles.invitedByText}>{translate('YOU_INVITED_BY_USER')}</span>: {invitedByDisplayName}</div>
           )
         }
         <FormItem label={translate('ACCOUNT_TYPE')} required={false}>
@@ -58,6 +58,15 @@ const SignUp = ({
             ],
           })(
             <Input prefix={<Icon type='mail' />} placeholder='Email' />
+          )}
+        </FormItem>
+        <FormItem label={translate('NICKNAME')} required={false}>
+          {getFieldDecorator('displayName', {
+            rules: [
+              { required: true, message: <Translate id={'PLEASE_ENTER_YOU_NICKNAME'} /> },
+            ],
+          })(
+            <Input prefix={<Icon type='mail' />} placeholder={translate('NICKNAME')} />
           )}
         </FormItem>
         <FormItem label={translate('PASSWORD')} required={false}>
@@ -145,6 +154,7 @@ export default compose(
         }
       },
       invitedById: query.get('invitedById'),
+      invitedByDisplayName: query.get('invitedByDisplayName'),
       showModal,
     });
   }),
@@ -166,6 +176,7 @@ export default compose(
 
 SignUp.defaultProps = {
   invitedBy: null,
+  invitedByDisplayName: null,
 };
 
 SignUp.propTypes = {
@@ -178,4 +189,5 @@ SignUp.propTypes = {
   match: PropTypes.object.isRequired,
   invitedBy: PropTypes.string,
   invitedById: PropTypes.string,
+  invitedByDisplayName: PropTypes.string,
 };

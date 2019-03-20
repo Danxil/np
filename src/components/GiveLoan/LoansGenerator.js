@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Table, Button, Tooltip, Affix, Progress, Modal, Icon } from 'antd';
+import { Table, Button, Tooltip, Affix, Progress, Modal, Icon, List, Card } from 'antd';
 import { withLocalize } from 'react-localize-redux';
 import Countdown from 'react-countdown-now';
 import { withRouter } from 'react-router';
 import classNames from 'classnames';
+import {
+  isMobile
+} from 'react-device-detect';
 import { compose, pure, withHandlers, withState, lifecycle, withProps } from 'recompose';
 import _ from 'lodash';
 import styles from './LoansGenerator.module.scss';
@@ -104,7 +107,39 @@ const LoansGenerator = ({
           />
         </div>
       </Affix>
-      <Table dataSource={loans} columns={columns} pagination={false} />
+      {
+        !isMobile && (
+          <Table dataSource={loans} columns={columns} pagination={false} />
+        )
+      }
+      {
+        isMobile && (
+          <List
+              grid={{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 4, xl: 5, xxl: 5 }}
+              dataSource={loans}
+              renderItem={(loan) => (
+                <List.Item>
+                  <Card title={
+                    <div className={styles.cardTitle}>{columns[columns.length - 1].render(loan[columns[columns.length - 1].dataIndex], loan)}</div>
+                  }>
+                    {
+                      columns.map(column => (
+                        <div className={styles.cardLine} key={`${column.key}${JSON.stringify(loan)}`}>
+                          {
+                            column.title && <Fragment>
+                              <div>{column.title}</div>
+                              <div>{column.render(loan[column.dataIndex], loan)}</div>
+                            </Fragment>
+                          }
+                        </div>
+                      ))
+                    }
+                  </Card>
+                </List.Item>
+              )}
+            />
+        )
+      }
     </Fragment>
   );
 }

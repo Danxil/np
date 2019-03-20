@@ -32,9 +32,14 @@ const BILLING_SYSTEMS = [
     id: 3,
   },
   {
+    label: 'COIN PAYMENTS',
+    image: 'coin-payments.png',
+    id: 4,
+  },
+  {
     label: 'FREE KASSA',
     image: 'free-kassa.png',
-    id: 4,
+    id: 5,
   },
 ]
 
@@ -211,7 +216,7 @@ export default compose(
         billingSystemId,
         showModal: 'sign-up',
       })}`);
-      onDone({ amount, tariffId, billingSystem, tariff });
+      onDone && onDone({ amount, tariffId, billingSystem, tariff });
     },
   })),
   pure,

@@ -101,7 +101,9 @@ const Top = ({
                       </div>)
                     })
                   }
-                  <Language />
+                  <div className={styles.language}>
+                    <Language />
+                  </div>
                 </div>
                 <Affix offsetTop={20}>
                   <i
@@ -161,7 +163,7 @@ const Top = ({
                   )
                 })
               }
-              <div className={styles.language}>
+              <div className={styles.mobileLanguage}>
                 <Language />
               </div>
             </Drawer>

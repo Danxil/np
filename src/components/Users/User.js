@@ -11,6 +11,7 @@ import styles from './User.module.scss';
 
 const User = ({
   email,
+  displayName,
   accountType,
   unverifyUser,
   id: userId,
@@ -21,6 +22,9 @@ const User = ({
         <div className={styles.content}>
           <p>
             {email}
+          </p>
+          <p>
+            {displayName}
           </p>
           <p>
             {accountType}
@@ -55,6 +59,7 @@ User.defaultProps = {
 User.propTypes = {
   form: PropTypes.object.isRequired,
   email: PropTypes.string.isRequired,
+  displayName: PropTypes.string.isRequired,
   accountType: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   userInfo: PropTypes.object.isRequired,

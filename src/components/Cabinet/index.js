@@ -86,9 +86,9 @@ const Cabinet = ({
               )
             }
             <div className={classNames(styles.logOut, styles.item)}>
-              <span className={styles.email}>{userInfo.email}&nbsp;&nbsp;</span><a onClick={logout}><Icon type="logout" /></a>
+              <span className={styles.email}>{userInfo.displayName}&nbsp;&nbsp;</span><a onClick={logout}><Icon type="logout" /></a>
             </div>
-            <Affix offsetTop={10}>
+            <Affix>
               <i
                 className={classNames('fas fa-bars', styles.mobileMenuLink)}
                 onClick={() => setShowSideMenu(!showSideMenu)}
@@ -99,7 +99,6 @@ const Cabinet = ({
         <Layout>
           <Sider
             className={styles.leftSideMenu}
-            collapsible
             collapsed={false}
             onCollapse={() => {}}
           >

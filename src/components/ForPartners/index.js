@@ -29,7 +29,7 @@ const getColumns = ({ USER_REFERENCE_PERCENTAGE }) => [
 
 const ForPartners = ({
   translate,
-  userInfo: { id, referrals },
+  userInfo: { id, displayName, referrals },
   businessConfig: { USER_REFERENCE_PERCENTAGE },
 }) => {
   return (
@@ -41,7 +41,7 @@ const ForPartners = ({
           <Input
             readOnly
             size="large"
-            value={`${location.origin}/?invitedById=${id}&showModal=sign-up`}
+            value={`${location.origin}/?invitedById=${id}&invitedByDisplayName=${displayName}&showModal=sign-up`}
           />
           <div className={styles.text}>{translate('PARTNER_PROGRAM_HOW_TO_START')}</div>
           <h3>{translate('YOUR_REFERRALS')}</h3>
