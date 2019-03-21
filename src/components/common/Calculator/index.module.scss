@@ -35,9 +35,9 @@
   margin-bottom: 10px;
 }
 .calculator {
-  box-shadow: 2px 8px 7px -9px rgba(0, 0, 0, 0.75);
-  color: white;
-  background: #cdd8d4;
+  box-shadow: $boxShadow;
+  color: $blackColor;
+  background: white;
   padding: 20px;
   margin-top: 50px;
   text-align: center;
@@ -61,7 +61,7 @@
 }
 .sectionValue {
   text-transform: uppercase;
-  color: $goldColor;
+  color: $mainColor;
 }
 .sliderLabel {
   margin-top: 20px;
@@ -81,7 +81,6 @@
 }
 .content {
   position: relative;
-  z-index: 11;
 }
 .billingSystems {
   margin-top: 30px;
@@ -98,11 +97,11 @@
   margin: 0 10px;
   padding: 10px;
   font-size: 0;
-  background: #d0edef5c;
+  background: #a1b4b524;
   width: 100px;
   height: 45px;
   box-sizing: content-box;
-  box-shadow: 2px 9px 7px -9px rgba(0,0,0,0.75);
+  box-shadow: 0px 8px 7px -9px rgba(0,0,0,0.75);
   transition: .5s;
   border: 3px solid transparent;
   &.selected {

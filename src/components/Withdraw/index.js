@@ -18,26 +18,23 @@ import WithdrawsCommon from '../common/Withdraws';
 import Container from '../common/Container';
 import styles from './index.module.scss';
 
-
 const FormItem = Form.Item;
 
-const WITHDRAW_METHODS = [
+const BILLING_SYSTEMS = [
   {
-    value: 'payeer',
-    label: 'Payeer',
-    fieldPlaceholderTranslateId: 'WALLET_NUMBER',
+    label: 'PAYEER',
+    id: 1,
   },
   {
-    value: 'qiwi',
-    label: 'QIWI',
-    fieldPlaceholderTranslateId: 'WALLET_NUMBER',
+    label: 'PERFECT MONEY',
+    id: 2,
   },
   {
-    value: 'perfectMoney',
-    label: 'PerfectMoney',
-    fieldPlaceholderTranslateId: 'WALLET_NUMBER',
+    label: 'ADV CASH',
+    id: 3,
   },
 ];
+
 
 const Withdraw = ({
   translate,
@@ -85,26 +82,32 @@ const Withdraw = ({
                 />
               </div>
             </FormItem>
-            <FormItem>
+            <FormItem
+              label={translate('WITHDRAWAL_SERVICE')}
+              required={false}
+            >
               <Select
                 value={method}
                 disabled={lowBalance}
                 onChange={(val) => setMethod(val)}
               >
                 {
-                  WITHDRAW_METHODS.map(o => (
-                    <Select.Option key={JSON.stringify(o)} value={o.value}>{o.label}</Select.Option>
+                  BILLING_SYSTEMS.map(o => (
+                    <Select.Option key={JSON.stringify(o)} value={o.label}>{o.label}</Select.Option>
                   ))
                 }
               </Select>
             </FormItem>
-            <FormItem>
+            <FormItem
+              label={translate('CARD_OR_ACCOUNT_NUMBER')}
+              required={false}
+            >
               {getFieldDecorator('requisite', {
                 rules: [{ required: true, message: <span>{translate('THIS_FIELD_IS_REQUIRED')}</span> }],
               })(
                 <Input
                   disabled={lowBalance}
-                  placeholder={translate(WITHDRAW_METHODS.find(o => o.value === method).fieldPlaceholderTranslateId)}
+                  placeholder={translate('CARD_OR_ACCOUNT_NUMBER')}
                   onChange={(e) => setRequisite(e.target.value)}
                 />
               )}
@@ -134,7 +137,7 @@ export default compose(
   withUser(),
   withBusinessConfig(),
   withState('amount', 'setAmount', ({ businessConfig: { MIN_AMOUNT_OF_WITHDRAWING } }) => MIN_AMOUNT_OF_WITHDRAWING),
-  withState('method', 'setMethod', WITHDRAW_METHODS[0].value),
+  withState('method', 'setMethod', BILLING_SYSTEMS[0].label),
   withState('requisite', 'setRequisite', ''),
   Form.create(),
   withProps(({ form, amount, method, requisite, createWithdraw }) => ({

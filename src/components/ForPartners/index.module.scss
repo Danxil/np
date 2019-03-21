@@ -1,12 +1,17 @@
+@import '../../variables.scss';
+
 .forPartners {
   text-align: center;
-
   .content {
-    background: #cdd8d4;
-    box-shadow: 2px 8px 7px -9px rgba(0, 0, 0, 0.75);
+    background: white;
+    color: $blackColor;
+    box-shadow: $boxShadow;
     padding: 30px;
     position: relative;
     margin-bottom: 50px;
+    h1, h2, h3, h4, :global(.ant-form-item) {
+      color: $blackColor !important;
+    }
 
     > * {
       position: relative;
@@ -24,7 +29,9 @@
       background-image: url('/bg-texture.png');
     }
   }
-
+  .bonus {
+    padding-bottom: 20px;
+  }
 
   .text {
     margin: 40px 0 80px;

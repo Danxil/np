@@ -75,7 +75,7 @@ const LoansGenerator = ({
           {
             parseInt(loan.amount) > tariffBalance ? (
               <Tooltip title={translate('LOW_BALANCE')}>
-                <Button disabled className="ghostBtn" type="primary">{translate('GIVE')}</Button>
+                <Button size="small" disabled className="ghostBtn" type="primary">{translate('GIVE')}</Button>
               </Tooltip>
             ) : <Button onClick={() => confirmGiveLoan(loan)} className="ghostBtn" type="primary">{translate('GIVE')}</Button>
           }
@@ -92,7 +92,7 @@ const LoansGenerator = ({
   ];
   return (
     <Fragment>
-      <Affix>
+      <Affix offsetTop={64}>
         <div className={styles.countdown}>
           <Countdown
             date={mountedTime + REFRESH_LOANS_LIST_DELAY}

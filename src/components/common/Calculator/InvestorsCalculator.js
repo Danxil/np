@@ -15,7 +15,7 @@ import Container from '../Container';
 import Tariff from '../Tariff';
 import TariffList from '../TariffList';
 
-const BILLING_SYSTEMS = [
+export const BILLING_SYSTEMS = [
   {
     label: 'PAYEER',
     image: 'payeer.png',

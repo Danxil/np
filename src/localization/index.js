@@ -1,8 +1,4 @@
 export default {
-  ABOUT_THE_PROJECT: [
-    'About the project',
-    'О проекте',
-  ],
   CONTACTS: [
     'Contacts',
     'Контакты',
@@ -12,24 +8,12 @@ export default {
     'Биржа быстрых займов и инвестиций',
   ],
   SLOGAN_DESCRIPTION: [
-    'Online platform for investors and borrowers',
-    'Мы даем возможность получить займ онлайн, на прозрачных условиях, а также инвестировать свои средства, выдавая займы только проверенным заемщикам',
+    'Here you can get a loan online on transparent terms, as well as invest your money by issuing loans to proven borrowers',
+    'У нас можно получить займ онлайн на прозрачных условиях, а также инвестировать свои средства, выдавая займы проверенным заемщикам',
   ],
   MAKE_INVESTMENT: [
     'Make investment',
     'Инвестировать',
-  ],
-  GET_A_LOAN: [
-    'Get a loan',
-    'Получить займ',
-  ],
-  INVESTORS: [
-    'Investors',
-    'Инвесторам',
-  ],
-  BORROWERS: [
-    'Borrowers',
-    'Заемщикам',
   ],
   HOW_IT_WORKS: [
     'How it works',
@@ -40,36 +24,36 @@ export default {
     'Шаг',
   ],
   HOW_TO_INVESTORS_STEP_1_ITEM_1: [
-    'You choose investment amount and duration',
-    'Вы выбираете инвестиционный план и с помощью платежной системы, вносите сумму, которую вы хотите инвестировать'
+    'Choose an investment plan and, using a payment system, deposit the amount that you want to invest',
+    'Выберите инвестиционный план и с помощью платежной системы, вносите сумму, которую вы хотите инвестировать'
   ],
   HOW_TO_INVESTORS_STEP_2_ITEM_1: [
-    'Choose investment amount and duration',
-    'В кабинете инвестора, из списка одобренных заявок на получение займа, вы выбираете ту, в которую хотите инвестировать. Выбор происходит путем оценивания уровня благонадежности заемщика, размера и срока займа',
+    'In the investor’s сфиштуе, from the list of approved loan applications, select the one you want to invest in. The choice is made by assessing the level of reliability of the borrower, the size and duration of the loan',
+    'В кабинете инвестора, из списка одобренных заявок на получение займа, выбирете ту, в которую хотите инвестировать. Выбор происходит путем оценивания уровня благонадежности заемщика, размера и срока займа',
   ],
   HOW_TO_INVESTORS_STEP_3_ITEM_1: [
-    'Choose investment amount and duration',
-    'Деньги поступают на счет заемщика. Тем временем, не дожидаясь завершения срока займа, вы ежедневно получаете отчисления по процентной ставке, которые можно выводить в любое время',
+    'The money will go to the borrower’s account. In the meantime, without waiting for the end of the loan term, you will receive daily percentage rate payments, which can be withdrawn at any time.',
+    'Деньги поступят на счет заемщика. Тем временем, не дожидаясь завершения срока займа, вы ежедневно будете получать отчисления по процентной ставке, которые можно выводить в любое время',
   ],
   HOW_TO_INVESTORS_STEP_4_ITEM_1: [
-    'Receive daily profit from you investment as',
+    'After the end of the loan term, either immediately or for some time (depending on the level of reliability of the borrower), the loan body will be credited to your account. In case of a delay of more than 14 days, you will receive insurance compensation if it is provided for in your investment plan',
     'После окончания срока займа, сразу, либо в течении некоторого времени (зависит от уровня благонадежности заемщика) на ваш счет поступит тело займа. В случае возникновения задержки более чем 14 дней, вы получите сраховочную компенсацию, если она предусмотрена вашим инвестиционным планом',
   ],
   HOW_TO_BORROWERS_STEP_1_ITEM_1: [
-    'You choose investment amount and duration',
-    'Для начала, вы выбираете размер, срок займа и способ получения средств с помощью калькулятора'
+    'Select the amount, term of the loan and the method of receiving funds using a calculator',
+    'Выберите размер, срок займа и способ получения средств с помощью калькулятора'
   ],
   HOW_TO_BORROWERS_STEP_2_ITEM_1: [
-    'Choose investment amount and duration',
-    'После чего вам необходимо зарегистрироваться, заполнить форму с персональными данными и прикрепить скан, либо фото вашего паспорта',
+    'Register by filling out a form with personal data and attaching scans or a photo of your passport, after that our system will determine your level of trustworthiness based on your credit history',
+    'Зарегистрируйтесь, заполнив форму с персональными данными и прикрепив сканы, либо фото вашего паспорта, после чего, наша система определит ваш уровень благонадежности основываясь на вашей кредитной истории',
   ],
   HOW_TO_BORROWERS_STEP_3_ITEM_1: [
-    'Choose investment amount and duration',
-    'Наша система оценит ваш уровень благонадежности основываясь на вашей кредитной истории. В случае если ваш уровень благонадежности позволяет взять выбраннуй сумму на указанный срок, средства поступят на ваш счет в ближайшее время. В противном случае, вам будет предложено взять меньшую сумму, либо указать меньший срок',
+    'If your security level allows you to take the selected amount for a specified period, the funds will be credited to your account in the near future. Otherwise, you will be asked to take a smaller amount, or specify a shorter period',
+    'В случае если ваш уровень благонадежности позволит взять выбраннуй сумму на указанный срок, средства поступят на ваш счет в ближайшее время. В противном случае, вам будет предложено взять меньшую сумму, либо указать меньший срок',
   ],
   HOW_TO_BORROWERS_STEP_4_ITEM_1: [
-    'Receive daily profit from you investment as',
-    'В день окончания срока займа вам нужно будет внести расчитанную сумму любым, из доступных в кабинете способов, после чего ваш кредит будет закрыт',
+    'On the expiration date of the loan, you will need to deposit the calculated loan amount by any means available in the cabinet, after that your loan will be closed',
+    'В день окончания срока займа вам нужно будет внести расчитанную сумму займа любым, из доступных в кабинете способов, после чего ваш кредит будет закрыт',
   ],
   OUR_ACHIEVEMENTS: [
     'Our achievements',
@@ -82,7 +66,6 @@ export default {
   OUR_ACHIEVEMENTS_2_DESCRIPTION: [
     'Investment collected',
     'Инвестировано',
-
   ],
   OUR_ACHIEVEMENTS_3_DESCRIPTION: [
     'Users registered',
@@ -92,29 +75,13 @@ export default {
     '$',
     '$'
   ],
-  TARIFFS: [
-    'Tariffs',
-    'Тарифы',
-  ],
   INVESTMENT_PLANS: [
     'Investment plans',
     'Инвестиционные планы',
   ],
-  PER_DAY: [
-    'Per day',
-    'В день',
-  ],
-  DAILY_PAYMENTS: [
-    'Daily payments',
-    'Ежедневные выплаты',
-  ],
   MINIMAL_INVESTMENT: [
     'Minimal investment',
     'Минимальная инвестиция',
-  ],
-  INVESTITION_DURATION: [
-    'Investition duration',
-    'Срок инвестиции',
   ],
   DAYS: [
     'Days',
@@ -123,14 +90,6 @@ export default {
   NET_PROFIT: [
     'Net profit',
     'Чистая прибыль'
-  ],
-  SELECT: [
-    'Select',
-    'Выбрать',
-  ],
-  SELECTED_TARIFF: [
-    'Selected tariff',
-    'Выбранный тариф'
   ],
   INVESTITION_AMOUNT: [
     'Investition amount',
@@ -143,18 +102,6 @@ export default {
   DAILY: [
     'Daily',
     'Ежедневно',
-  ],
-  TOTAL_NET_PROFIT: [
-    'Total net profit',
-    'Общая чистая прибыль',
-  ],
-  I_AM_INVESTOR: [
-    'I am investor',
-    'Я инвестор',
-  ],
-  I_AM_BORROWER: [
-    'I am borrower',
-    'Я заемщик',
   ],
   SIGN_UP: [
     'Sign up',
@@ -176,9 +123,13 @@ export default {
     'To promote and develop the project, we have an referral program. With its help partners can attract other users to our project, receiving a bonus from each purchase of each referral',
     'Для популяризациии и развития проекта у нас действует партнерская программа. Ее суть заключается в том, что с ее помощью партнеры могут привлекать других пользователей в наш проект, получая при этом бонус с каждого вклада привлеченного им пользователя'
   ],
-  PARTNER_PROGRAM_HOW_TO_START: [
+  PARTNER_PROGRAM_HOW_TO_START_TEXT_1: [
     'When registering, you will receive a link. Use this link in your ad campaigns. Attract referrals and get bonuses from their deposits',
-    'При регистрации, вы получите ссылку. Иcпользуйте эту ссылку в своих рекламных кампниях, зарегистрировавшись по ней, новый пользователь становится вашим рефералом. Привлекайте рефералов и получайте бонусы с их вкладов'
+    'При регистрации, вы получите ссылку. Иcпользуйте эту ссылку в своих рекламных кампниях, зарегистрировавшись по ней, новый пользователь станет вашим рефералом. Привлекайте рефералов и получайте бонусы с их вкладов'
+  ],
+  PARTNER_PROGRAM_HOW_TO_START_TEXT_2: [
+    'Use this link in your ad campaigns. Attract referrals and get bonuses from their deposits',
+    'Иcпользуйте эту ссылку в своих рекламных кампниях, зарегистрировавшись по ней, новый пользователь станет вашим рефералом. Привлекайте рефералов и получайте бонусы с их вкладов'
   ],
   BONUS_FOR_DEPOSIT_FROM_REFERRAL: [
     'Bonus for deposit from referral',
@@ -200,10 +151,6 @@ export default {
     'Log in',
     'Войти',
   ],
-  OR: [
-    'Or',
-    'Либо',
-  ],
   REGISTER: [
     'Register',
     'Зарегистрировать',
@@ -211,10 +158,6 @@ export default {
   NEW_USER: [
     'new user',
     'нового пользователя',
-  ],
-  LOG_IN_WITH_SOCIAL_NETWORKS: [
-    'Log In with social networks',
-    'Войти через социальные сети',
   ],
   PASSWORD: [
     'Password',
@@ -256,14 +199,6 @@ export default {
     'Investment body will be returned after the end of the loan time',
     'Тело инвестиции будет возвращено после окончания срока займа'
   ],
-  DASHBOARD: [
-    'Dashboard',
-    'Дашбоард',
-  ],
-  MY_INVESTMENTS: [
-    'My investments',
-    'Мои инвестиции',
-  ],
   DAYS_TO_FINISH: [
     'Days to finish',
     'Дней до завершения'
@@ -275,10 +210,6 @@ export default {
   ACTIVE_INVESTMENTS: [
     'Active',
     'Активные',
-  ],
-  COMPETED_INVESTMENTS: [
-    'Completed',
-    'Завершенные',
   ],
   COMPLETED_INVESTMENTS: [
     'Completed',
@@ -292,10 +223,6 @@ export default {
     'Withdraw history',
     'История выводов'
   ],
-  WALLET_NUMBER: [
-    'Wallet number',
-    'Номер кошелька',
-  ],
   STATUS: [
     'Status',
     'Статус',
@@ -303,10 +230,6 @@ export default {
   USER: [
     'User',
     'Пользователь'
-  ],
-  WITHDRAWN: [
-    'Withdrawn',
-    'Выплачено'
   ],
   DATE: [
     'Date',
@@ -373,8 +296,8 @@ export default {
     'В кабинет'
   ],
   PAYMENT_SUCCESS_TEXT: [
-    'Investment case will appear on the "My Investments" page soon',
     'Money will arrive at your balance soon and you will be able to issue a loan',
+    'Деньги поступят на ваш баланс в ближайшее время и вы сможете выдавать займы',
   ],
   PAYMENT_FAIL: [
     'Payment fail',
@@ -464,10 +387,6 @@ export default {
     'Give a loan',
     'Выдать займ',
   ],
-  BORROWER_LEVELS: [
-    'Borrower level',
-    'Уровни заемщиков',
-  ],
   DAILY_PERCENTAGE_RATE: [
     'Daily percentage rate',
     'Дневная процентная ставка'
@@ -519,10 +438,6 @@ export default {
   ISSUED_LOANS: [
     'Issued loans',
     'Выданные займы',
-  ],
-  BORROWERS_LEVEL: [
-    'Borrowers level',
-    'Уровень заемщиков'
   ],
   BORROWER_RELIABILITY: [
     'Borrower reliability',
@@ -630,7 +545,7 @@ export default {
   ],
   VERIFICATION_NOT_PASSED: [
     'Unfortunately we can not give you a loan, try to improve your credit history',
-    'К сожалению, мы не можем выдать вам займ, посторайтесь улучшить свою кредитную историю',
+    'К сожалению мы не можем выдать вам займ, посторайтесь улучшить свою кредитную историю',
   ],
   UPLOAD_SCANS_OR_PHOTO_OF_YOU_PASSPORT: [
     'Scans/photos of each filled page of your passport',
@@ -651,5 +566,33 @@ export default {
   MY_LOANS: [
     'My loans',
     'Мои займы'
+  ],
+  WITHDRAWAL_SERVICE: [
+    'Withdrawal service',
+    'Сервис для вывода'
+  ],
+  TOTAL_INVESTED: [
+    'Total invested',
+    'Всего инвестировано'
+  ],
+  TOTAL_WITHDRAWN: [
+    'Total withdrawn',
+    'Всего выведено'
+  ],
+  COMPLETE_WITHDRAW: [
+    'Complete withdraw',
+    'Завершить выплату'
+  ],
+  DONE: [
+    'Done',
+    'Готово'
+  ],
+  ABOUT_US: [
+    'About us',
+    'О нас'
+  ],
+  LOGOUT: [
+    'Logout',
+    'Выйти'
   ]
 };

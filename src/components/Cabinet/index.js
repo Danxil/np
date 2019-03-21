@@ -73,47 +73,65 @@ const Cabinet = ({
   return (
     <div className={styles.cabinet}>
       <Layout>
-        <Header className={styles.header}>
-          <div className={styles.logo}></div>
-          <div className={styles.rightBlock}>
-            {
-              userInfo.accountType === 'investor' && (
-                <div className={classNames(styles.balance, styles.item)}>
-                  <Link to={{ pathname: '/cabinet/withdraw' }}>
-                    {translate('PROFIT')}: {toFixedIfNeed(userInfo.balance)} $
-                  </Link>
-                </div>
-              )
-            }
-            <div className={classNames(styles.logOut, styles.item)}>
-              <span className={styles.email}>{userInfo.displayName}&nbsp;&nbsp;</span><a onClick={logout}><Icon type="logout" /></a>
+        <Affix style={{ zIndex: 333 }}>
+          <Header className={styles.header}>
+            <div className={styles.logo}>
+              <Link to={{ pathname: '/cabinet/' }}>FastCredit</Link>
             </div>
-            <Affix>
+            <div className={styles.rightBlock}>
+              {
+                userInfo.accountType === 'investor' && (
+                  <div className={classNames(styles.profit, styles.item)}>
+                    <Link to={{ pathname: '/cabinet/withdraw' }}>
+                      {translate('PROFIT')}: {toFixedIfNeed(userInfo.balance)} $
+                    </Link>
+                  </div>
+                )
+              }
+              <div className={classNames(styles.logOut, styles.item)}>
+                <span className={styles.email}>{userInfo.displayName}&nbsp;&nbsp;</span><a onClick={logout}><Icon type="logout" /></a>
+              </div>
               <i
                 className={classNames('fas fa-bars', styles.mobileMenuLink)}
                 onClick={() => setShowSideMenu(!showSideMenu)}
               />
-            </Affix>
-          </div>
-        </Header>
+            </div>
+            {
+              userInfo.accountType === 'investor' && (
+                <div className={styles.balances}>
+                  {
+                    userInfo.userBalances.map(balance => (
+                      <div key={`balance${balance.id}`} className={styles.balance}>
+                        <span className={styles.balanceLabel}>{balance.tariff.name}</span>&nbsp;
+                        <span className={styles.balanceValue}>{balance.amount} $</span>
+                      </div>
+                    ))
+                  }
+                </div>
+              )
+            }
+          </Header>
+        </Affix>
         <Layout>
           <Sider
             className={styles.leftSideMenu}
             collapsed={false}
             onCollapse={() => {}}
           >
-            <Menu theme="dark" selectedKeys={[pathname]} mode="inline">
-              {
-                SIDE_MENU_ITEMS[userInfo.accountType].map(o => {
-                  const to = `${match.path}${o.route}`;
-                  return (<Menu.Item key={to}>
-                    <Link to={{ pathname: to }}>
-                      <span>{translate(o.translateId)}</span>
-                    </Link>
-                  </Menu.Item>)
-                })
-              }
-            </Menu>
+            <Affix offsetTop={64}>
+              <Menu theme="dark" selectedKeys={[pathname]} mode="inline">
+                {
+                  SIDE_MENU_ITEMS[userInfo.accountType].map(o => {
+                    const to = `${match.path}${o.route}`;
+                    return (<Menu.Item key={to}>
+                      <Link to={{ pathname: to }}>
+                        <span>{translate(o.translateId)}</span>
+                      </Link>
+                    </Menu.Item>)
+                  })
+                }
+              </Menu>
+            </Affix>
           </Sider>
           <Content className={styles.content}>
             {
@@ -139,6 +157,12 @@ const Cabinet = ({
         onClose={() => setShowSideMenu(false)}
         visible={showSideMenu}
       >
+        <div
+          className={styles.mobileMenuProfit}
+          onClick={logout}
+        >
+          {translate('PROFIT')}: {userInfo.balance} $
+        </div>
         {
           SIDE_MENU_ITEMS[userInfo.accountType].map(o => {
             const to = `${match.path}${o.route}`;
@@ -155,6 +179,12 @@ const Cabinet = ({
             )
           })
         }
+        <div
+          className={styles.mobileMenuItem}
+          onClick={logout}
+        >
+          <a>{translate('LOGOUT')}</a>
+        </div>
         <div className={styles.language}>
           <Language />
         </div>

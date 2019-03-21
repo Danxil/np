@@ -2,7 +2,7 @@
 
 .giveLoan {
   :global .ant-tabs {
-    box-shadow: 2px 8px 7px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: $boxShadow;
     background: white;
     padding: 30px 20px;
   }

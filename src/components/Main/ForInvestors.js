@@ -4,6 +4,7 @@ import { compose, pure } from 'recompose';
 import { withLocalize } from 'react-localize-redux';
 import Description from './Description';
 import Achievements from './Achievements';
+import AboutUs from './AboutUs';
 import { InvestorsCalculator } from '../common/Calculator';
 import Partners from './Partners';
 
@@ -55,6 +56,7 @@ const ForInvestors = ({ translate }) => {
       />
       <Achievements />
       <InvestorsCalculator />
+      <AboutUs/>
       <Partners />
     </Fragment>
   );

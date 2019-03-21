@@ -1,0 +1,33 @@
+@import '../../../variables.scss';
+
+.bg {
+  position: relative;
+  background: gray;
+  overflow: hidden;
+  z-index: 33;
+}
+.bgInside {
+  background-image: url('/bg.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+}
+.bgOverlay {
+  position: absolute;
+  background-color: black;
+  opacity: .6;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-attachment: fixed;
+}
+.bgShadow {
+  position: absolute;
+  opacity: .3;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url('/bg-texture.png');
+  background-attachment: fixed;
+}

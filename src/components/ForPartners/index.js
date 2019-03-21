@@ -37,13 +37,14 @@ const ForPartners = ({
       <Container>
         <PageTitle>{translate('FOR_PARTNERS')}</PageTitle>
         <div className={styles.content}>
-          <h3>{translate('YOUR_REFERRAL_LINK')}</h3>
+          <h3 className={styles.bonus}>{translate('BONUS_FOR_DEPOSIT_FROM_REFERRAL')}: {USER_REFERENCE_PERCENTAGE}%</h3>
+          <h4>{translate('YOUR_REFERRAL_LINK')}</h4>
           <Input
             readOnly
             size="large"
             value={`${location.origin}/?invitedById=${id}&invitedByDisplayName=${displayName}&showModal=sign-up`}
           />
-          <div className={styles.text}>{translate('PARTNER_PROGRAM_HOW_TO_START')}</div>
+        <div className={styles.text}>{translate('PARTNER_PROGRAM_HOW_TO_START_TEXT_2')}</div>
           <h3>{translate('YOUR_REFERRALS')}</h3>
           <Spinner spinnerKey="REST_API.GET_WITHDRAWS_REQUEST" overlay={true} transparentOverlay={true}>
             {

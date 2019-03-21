@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
-import { Avatar, Card, List, Table, Icon, } from 'antd';
+import { Avatar, Card, List, Table, Icon, Button } from 'antd';
 import _ from 'lodash';
 import moment from 'moment';
 import { compose, lifecycle, pure, defaultProps } from 'recompose';
 import { Translate, withLocalize } from 'react-localize-redux';
 import withWithdraws from '../../../containers/withWithdraws';
+import withUser from '../../../containers/withUser';
 import Spinner from '../Spinner';
 import { DATE_FORMAT } from '../../../config';
 import styles from './index.module.scss';
@@ -28,37 +29,56 @@ const getStatusLabel = (status) => {
   }
 };
 
-/* eslint-disable react/display-name */
-const COLUMNS = [
-  {
-    title: <Translate id="STATUS" />,
-    dataIndex: 'status',
-    key: 'status',
-    render: text => getStatusLabel(text)
-  },
-  {
-    title: <Translate id="USER" />,
-    dataIndex: 'user',
-    key: 'user',
-    render: user => <Fragment><Avatar icon="user" src={user.photo} /><span>&nbsp;&nbsp;&nbsp;</span>{user.displayName}</Fragment>
-  },
-  {
-    title: <Translate id="AMOUNT" />,
-    dataIndex: 'amount',
-    key: 'amount',
-    render: text => <Fragment>$ {text}</Fragment>
-  },
-  {
-    title: <Translate id="DATE" />,
-    dataIndex: 'createdAt',
-    key: 'createdAt',
-    render: text => <Fragment>{moment(text).format(DATE_FORMAT)}</Fragment>
-  },
-];
-/* eslint-enable react/display-name */
-
-const Withdraws = ({ withdraws, maxItems }) => {
+const Withdraws = ({ withdraws, maxItems, userInfo, completeWithdraw, translate }) => {
   const sortedWithdraws = _.sortBy(withdraws, 'createdAt').reverse().splice(0, maxItems);
+  /* eslint-disable react/display-name */
+  const COLUMNS = []
+  .concat([
+    {
+      title: <Translate id="STATUS" />,
+      dataIndex: 'status',
+      key: 'status',
+      render: text => getStatusLabel(text)
+    },
+    {
+      title: <Translate id="AMOUNT" />,
+      dataIndex: 'amount',
+      key: 'amount',
+      render: text => <Fragment>$ {text}</Fragment>
+    },
+    {
+      title: <Translate id="DATE" />,
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      render: text => <Fragment>{moment(text).format(DATE_FORMAT)}</Fragment>
+    },
+  ])
+  .concat(
+    userInfo.isAdmin ? [
+      {
+        title: <Translate id="USER" />,
+        dataIndex: 'user',
+        key: 'user',
+        render: user => <Fragment><Avatar icon="user" src={user.photo} /><span>&nbsp;&nbsp;&nbsp;</span>{user.displayName}</Fragment>
+      },
+      {
+        title: null,
+        dataIndex: 'action',
+        key: 'action',
+        render: (text, item) => (
+          <Button
+            onClick={() => completeWithdraw({ withdrawId: item.id })}
+            className="ghostBtn"
+            type="primary"
+            disabled={item.status !== 'inProgress'}
+          >
+            {translate('COMPLETE_WITHDRAW')}
+          </Button>
+        )
+      },
+    ] : []
+  );
+  /* eslint-enable react/display-name */
   return (
     <div className={styles.withdraws}>
       <Spinner spinnerKey="REST_API.GET_WITHDRAWS_REQUEST" overlay={true} transparentOverlay={true}>
@@ -100,8 +120,10 @@ const Withdraws = ({ withdraws, maxItems }) => {
 Withdraws.propTypes = {
   withdraws: PropTypes.arrayOf(PropTypes.object).isRequired,
   getWithdraws: PropTypes.func.isRequired,
+  completeWithdraw: PropTypes.func.isRequired,
   translate: PropTypes.func.isRequired,
   filter: PropTypes.object,
+  userInfo: PropTypes.object.isRequired,
   maxItems: PropTypes.number,
 };
 export default compose(
@@ -110,6 +132,7 @@ export default compose(
     filter: {},
   }),
   withWithdraws(),
+  withUser(),
   lifecycle({
     componentDidMount () {
       this.props.getWithdraws({ filter: this.props.filter });

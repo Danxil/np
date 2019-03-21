@@ -29,9 +29,6 @@ tr {
 }
 .countdown {
   background: white;
-  @media(max-width: $mediaWidth) {
-    padding: 0 30px;
-  }
 }
 .loanConfirmationValue {
   font-weight: bold;
@@ -47,5 +44,9 @@ tr {
   text-align: right;
 }
 :global .ant-tabs-nav-scroll {
+  text-align: center;
+}
+
+:global(.ant-table-thead > tr > th), :global(.ant-table-tbody > tr > td) {
   text-align: center;
 }

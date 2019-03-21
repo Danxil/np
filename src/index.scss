@@ -102,3 +102,10 @@ iframe {
   padding-left: 40px;
   padding-right: 40px;
 }
+
+:global .ant-slider-track {
+  background: $mainColor !important;
+}
+:global .ant-slider-handle {
+  border-color: $mainColor !important;
+}

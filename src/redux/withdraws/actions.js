@@ -32,3 +32,19 @@ export const createWithdraw = ({ amount, method, requisite }) => {
     }
   };
 };
+
+export const completeWithdraw = ({ withdrawId }) => {
+  return {
+    [RSAA]: {
+      endpoint: `${process.env.REACT_APP_BASE_REST_URL}/withdraws/${withdrawId}/complete`,
+      credentials: 'include',
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      types: [
+        'COMPLETE_WITHDRAW_REQUEST',
+        'COMPLETE_WITHDRAW_SUCCESS',
+        'COMPLETE_WITHDRAW_FAILURE'
+      ]
+    }
+  };
+};

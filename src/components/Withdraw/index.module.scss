@@ -1,5 +1,9 @@
-.withdrawing {
+@import '../../variables.scss';
 
+.withdrawing {
+  :global .ant-form-item {
+    color: $blackColor !important;
+  }
 }
 
 .withdraws {
@@ -21,8 +25,9 @@
   max-width: 400px;
 }
 .content {
-  background: #cdd8d4;
-  box-shadow: 2px 8px 7px -9px rgba(0, 0, 0, 0.75);
+  background: white;
+  color: $blackColor;
+  box-shadow: $boxShadow;
   padding: 30px;
   position: relative;
   margin-bottom: 50px;
