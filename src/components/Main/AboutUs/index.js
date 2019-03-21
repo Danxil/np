@@ -18,6 +18,7 @@ const Achievements = ({
         <div className={styles.aboutUs}>
           <PageTitle>{translate('ABOUT_US')}</PageTitle>
           <Container>
+            {translate('SLOGAN_DESCRIPTION')}
           </Container>
         </div>
       </div>
