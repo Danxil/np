@@ -4,7 +4,7 @@ import { withLocalize } from 'react-localize-redux';
 import { withRouter } from 'react-router';
 import { compose, pure, withState } from 'recompose';
 import classNames from 'classnames';
-import { Drawer, Affix } from 'antd';
+import { Drawer } from 'antd';
 import { getReasignedSearchQuery } from '../../../helpers/utils';
 import withUser from '../../../containers/withUser';
 import Container from '../../common/Container';
@@ -105,12 +105,10 @@ const Top = ({
                     <Language />
                   </div>
                 </div>
-                <Affix offsetTop={20}>
-                  <i
-                    className={classNames('fas fa-bars', styles.mobileMenuLink)}
-                    onClick={() => setShowSideMenu(!showSideMenu)}
-                  />
-                </Affix>
+                <i
+                  className={classNames('fas fa-bars', styles.mobileMenuLink)}
+                  onClick={() => setShowSideMenu(!showSideMenu)}
+                />
               </div>
             </div>
             <div className={styles.sloganBlock}>

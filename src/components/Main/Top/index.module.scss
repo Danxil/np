@@ -109,6 +109,8 @@
   z-index: 50;
   @media(max-width: $mediaWidth) {
     display: block;
+    position: fixed;
+    right: 20px;
   }
 }
 

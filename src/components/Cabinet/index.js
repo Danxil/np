@@ -73,45 +73,43 @@ const Cabinet = ({
   return (
     <div className={styles.cabinet}>
       <Layout>
-        <Affix style={{ zIndex: 333 }}>
-          <Header className={styles.header}>
-            <div className={styles.logo}>
-              <Link to={{ pathname: '/cabinet/' }}>FastCredit</Link>
-            </div>
-            <div className={styles.rightBlock}>
-              {
-                userInfo.accountType === 'investor' && (
-                  <div className={classNames(styles.profit, styles.item)}>
-                    <Link to={{ pathname: '/cabinet/withdraw' }}>
-                      {translate('PROFIT')}: {toFixedIfNeed(userInfo.balance)} $
-                    </Link>
-                  </div>
-                )
-              }
-              <div className={classNames(styles.logOut, styles.item)}>
-                <span className={styles.email}>{userInfo.displayName}&nbsp;&nbsp;</span><a onClick={logout}><Icon type="logout" /></a>
-              </div>
-              <i
-                className={classNames('fas fa-bars', styles.mobileMenuLink)}
-                onClick={() => setShowSideMenu(!showSideMenu)}
-              />
-            </div>
+        <Header className={styles.header}>
+          <div className={styles.logo}>
+            <Link to={{ pathname: '/cabinet/' }}>FastCredit</Link>
+          </div>
+          <div className={styles.rightBlock}>
             {
               userInfo.accountType === 'investor' && (
-                <div className={styles.balances}>
-                  {
-                    userInfo.userBalances.map(balance => (
-                      <div key={`balance${balance.id}`} className={styles.balance}>
-                        <span className={styles.balanceLabel}>{balance.tariff.name}</span>&nbsp;
-                        <span className={styles.balanceValue}>{balance.amount} $</span>
-                      </div>
-                    ))
-                  }
+                <div className={classNames(styles.profit, styles.item)}>
+                  <Link to={{ pathname: '/cabinet/withdraw' }}>
+                    {translate('PROFIT')}: {toFixedIfNeed(userInfo.balance)} $
+                  </Link>
                 </div>
               )
             }
-          </Header>
-        </Affix>
+            <div className={classNames(styles.logOut, styles.item)}>
+              <span className={styles.email}>{userInfo.displayName}&nbsp;&nbsp;</span><a onClick={logout}><Icon type="logout" /></a>
+            </div>
+            <i
+              className={classNames('fas fa-bars', styles.mobileMenuLink)}
+              onClick={() => setShowSideMenu(!showSideMenu)}
+            />
+          </div>
+          {
+            userInfo.accountType === 'investor' && (
+              <div className={styles.balances}>
+                {
+                  userInfo.userBalances.map(balance => (
+                    <div key={`balance${balance.id}`} className={styles.balance}>
+                      <span className={styles.balanceLabel}>{balance.tariff.name}</span>&nbsp;
+                      <span className={styles.balanceValue}>{balance.amount} $</span>
+                    </div>
+                  ))
+                }
+              </div>
+            )
+          }
+        </Header>
         <Layout>
           <Sider
             className={styles.leftSideMenu}
