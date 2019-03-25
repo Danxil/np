@@ -22,8 +22,6 @@
   background: black;
   display: flex;
   justify-content: space-between;
-  position: relative;
-  z-index: 3333;
   padding-left: 25px;
   @media(max-width: $mediaWidth) {
     padding: 0 20px;
@@ -51,6 +49,10 @@
   > * {
     width: 100%;
   }
+
+  @media(max-width: $mediaWidth) {
+    padding-top: 20px;
+  }
 }
 .verificationMessage {
   display: flex;
@@ -66,8 +68,6 @@
   font-size: 40px;
   display: none;
   cursor: pointer;
-  position: relative;
-  z-index: 50;
   margin-top: 10px;
   @media(max-width: $mediaWidth) {
     display: block;
@@ -89,8 +89,6 @@
   }
 }
 .logo {
-  position: relative;
-  z-index: 222;
   display: inline-block;
   width: 175px;
   text-align: left;
