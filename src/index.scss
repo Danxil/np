@@ -109,3 +109,6 @@ iframe {
 :global .ant-slider-handle {
   border-color: $mainColor !important;
 }
+:global .grecaptcha-badge {
+  display: none;
+}

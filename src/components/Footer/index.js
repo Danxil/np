@@ -4,17 +4,31 @@ import { Layout } from 'antd';
 import { withLocalize } from 'react-localize-redux';
 import Language from '../common/Language';
 import { compose, pure } from 'recompose';
+import Container from '../common/Container';
 import styles from './index.module.scss';
+import Menu from '../Main/Top/Menu';
 
 const { Footer: FooterAnt } = Layout;
 
-const Footer = () => {
+const Footer = ({ translate }) => {
   return (
     <FooterAnt className={styles.footer}>
-      <div>© 2018 fast-credit.in</div>
-      <div className={styles.language}>
-        <Language />
-      </div>
+      <Container>
+        <div className={styles.content}>
+          <div className={styles.footerItem}>
+            <Menu menuLinkClassName={styles.menuLink} />
+          </div>
+          <div className={styles.footerItem}>© 2018 fast-credit.in</div>
+          <div className={styles.footerItem}>
+            <div className={styles.email}>
+              {translate('IF_YOU_HAVE_ANY_QUESTIONS_WRITE_US')}:<br/><small>danxilggggaa@gmail.com</small>
+            </div>
+            <div className={styles.language}>
+              <Language />
+            </div>
+          </div>
+        </div>
+      </Container>
     </FooterAnt>
   );
 }
@@ -24,9 +38,7 @@ Footer.defaultProps = {
 };
 
 Footer.propTypes = {
-  setActiveLanguage: PropTypes.func.isRequired,
-  activeLanguage: PropTypes.object.isRequired,
-  languages: PropTypes.array.isRequired,
+  translate: PropTypes.func.isRequired,
 };
 
 export default compose(

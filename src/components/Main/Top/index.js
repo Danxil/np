@@ -5,12 +5,13 @@ import { withRouter } from 'react-router';
 import { compose, pure, withState } from 'recompose';
 import classNames from 'classnames';
 import { Drawer } from 'antd';
-import { getReasignedSearchQuery } from '../../../helpers/utils';
 import withUser from '../../../containers/withUser';
 import Container from '../../common/Container';
 import Language from '../../common/Language';
 import Link from '../../common/Link';
 import SelectVisitorType from './SelectVisitorType';
+import Menu from './Menu';
+import { MENU_ITEMS } from './Menu';
 
 import styles from './index.module.scss';
 
@@ -19,39 +20,6 @@ const Top = ({
   showSideMenu,
   setShowSideMenu,
 }) => {
-  const MENU_ITEMS = [
-    {
-      translateId: 'SIGN_UP',
-      route: { search: getReasignedSearchQuery({ showModal: 'sign-up' }) },
-      iconType: 'smile-o',
-    },
-    {
-      translateId: 'SIGN_IN',
-      route: { search: getReasignedSearchQuery({ showModal: 'sign-in' }) },
-      iconType: 'smile-o',
-    },
-    {
-      translateId: 'HOW_TO_GIVE_A_LOAN',
-      scrollToSelector: '.descriptionBlock',
-      route: { pathname: '/investor' },
-      iconType: 'smile-o',
-    },
-    {
-      translateId: 'HOW_TO_TAKE_A_LOAN',
-      scrollToSelector: '.descriptionBlock',
-      route: { pathname: '/borrower' },
-      iconType: 'smile-o',
-    },
-    {
-      translateId: 'PARTNER_PROGRAM',
-      scrollToSelector: '.partnersBlock',
-      iconType: 'smile-o',
-    },
-    {
-      translateId: 'FEEDBACK',
-      scrollToSelector: '.feebackBlock',
-    }
-  ];
   return (
     <div className={styles.main}>
       <div className={styles.bg}>
@@ -66,45 +34,7 @@ const Top = ({
               </div>
               <div className={styles.rightBlock}>
                 <div className={styles.menu}>
-                  {
-                    MENU_ITEMS.map(({ translateId, route, scrollToSelector }) => {
-                      return (
-                      <div
-                        key={translateId}
-                        className={styles.menuItem}
-                      >
-                        {
-                          route ? (
-                            <Link
-                              to={route}
-                              className={styles.menuLink}
-                              onClick={() => {
-                                if (!scrollToSelector) return;
-                                window.scrollTo({
-                                 top: document.querySelector(scrollToSelector).offsetTop,
-                                 behavior: "smooth",
-                                })
-                              }}
-                            >
-                              {translate(translateId)}
-                            </Link>
-                          ) : (
-                            <a
-                              onClick={() => {
-                                window.scrollTo({
-                                 top: document.querySelector(scrollToSelector).offsetTop,
-                                 behavior: "smooth",
-                                })
-                              }}
-                              className={styles.menuLink}
-                            >
-                              {translate(translateId)}
-                            </a>
-                          )
-                        }
-                      </div>)
-                    })
-                  }
+                  <Menu menuLinkClassName={styles.menuLink} menuItemClassName={styles.menuItem} />
                   <div className={styles.language}>
                     <Language />
                   </div>

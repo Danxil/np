@@ -622,5 +622,22 @@ export default {
   CREATE_SUPPORT_TICKET_SUCCESS: [
     'You will receive a response to the specified email',
     'Вы получите ответ на указанный емейл'
+  ],
+  IF_YOU_HAVE_ANY_QUESTIONS_WRITE_US: [
+    'If you have any questions, write to us',
+    'Если у вас возникли вопросы, напишите нам'
+  ],
+  ABOUT_US_TEXT: [
+    'Today, the financial market is undergoing a digital revolution. Fast Credit - this is one of the largest investment and credit financial platforms, which allows you to receive a permanent passive income without large initial amounts as well as loan funds in the shortest possible time. <br /><br />' +
+    'Fast Credit takes its start from a small organization in 2018. Thanks to an experienced team of specialists and experts, the company is demonstrating more and more active growth, constantly entering new markets and offering more favorable conditions for investors and borrowers. We also cooperate with stationary offline points of fast microloan. <br /><br />' +
+    'The profit of investors is formed from the margin of lending transactions. Profit from lending operations is divided between investors and the company. <br /><br />' +
+    'Fast Credit offers some of the best online credit options. The process of filling in the questionnaire is simplified as much as possible, and the verification operation is transparent, fast and without nuances. All personal data of clients and their activity are confidential and reliably protected. ' +
+    'The mechanism of financial operations, adjusted and perfected over the years, shows the growing dynamics of profits. We also have an affiliate program.',
+
+    'Сегодня финансовый рынок переживает цифровую революцию. Fast Credit - это одна с крупнейших инвестиционных и кредитных финансовых платформ, позволяющая получать постоянный пассивный доход без больших стартовых сумм а так же кредитные средства в минимальные сроки. <br /><br />' +
+    'Своё начало Fast Credit берёт с небольшой организации в 2018 году. Благодаря опытному коллективу специалистов и экспертов компания демонстрирует всё более активный рост, постоянно выходя на новые рынки и предлагая более выгодные условия для вкладчиков и заёмщиков. Так же мы сотрудничаем со стационарными оффлайн точками быстрого микрозайма. <br /><br />' +
+    'Прибыль вкладчиков формируется из маржи сделок по кредитованию. Прибыль от операций по выдачи займов делится между инвесторами и компанией. <br /><br />' +
+    'Fast Credit предлагает одни из лучших условий онлайн-кредитования. Процесс заполнения анкеты максимально упрощен, а операция верификации проходит прозрачно, быстро и без нюансов. Все персональные данные клиентов и их активность конфиденциальны и надежно защищены. ' +
+    'Урегулированный и отточенный с годами механизм финансовых операций показывает растущую динамику прибыли. Так же у нас есть партнёрскую программа.',
   ]
 };

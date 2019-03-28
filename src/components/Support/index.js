@@ -15,7 +15,7 @@ const FormItem = Form.Item;
 
 const Support = ({
   translate,
-  // submit,
+  submit,
   form: { getFieldDecorator },
   capcha,
   executeCapcha,
@@ -26,6 +26,7 @@ const Support = ({
         <div className={styles.form}>
           <div className={styles.content}>
             <PageTitle>{translate('FEEDBACK')}</PageTitle>
+            {translate('IF_YOU_HAVE_ANY_QUESTIONS_WRITE_US')}
             <Form className={styles.fields} onSubmit={executeCapcha}>
               <FormItem
                 required={false}
@@ -80,6 +81,7 @@ const Support = ({
         ref={capcha}
         sitekey="6LeNm5oUAAAAAMYj-crUD1P5U70_yhe6M9oXqnSp"
         size="invisible"
+        onChange={submit}
       />
     </div>
   );
@@ -108,7 +110,6 @@ export default compose(
       createSupportTicket,
       form: { validateFields, resetFields }
     }) => () => {
-      console.log(222);
       validateFields((err, values) => {
         if (!err) {
           createSupportTicket(values);
@@ -120,7 +121,7 @@ export default compose(
   withHandlers({
     executeCapcha: ({ capcha }) => (e) => {
       e.preventDefault();
-      console.log(11, capcha.current.execute);
+      capcha.current.reset();
       capcha.current.execute();
     }
   }),

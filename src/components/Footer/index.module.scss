@@ -1,25 +1,34 @@
 @import '../../variables.scss';
 
 .footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: black;
   color: white;
-  position: relative;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  @media(max-width: $mediaWidth) {
+    flex-direction: column;
+  }
 }
 .language {
-  position: absolute;
-  right: 0;
-  top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   @media(max-width: $mediaWidth) {
-    top: 10px;
+    align-items: center;
   }
 }
 @media(max-width: $mediaWidth) {
   .footer {
     text-align: center;
     flex-direction: column;
+
+    .footerItem {
+      margin-top: 20px;
+    }
   }
 }
 .logos {
@@ -29,4 +38,30 @@
   .logos {
     display: none;
   }
+}
+.menuLink {
+  color: white;
+}
+.footerItem {
+  text-align: center;
+  width: 200px;
+  @media(max-width: $mediaWidth) {
+    text-align: center;
+  }
+  &:first-child {
+    text-align: left;
+    @media(max-width: $mediaWidth) {
+      text-align: center;
+    }
+  }
+  &:last-child {
+    text-align: right;
+    @media(max-width: $mediaWidth) {
+      text-align: center;
+    }
+  }
+}
+.email {
+  margin-bottom: 20px;
+  max-width: 200px;
 }

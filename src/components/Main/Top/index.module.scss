@@ -95,6 +95,7 @@
 .menu {
   list-style: none;
   display: flex;
+  align-items: baseline;
   @media(max-width: $mediaWidth) {
     display: none;
   }
@@ -115,8 +116,8 @@
 }
 
 .menuItem {
-  font-size: 20px;
-  margin-left: 20px;
+  font-size: 17px;
+  margin-left: 14px;
   display: inline-block;
 
   &:first-child {
