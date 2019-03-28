@@ -78,7 +78,7 @@ const Support = ({
       </Container>
       <Recaptcha
         ref={capcha}
-        sitekey="6LftY5oUAAAAAD5phtTh1MTUHVVMPVZe1c7op8d1"
+        sitekey="6LeNm5oUAAAAAMYj-crUD1P5U70_yhe6M9oXqnSp"
         size="invisible"
       />
     </div>
