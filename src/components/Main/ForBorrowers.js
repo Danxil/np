@@ -4,8 +4,6 @@ import { compose, pure } from 'recompose';
 import { withLocalize } from 'react-localize-redux';
 import Description from './Description';
 import Achievements from './Achievements';
-import Partners from './Partners';
-import AboutUs from './AboutUs';
 import { BorrowersCalculator } from '../common/Calculator';
 
 const HOW_TO = [
@@ -56,8 +54,6 @@ const ForInvestors = ({ translate }) => {
       />
       <Achievements />
       <BorrowersCalculator />
-      <AboutUs />
-      <Partners />
     </Fragment>
   );
 }

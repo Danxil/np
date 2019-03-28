@@ -594,5 +594,33 @@ export default {
   LOGOUT: [
     'Logout',
     'Выйти'
+  ],
+  SUBJECT: [
+    'Subject',
+    'Тема',
+  ],
+  YOUR_QUESTION: [
+    'Your question',
+    'Ваш вопрос',
+  ],
+  SEND: [
+    'Send',
+    'Отправить'
+  ],
+  SUPPORT: [
+    'Support',
+    'Поддержка'
+  ],
+  EMAIL_TO_CONTACT_YOU: [
+    'Email to contact you',
+    'Email для связи с вами'
+  ],
+  FEEDBACK: [
+    'Feedback',
+    'Обратная связь',
+  ],
+  CREATE_SUPPORT_TICKET_SUCCESS: [
+    'You will receive a response to the specified email',
+    'Вы получите ответ на указанный емейл'
   ]
 };

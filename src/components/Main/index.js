@@ -7,6 +7,9 @@ import Top from './Top';
 import ForInvestors from './ForInvestors';
 import ForBorrowers from './ForBorrowers';
 import Login from './Login';
+import AboutUs from './AboutUs';
+import Partners from './Partners';
+import Support from '../Support';
 import styles from './index.module.scss';
 
 const Main = ({ match: { params: { visitorType } } }) => {
@@ -24,6 +27,9 @@ const Main = ({ match: { params: { visitorType } } }) => {
             <ForInvestors />
           )
         }
+        <AboutUs/>
+        <Support />
+        <Partners />
       </div>
       <Login />
     </div>

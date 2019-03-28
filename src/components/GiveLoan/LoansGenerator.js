@@ -92,14 +92,14 @@ const LoansGenerator = ({
   ];
   return (
     <Fragment>
-      <Affix offsetTop={64}>
+      <Affix offsetTop={110}>
         <div className={styles.countdown}>
           <Countdown
             date={mountedTime + REFRESH_LOANS_LIST_DELAY}
             renderer={({ seconds }) => (
-              <div>
+              <small>
                 {translate('LIST_WILL_BE_UPDATED_IN')} {seconds} {translate('SEC').toLowerCase()} <Progress showInfo={false} percent={seconds * 1000 / REFRESH_LOANS_LIST_DELAY * 100} />
-              </div>
+              </small>
             )}
             onComplete={countdownCompleted}
             ref={countdownRef}

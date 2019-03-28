@@ -12,7 +12,7 @@ const Tariff = ({
   amountDescription,
   lines,
   selected,
-  onCLick,
+  onClick,
   onSelect,
 }) => {
   return (
@@ -25,7 +25,7 @@ const Tariff = ({
           completed
         },
       )}
-      onClick={onCLick}
+      onClick={onClick}
     >
       <h3 className={styles.tariffTitle}>{tariffTitle}</h3>
       <div className={styles.amount}>{amount}</div>
@@ -53,7 +53,7 @@ const Tariff = ({
 
 export default compose(
   withHandlers({
-    onCLick: ({ tariffId, onSelect }) => () => {
+    onClick: ({ tariffId, onSelect }) => () => {
       onSelect && onSelect(tariffId);
     }
   }),
@@ -74,7 +74,7 @@ Tariff.propTypes = {
   tariffTitle: PropTypes.string.isRequired,
   lines: PropTypes.array.isRequired,
   onSelect: PropTypes.func,
-  onCLick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   completed: PropTypes.bool,
   selected: PropTypes.bool,
 };

@@ -17,6 +17,7 @@ import { toFixedIfNeed } from '../../helpers/utils';
 import ForPartners from '../ForPartners';
 import GiveLoan from '../GiveLoan';
 import TakeLoan from '../TakeLoan';
+import Support from '../Support';
 
 const {
   Content, Sider, Header
@@ -128,6 +129,11 @@ const Cabinet = ({
                     </Menu.Item>)
                   })
                 }
+                <Menu.Item>
+                  <Link to={{ pathname: `${match.path}/support` }}>
+                    <span>{translate('SUPPORT')}</span>
+                  </Link>
+                </Menu.Item>
               </Menu>
             </Affix>
           </Sider>
@@ -147,6 +153,7 @@ const Cabinet = ({
               </Fragment>)
             }
             <AuthenticatedRoute path={`${match.path}/for-partners`} component={ForPartners} />
+            <AuthenticatedRoute path={`${match.path}/support`} component={Support} />
           </Content>
         </Layout>
       </Layout>
@@ -182,6 +189,14 @@ const Cabinet = ({
           onClick={logout}
         >
           <a>{translate('LOGOUT')}</a>
+        </div>
+        <div
+          className={styles.mobileMenuItem}
+          onClick={() => setShowSideMenu(false)}
+        >
+          <Link to={{ pathname: `${match.path}/support` }}>
+            <span>{translate('FEEDBACK')}</span>
+          </Link>
         </div>
         <div className={styles.language}>
           <Language />

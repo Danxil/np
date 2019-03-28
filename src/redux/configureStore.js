@@ -10,6 +10,7 @@ import { combineReducers } from 'redux';
 import userSaga from './user/saga';
 import investmentsSaga from './investments/saga';
 import withdrawsSaga from './withdraws/saga';
+import supportSaga from './support/saga';
 import user from './user';
 import spinners from './spinners';
 import tariffs from './tariffs';
@@ -17,6 +18,7 @@ import withdraws from './withdraws';
 import businessConfig from './businessConfig';
 import adminStatistic from './adminStatistic';
 import investments from './investments';
+import support from './support';
 import { setSpinnerStatus } from './spinners/actions';
 import restApiInjector from './middlewares/restApiInjector';
 import spinnerMiddleware from './middlewares/spinnerMiddleware';
@@ -31,6 +33,7 @@ export default ({ history }) => {
     businessConfig,
     investments,
     adminStatistic,
+    support,
     localize: localizeReducer,
   });
 
@@ -38,6 +41,7 @@ export default ({ history }) => {
     yield fork(userSaga);
     yield fork(withdrawsSaga);
     yield fork(investmentsSaga);
+    yield fork(supportSaga);
     yield fork(function* () {
       yield takeLatest(
         ({ type }) => {

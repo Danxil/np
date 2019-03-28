@@ -46,6 +46,10 @@ const Top = ({
       translateId: 'PARTNER_PROGRAM',
       scrollToSelector: '.partnersBlock',
       iconType: 'smile-o',
+    },
+    {
+      translateId: 'FEEDBACK',
+      scrollToSelector: '.feebackBlock',
     }
   ];
   return (
