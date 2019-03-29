@@ -23,13 +23,13 @@
   display: flex;
   justify-content: space-between;
   padding-left: 25px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 777;
   @media(max-width: $mediaWidth) {
     padding: 0 20px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    z-index: 777;
   }
 }
 .rightBlock{
