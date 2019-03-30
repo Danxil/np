@@ -29,7 +29,7 @@ const AppComp = () => {
     <Layout className="layout">
       <Content>
         <Switch>
-          <Redirect from="/" to={{ pathname: '/borrower', search: location.search }} exact />
+          <Redirect from="/" to={{ pathname: '/investor', search: location.search }} exact />
           <NotAuthenticatedRoute exact path="/:visitorType(investor|borrower)?" component={Main} />
           <AuthenticatedRoute path="/cabinet" component={Cabinet} />
           <AuthenticatedRoute path="/admin-statistic" component={AdminStatistic} />
