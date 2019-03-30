@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Layout, Menu, Icon, Drawer, Affix } from 'antd';
+import { Layout, Menu, Icon, Drawer } from 'antd';
 import PropTypes from 'prop-types';
 import AuthenticatedRoute from '../common/AuthenticatedRoute';
 import { withLocalize } from 'react-localize-redux';
@@ -117,25 +117,23 @@ const Cabinet = ({
             collapsed={false}
             onCollapse={() => {}}
           >
-            <Affix offsetTop={64}>
-              <Menu theme="dark" selectedKeys={[pathname]} mode="inline">
-                {
-                  SIDE_MENU_ITEMS[userInfo.accountType].map(o => {
-                    const to = `${match.path}${o.route}`;
-                    return (<Menu.Item key={to}>
-                      <Link to={{ pathname: to }}>
-                        <span>{translate(o.translateId)}</span>
-                      </Link>
-                    </Menu.Item>)
-                  })
-                }
-                <Menu.Item>
-                  <Link to={{ pathname: `${match.path}/support` }}>
-                    <span>{translate('SUPPORT')}</span>
-                  </Link>
-                </Menu.Item>
-              </Menu>
-            </Affix>
+            <Menu theme="dark" selectedKeys={[pathname]} mode="inline">
+              {
+                SIDE_MENU_ITEMS[userInfo.accountType].map(o => {
+                  const to = `${match.path}${o.route}`;
+                  return (<Menu.Item key={to}>
+                    <Link to={{ pathname: to }}>
+                      <span>{translate(o.translateId)}</span>
+                    </Link>
+                  </Menu.Item>)
+                })
+              }
+              <Menu.Item>
+                <Link to={{ pathname: `${match.path}/support` }}>
+                  <span>{translate('SUPPORT')}</span>
+                </Link>
+              </Menu.Item>
+            </Menu>
           </Sider>
           <Content className={styles.content}>
             {
