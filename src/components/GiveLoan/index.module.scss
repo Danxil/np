@@ -1,6 +1,7 @@
 @import '../../variables.scss';
 
 .giveLoan {
+  padding-bottom: 50px;
   :global .ant-tabs {
     box-shadow: $boxShadow;
     background: white;

@@ -1,3 +1,32 @@
-:global .ant-menu-item:first-child,  {
-  margin-top: 0;
+@import './variables.scss';
+
+:global .ant-back-top {
+  z-index: 333;
+  bottom: 20px;
+}
+.telegramLink {
+  color: $blueColor;
+  position: fixed;
+  bottom: 80px;
+  z-index: 333;
+  font-size: 20px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.45);
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: center;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.65);
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+}
+
+:global(.ant-back-top), .telegramLink {
+  right: 35px;
+  @media(max-width: $mediaWidth) {
+    right: 15px;
+  }
 }

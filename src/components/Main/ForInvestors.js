@@ -4,6 +4,7 @@ import { compose, pure } from 'recompose';
 import { withLocalize } from 'react-localize-redux';
 import Description from './Description';
 import Achievements from './Achievements';
+import GiveLoan from '../GiveLoan';
 import { InvestorsCalculator } from '../common/Calculator';
 
 
@@ -54,6 +55,7 @@ const ForInvestors = ({ translate }) => {
         }}
       />
       <Achievements />
+      <GiveLoan limit={20} />
       <InvestorsCalculator />
     </Fragment>
   );

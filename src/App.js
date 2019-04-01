@@ -1,8 +1,9 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout, BackTop } from 'antd';
 import { renderToStaticMarkup } from 'react-dom/server';
 import Cookie from 'js-cookie';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { Switch, withRouter, Route, Redirect } from 'react-router';
 import { branch, compose, lifecycle, pure, renderComponent, withHandlers, withState } from 'recompose';
 import { withLocalize } from 'react-localize-redux';
@@ -23,6 +24,7 @@ import NotAuthenticatedRoute from './components/common/NotAuthenticatedRoute';
 import AdminStatistic from './components/AdminStatistic';
 import PaymentSuccess from './components/PaymentSuccess';
 import PaymentFail from './components/PaymentFail';
+import styles from './App.module.scss';
 
 const AppComp = () => {
   return (
@@ -37,7 +39,11 @@ const AppComp = () => {
           <Route path="/payment-fail" component={PaymentFail} />
         </Switch>
       </Content>
+      <BackTop />
       <Footer />
+      <a href="https://t.me/danxi" target="blank">
+        <i className={classNames('fab fa-telegram-plane', styles.telegramLink)}></i>
+      </a>
     </Layout>
   );
 };

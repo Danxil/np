@@ -20,11 +20,12 @@ const TabPane = Tabs.TabPane;
 const GiveLoan = ({
   translate,
   tariffs,
-  userInfo: { userBalances },
+  userInfo,
   setActiveTabKey,
   defaultActiveKey,
   activeTabKey,
   createInvestment,
+  limit,
 }) => {
   return (
     <div className={styles.giveLoan}>
@@ -36,10 +37,10 @@ const GiveLoan = ({
          >
           {
             tariffs.map(tariff => {
-              const tariffBalance = userBalances.find(i => i.tariffId === tariff.id).amount;
+              const tariffBalance = userInfo ? userInfo.userBalances.find(i => i.tariffId === tariff.id).amount : null;
               const key = `tariffId${tariff.id}`;
               return (
-                <TabPane tab={`${tariff.name} (${tariffBalance}$)`} key={key}>
+                <TabPane tab={`${tariff.name} ${tariffBalance ? `(${tariffBalance}$)}`: '' }`} key={key}>
                   {
                     activeTabKey === key && (
                       <Fragment>
@@ -53,19 +54,23 @@ const GiveLoan = ({
                             </Tooltip>
                           </span>
                         </div>
-                        <div className={classNames(styles.infoLine, styles.tariffBalance)}>
-                          <span className={styles.infoLabel}>
-                            {translate('YOUR_BALANCE_IN_CURRENT_INVESTMENT_PLAN')}:
-                          </span>&nbsp;
-                          <span className={styles.infoValue}>
-                            {tariffBalance}$
-                          </span>
-                          <div className={styles.plusBtn}>
-                            <Link to={{ pathname: '/cabinet/', search: getReasignedSearchQuery({ tariffId: tariff.id }) }}>
-                              <Button size="small" type="primary" >{translate('REPLENISH')}</Button>
-                            </Link>
-                          </div>
-                        </div>
+                        {
+                          tariffBalance !== null && (
+                            <div className={classNames(styles.infoLine, styles.tariffBalance)}>
+                              <span className={styles.infoLabel}>
+                                {translate('YOUR_BALANCE_IN_CURRENT_INVESTMENT_PLAN')}:
+                              </span>&nbsp;
+                              <span className={styles.infoValue}>
+                                {tariffBalance}$
+                              </span>
+                              <div className={styles.plusBtn}>
+                                <Link to={{ pathname: '/cabinet/', search: getReasignedSearchQuery({ tariffId: tariff.id }) }}>
+                                  <Button size="small" type="primary" >{translate('REPLENISH')}</Button>
+                                </Link>
+                              </div>
+                            </div>
+                          )
+                        }
                         <div className={styles.infoLine}>
                           <span className={styles.infoLabel}>
                             {translate('BORROWERS_RELIABILITY')}:
@@ -117,6 +122,7 @@ const GiveLoan = ({
                         <div className={styles.table}>
                           <LoansGenerator
                             {...tariff}
+                            limit={limit}
                             tariffBalance={tariffBalance}
                             onGiveLoan={createInvestment}
                           />
@@ -135,6 +141,8 @@ const GiveLoan = ({
 }
 
 GiveLoan.defaultProps = {
+  userInfo: null,
+  limit: null,
 };
 
 GiveLoan.propTypes = {
@@ -142,9 +150,10 @@ GiveLoan.propTypes = {
   translate: PropTypes.func.isRequired,
   createInvestment: PropTypes.func.isRequired,
   setActiveTabKey: PropTypes.func.isRequired,
-  userInfo: PropTypes.object.isRequired,
+  userInfo: PropTypes.object,
   defaultActiveKey: PropTypes.string.isRequired,
   activeTabKey: PropTypes.string.isRequired,
+  limit: PropTypes.number,
 };
 
 export default compose(

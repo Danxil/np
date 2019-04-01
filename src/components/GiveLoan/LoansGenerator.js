@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Table, Button, Tooltip, Affix, Progress, Modal, Icon, List, Card } from 'antd';
+import { Table, Button, Tooltip, Progress, Modal, Icon, List, Card } from 'antd';
 import { withLocalize } from 'react-localize-redux';
 import Countdown from 'react-countdown-now';
 import { withRouter } from 'react-router';
@@ -11,7 +11,7 @@ import {
 import { compose, pure, withHandlers, withState, lifecycle, withProps } from 'recompose';
 import _ from 'lodash';
 import styles from './LoansGenerator.module.scss';
-import { toFixedIfNeed } from '../../helpers/utils';
+import { toFixedIfNeed, getReasignedSearchQuery } from '../../helpers/utils';
 
 const COLUMNS_AMOUNT = 50;
 const MIN_DISABLE_RANDOM_LOAN_DELAY = 0;
@@ -28,19 +28,29 @@ const LoansGenerator = ({
   countdownCompleted,
   countdownRef,
   confirmGiveLoan,
+  history,
 }) => {
   const columns = [
     {
       title: <Tooltip title={translate('BORROWER_RELIABILITY_DESCRIPTION')}>{translate('BORROWER_RELIABILITY')}&nbsp;<Icon type="question-circle" className={styles.info} /></Tooltip>,
       dataIndex: 'reliability',
       key: 'reliability',
-      render: (reliability) => `${reliability} %`
+      render: (reliability, loan) => (<Fragment>
+        ${reliability} %`
+        {
+          loan.notAvailiable && (
+            <div className={styles.notAvailiableOverlay}>
+              {translate('LOAN_ALREADY_ISSUED')}...
+            </div>
+          )
+        }
+      </Fragment>)
     },
     {
       title: <Tooltip title={translate('LOAN_AMOUNT_DESCRIPTION')}>{translate('LOAN_AMOUNT')}&nbsp;<Icon type="question-circle" className={styles.info} /></Tooltip>,
       dataIndex: 'amount',
       key: 'amount',
-      render: (amount) => tariffBalance < amount ? (
+      render: (amount) => tariffBalance < amount && tariffBalance !== null ? (
         <Tooltip title={translate('LOW_BALANCE')}>
           <span className={classNames(styles.lowBalance)}>{amount} $</span>
         </Tooltip>
@@ -73,17 +83,23 @@ const LoansGenerator = ({
       render: (text, loan) => (
         <Fragment>
           {
-            parseInt(loan.amount) > tariffBalance ? (
+            tariffBalance !== null && parseInt(loan.amount) > tariffBalance ? (
               <Tooltip title={translate('LOW_BALANCE')}>
                 <Button size="small" disabled className="ghostBtn" type="primary">{translate('GIVE')}</Button>
               </Tooltip>
-            ) : <Button onClick={() => confirmGiveLoan(loan)} className="ghostBtn" type="primary">{translate('GIVE')}</Button>
-          }
-          {
-            loan.notAvailiable && (
-              <div className={styles.notAvailiableOverlay}>
-                {translate('LOAN_ALREADY_ISSUED')}...
-              </div>
+            ) : (
+              <Button
+                onClick={() => {
+                  if (tariffBalance === null) {
+                    return history.push({ search: getReasignedSearchQuery({ showModal: 'sign-up' }) });
+                  } else
+                  return confirmGiveLoan(loan);
+                }}
+                className="ghostBtn"
+                type="primary"
+              >
+                {translate('GIVE')}
+              </Button>
             )
           }
         </Fragment>
@@ -92,21 +108,19 @@ const LoansGenerator = ({
   ];
   return (
     <Fragment>
-      <Affix offsetTop={110}>
-        <div className={styles.countdown}>
-          <Countdown
-            date={mountedTime + REFRESH_LOANS_LIST_DELAY}
-            renderer={({ seconds }) => (
-              <small>
-                {translate('LIST_WILL_BE_UPDATED_IN')} {seconds} {translate('SEC').toLowerCase()} <Progress showInfo={false} percent={seconds * 1000 / REFRESH_LOANS_LIST_DELAY * 100} />
-              </small>
-            )}
-            onComplete={countdownCompleted}
-            ref={countdownRef}
-            autoStart={false}
-          />
-        </div>
-      </Affix>
+      <div className={styles.countdown}>
+        <Countdown
+          date={mountedTime + REFRESH_LOANS_LIST_DELAY}
+          renderer={({ seconds }) => (
+            <small>
+              {translate('LIST_WILL_BE_UPDATED_IN')} {seconds} {translate('SEC').toLowerCase()} <Progress showInfo={false} percent={seconds * 1000 / REFRESH_LOANS_LIST_DELAY * 100} />
+            </small>
+          )}
+          onComplete={countdownCompleted}
+          ref={countdownRef}
+          autoStart={false}
+        />
+      </div>
       {
         !isMobile && (
           <Table dataSource={loans} columns={columns} pagination={false} />
@@ -157,6 +171,7 @@ LoansGenerator.propTypes = {
   tariffBalance: PropTypes.number.isRequired,
   mountedTime: PropTypes.number.isRequired,
   countdownRef: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default compose(
@@ -195,7 +210,7 @@ export default compose(
   withState(
     'loans',
     'setLoans',
-    ({ generateLoan }) => new Array(COLUMNS_AMOUNT).fill(0).map((i, index) => generateLoan(index))
+    ({ generateLoan, limit }) => new Array(limit || COLUMNS_AMOUNT).fill(0).map((i, index) => generateLoan(index))
   ),
   withState(
     'mountedTime',
