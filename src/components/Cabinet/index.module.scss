@@ -66,6 +66,7 @@
   justify-content: center;
 }
 .leftSideMenu {
+  margin-top: 64px;
   @media(max-width: $mediaWidth) {
     display: none;
   }
