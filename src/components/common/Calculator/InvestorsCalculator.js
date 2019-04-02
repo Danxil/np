@@ -182,7 +182,7 @@ export default compose(
   withProps(() => ({
     query: queryString.parse(location.search),
   })),
-  withState('reinvestProfitMode', 'setReinvestProfitMode', ({ userInfo }) => !!userInfo.balance),
+  withState('reinvestProfitMode', 'setReinvestProfitMode', ({ userInfo }) => userInfo ? !!userInfo.balance : false),
   withState('tariffId', 'setTariffId', ({ query, tariffs }) => {
     const queryTariffId = parseInt(query.tariffId);
     return tariffs.find(o => o.id === queryTariffId) ? queryTariffId : tariffs[0].id;
