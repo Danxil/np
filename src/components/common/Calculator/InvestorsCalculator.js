@@ -27,11 +27,6 @@ export const BILLING_SYSTEMS = [
     id: 2,
   },
   {
-    label: 'ADV CASH',
-    image: 'adv-cash.png',
-    id: 3,
-  },
-  {
     label: 'COIN PAYMENTS',
     image: 'coin-payments.png',
     id: 4,
