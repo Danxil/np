@@ -36,7 +36,7 @@ const LoansGenerator = ({
       dataIndex: 'reliability',
       key: 'reliability',
       render: (reliability, loan) => (<Fragment>
-        ${reliability} %`
+        {reliability} %
         {
           loan.notAvailiable && (
             <div className={styles.notAvailiableOverlay}>
@@ -65,10 +65,10 @@ const LoansGenerator = ({
       render: (dailyProfit) => (<span>{dailyProfit} $</span>)
     },
     {
-      title: <Tooltip title={translate('LOAN_DURATION_DESCRIPTION')}>{translate('LOAN_DURATION')}&nbsp;<Icon type="question-circle" className={styles.info} /></Tooltip>,
+      title: <Tooltip title={translate('LOAN_DURATION_DESCRIPTION')}>{translate('LOAN_DURATION_IN_DAYS')}&nbsp;<Icon type="question-circle" className={styles.info} /></Tooltip>,
       dataIndex: 'duration',
       key: 'duration',
-      render: (duration) => `${duration} ${translate(duration.toString()[duration.toString().length - 1] == 1 ? 'DAYS_1' : (duration.toString()[duration.toString().length - 1] <= 4 ? 'DAYS_2' : 'DAYS_3')).toLowerCase()}`,
+      render: (duration) => `${duration}`,
     },
     {
       title: <Tooltip title={translate('NET_PROFIT_DESCRIPTION')}>{translate('NET_PROFIT')}&nbsp;<Icon type="question-circle" className={styles.info} /></Tooltip>,

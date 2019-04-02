@@ -643,5 +643,9 @@ export default {
   REINVEST_PROFIT: [
     'Reinvest profit',
     'Реинвестировать прибыль'
+  ],
+  LOAN_DURATION_IN_DAYS: [
+    'Loan duration in days',
+    'Срок займа в днях'
   ]
 };

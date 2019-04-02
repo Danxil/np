@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import classNames from 'classnames';
 import { withLocalize } from 'react-localize-redux';
-import { compose, pure, withState, withProps } from 'recompose';
+import { compose, pure, withState, withProps, lifecycle } from 'recompose';
 import { Slider, Button, Icon, Switch } from 'antd';
 import { withRouter } from 'react-router';
 import styles from './index.module.scss';
@@ -37,7 +37,7 @@ export const BILLING_SYSTEMS = [
     id: 5,
   },
 ]
-const MIN_REINVEST_AMOUNT = 5;
+const MIN_REINVEST_AMOUNT = 1;
 
 const InvestorsCalculator = ({
   translate,
@@ -111,7 +111,7 @@ const InvestorsCalculator = ({
                     {translate('INVESTITION_AMOUNT')}: {amount}$
                   </div>
                   <Slider
-                    step={5}
+                    step={reinvestProfitMode ? 1 : 5}
                     onChange={(value) => {selectAmount(value)}}
                     min={reinvestProfitMode ? MIN_REINVEST_AMOUNT : tariff.minReplenishment}
                     max={reinvestProfitMode ? userInfo.balance : 2000}
@@ -131,7 +131,7 @@ const InvestorsCalculator = ({
                 {
                   userInfo && (
                     <div className={styles.calcLine}>
-                      {translate('REINVEST_PROFIT')} <Switch disabled={userInfo.balance < MIN_REINVEST_AMOUNT} checked={userInfo.balance < MIN_REINVEST_AMOUNT ? false : reinvestProfitMode} onChange={setReinvestProfitMode} />
+                      {translate('REINVEST_PROFIT')} <Switch disabled={userInfo.balance < MIN_REINVEST_AMOUNT} checked={reinvestProfitMode} onChange={setReinvestProfitMode} />
                     </div>
                   )
                 }
@@ -233,6 +233,18 @@ export default compose(
       onDone && onDone({ amount, tariffId, billingSystem, tariff, reinvestProfitMode });
     },
   })),
+  lifecycle({
+    componentDidUpdate(prevProps) {
+      if (
+        prevProps.userInfo &&
+        this.props.userInfo &&
+        prevProps.userInfo.balance &&
+        !this.props.userInfo.balance
+      ) {
+        this.props.setReinvestProfitMode(false);
+      }
+    }
+  }),
   pure,
 )(InvestorsCalculator);
 
