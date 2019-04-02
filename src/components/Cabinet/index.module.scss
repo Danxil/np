@@ -71,6 +71,12 @@
     display: none;
   }
 }
+.menu {
+  position: fixed;
+  left: 0;
+  top: 64px;
+  width: 200px;
+}
 .mobileMenuLink {
   font-size: 40px;
   display: none;

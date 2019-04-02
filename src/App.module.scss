@@ -26,6 +26,7 @@
 
 :global(.ant-back-top), .telegramLink {
   right: 35px;
+  z-index: 3333;
   @media(max-width: $mediaWidth) {
     right: 15px;
   }

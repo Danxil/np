@@ -117,7 +117,12 @@ const Cabinet = ({
             collapsed={false}
             onCollapse={() => {}}
           >
-            <Menu theme="dark" selectedKeys={[pathname]} mode="inline">
+            <Menu
+              theme="dark"
+              selectedKeys={[pathname]}
+              mode="inline"
+              className={styles.menu}
+            >
               {
                 SIDE_MENU_ITEMS[userInfo.accountType].map(o => {
                   const to = `${match.path}${o.route}`;

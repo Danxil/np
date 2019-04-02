@@ -8,6 +8,7 @@ import {
   getReferrals,
   getNotVerifiedUsers,
   unverifyUser,
+  reinvestProfit,
 } from '../redux/user/actions';
 
 export default () => connect(
@@ -47,6 +48,9 @@ export default () => connect(
       },
       unverifyUser({ userId }) {
         return dispatch(unverifyUser({ userId }));
+      },
+      reinvestProfit(values) {
+        return dispatch(reinvestProfit(values));
       },
     };
   }

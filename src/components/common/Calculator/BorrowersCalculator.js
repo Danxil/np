@@ -206,10 +206,10 @@ export default compose(
     tariff: tariffs.find(o => o.id === tariffId),
   })),
   withState('amount', 'setAmount', ({ tariff, query }) => {
-    return parseInt(query.amount) || tariff.maxCredit
+    return parseInt(query.amount) || tariff.minCredit
   }),
   withState('duration', 'setDuration', ({ tariff, query }) => {
-    return parseInt(query.duration) || tariff.maxDuration
+    return parseInt(query.duration) || tariff.minDuration
   }),
   withState('billingSystemId', 'setBillingSystemId', ({ query }) => {
     const queryBillingSystemId = parseInt(query.billingSystemId);

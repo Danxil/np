@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import classNames from 'classnames';
 import { withLocalize } from 'react-localize-redux';
 import { compose, pure, withState, withProps } from 'recompose';
-import { Slider, Button, Icon } from 'antd';
+import { Slider, Button, Icon, Switch } from 'antd';
 import { withRouter } from 'react-router';
 import styles from './index.module.scss';
 import withUser from '../../../containers/withUser';
@@ -37,6 +37,7 @@ export const BILLING_SYSTEMS = [
     id: 5,
   },
 ]
+const MIN_REINVEST_AMOUNT = 5;
 
 const InvestorsCalculator = ({
   translate,
@@ -51,6 +52,8 @@ const InvestorsCalculator = ({
   billingSystem,
   selectModelAndInvest,
   userInfo,
+  reinvestProfitMode,
+  setReinvestProfitMode,
 }) => {
   return (
     <div className={classNames('investmentPlans')}>
@@ -110,8 +113,8 @@ const InvestorsCalculator = ({
                   <Slider
                     step={5}
                     onChange={(value) => {selectAmount(value)}}
-                    min={tariff.minReplenishment}
-                    max={2000}
+                    min={reinvestProfitMode ? MIN_REINVEST_AMOUNT : tariff.minReplenishment}
+                    max={reinvestProfitMode ? userInfo.balance : 2000}
                     tipFormatter={(value) => (<span>{value}$</span>)}
                     value={amount}
                   />
@@ -125,23 +128,36 @@ const InvestorsCalculator = ({
                   )
                 }
                 <div className={styles.calcLine}>{translate('INVETMENT_BODY_WILL_BE_RETURNED_AFTER_THE_END_OF_THE_LOAN_TIME')}</div>
-              </div>
-              <div className={styles.sectionTitle}>
-                {translate('PAYMENT_SYSTEM')}: <span className={styles.sectionValue}>{billingSystem.label}</span>
-              </div>
-              <div className={styles.billingSystems}>
                 {
-                  BILLING_SYSTEMS.map((billingSystem) => (
-                    <div
-                      key={billingSystem.label}
-                      className={classNames(styles.billingSystem, { [styles.selected]: billingSystem.id === billingSystemId })}
-                      onClick={() => { setBillingSystemId(billingSystem.id) }}
-                    >
-                      <img className={styles.billingSystemImage} src={`/${billingSystem.image}`} />
+                  userInfo && (
+                    <div className={styles.calcLine}>
+                      {translate('REINVEST_PROFIT')} <Switch disabled={userInfo.balance < MIN_REINVEST_AMOUNT} checked={userInfo.balance < MIN_REINVEST_AMOUNT ? false : reinvestProfitMode} onChange={setReinvestProfitMode} />
                     </div>
-                  ))
+                  )
                 }
               </div>
+              {
+                !reinvestProfitMode && (
+                  <Fragment>
+                    <div className={styles.sectionTitle}>
+                      {translate('PAYMENT_SYSTEM')}: <span className={styles.sectionValue}>{billingSystem.label}</span>
+                    </div>
+                    <div className={styles.billingSystems}>
+                      {
+                        BILLING_SYSTEMS.map((billingSystem) => (
+                          <div
+                            key={billingSystem.label}
+                            className={classNames(styles.billingSystem, { [styles.selected]: billingSystem.id === billingSystemId })}
+                            onClick={() => { setBillingSystemId(billingSystem.id) }}
+                          >
+                            <img className={styles.billingSystemImage} src={`/${billingSystem.image}`} />
+                          </div>
+                        ))
+                      }
+                    </div>
+                  </Fragment>
+                )
+              }
               <Button
                 onClick={() => selectModelAndInvest()}
                 type="primary"
@@ -166,6 +182,7 @@ export default compose(
   withProps(() => ({
     query: queryString.parse(location.search),
   })),
+  withState('reinvestProfitMode', 'setReinvestProfitMode', ({ userInfo }) => !!userInfo.balance),
   withState('tariffId', 'setTariffId', ({ query, tariffs }) => {
     const queryTariffId = parseInt(query.tariffId);
     return tariffs.find(o => o.id === queryTariffId) ? queryTariffId : tariffs[0].id;
@@ -173,13 +190,14 @@ export default compose(
   withProps(({ tariffId, tariffs }) => ({
     tariff: tariffs.find(o => o.id === tariffId),
   })),
-  withState('amount', 'setAmount', ({ tariff, query }) => {
-    return parseInt(query.amount) || tariff.maxCredit
+  withState('amount', 'setAmount', ({ tariff, query, reinvestProfitMode }) => {
+    return reinvestProfitMode ? MIN_REINVEST_AMOUNT : (parseInt(query.amount) || tariff.maxCredit)
   }),
   withState('billingSystemId', 'setBillingSystemId', ({ query }) => {
     const queryBillingSystemId = parseInt(query.billingSystemId);
     return BILLING_SYSTEMS.find(o => o.id === queryBillingSystemId) ? queryBillingSystemId : BILLING_SYSTEMS[0].id;
   }),
+
   withProps(({ billingSystemId }) => ({
     billingSystem: BILLING_SYSTEMS.find(o => o.id === billingSystemId),
   })),
@@ -203,6 +221,7 @@ export default compose(
     tariff,
     onDone,
     history,
+    reinvestProfitMode,
   }) => ({
     selectModelAndInvest() {
       history.push(`?${getReasignedSearchQuery({
@@ -211,7 +230,7 @@ export default compose(
         billingSystemId,
         showModal: 'sign-up',
       })}`);
-      onDone && onDone({ amount, tariffId, billingSystem, tariff });
+      onDone && onDone({ amount, tariffId, billingSystem, tariff, reinvestProfitMode });
     },
   })),
   pure,
@@ -226,6 +245,9 @@ InvestorsCalculator.propTypes = {
   selectTariffId: PropTypes.func.isRequired,
   onDone: PropTypes.func,
   translate: PropTypes.func.isRequired,
+  setReinvestProfitMode: PropTypes.func.isRequired,
+  reinvestProfitMode: PropTypes.bool.isRequired,
+  reinvestProfit: PropTypes.func.isRequired,
   selectModelAndInvest: PropTypes.func.isRequired,
   setBillingSystemId: PropTypes.func.isRequired,
   tariffs: PropTypes.array.isRequired,

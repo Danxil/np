@@ -34,8 +34,12 @@ export default compose(
   withInvestments(),
   withUser(),
   withHandlers({
-    calculated: ({ userInfo }) => ({ amount, tariffId, billingSystem, tariff }) => {
-      window.location = `${process.env.REACT_APP_BILLING_DOMAIN}hp/${amount}/${billingSystem.label.toLowerCase().replace(/ /g, '-')}/?userId=${userInfo.id}&tariffId=${tariffId}&comment=Тариф "${tariff.name}"`;
+    calculated: ({ userInfo, reinvestProfit }) => ({ amount, tariffId, billingSystem, tariff, reinvestProfitMode }) => {
+      if (!reinvestProfitMode) {
+        window.location = `${process.env.REACT_APP_BILLING_DOMAIN}hp/${amount}/${billingSystem.label.toLowerCase().replace(/ /g, '-')}/?userId=${userInfo.id}&tariffId=${tariffId}&comment=Тариф "${tariff.name}"`;
+      } else {
+        reinvestProfit({ amount, tariffId });
+      }
     }
   }),
   pure,

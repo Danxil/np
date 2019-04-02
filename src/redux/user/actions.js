@@ -117,3 +117,19 @@ export const getNotVerifiedUsers = () => {
     }
   };
 };
+export const reinvestProfit = ({ amount, tariffId }) => {
+  return {
+    [RSAA]: {
+      endpoint: `${process.env.REACT_APP_BASE_REST_URL}/reinvest-profit`,
+      credentials: 'include',
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount, tariffId }),
+      types: [
+        'REINVEST_PROFIT_REQUEST',
+        'REINVEST_PROFIT_SUCCESS',
+        'REINVEST_PROFIT_FAILURE'
+      ]
+    }
+  };
+};

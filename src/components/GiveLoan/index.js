@@ -40,7 +40,7 @@ const GiveLoan = ({
               const tariffBalance = userInfo ? userInfo.userBalances.find(i => i.tariffId === tariff.id).amount : null;
               const key = `tariffId${tariff.id}`;
               return (
-                <TabPane tab={`${tariff.name} ${tariffBalance ? `(${tariffBalance}$)}`: '' }`} key={key}>
+                <TabPane tab={`${tariff.name} ${tariffBalance ? `(${tariffBalance}$)`: '' }`} key={key}>
                   {
                     activeTabKey === key && (
                       <Fragment>

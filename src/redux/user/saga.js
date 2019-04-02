@@ -12,6 +12,7 @@ export default function* () {
     'SIGN_IN_SUCCESS',
     'CREATE_WITHDRAW_SUCCESS',
     'CREATE_INVESTMENT_SUCCESS',
+    'REINVEST_PROFIT_SUCCESS',
   ], function *() {
     yield put(getUserInfo())
   });
