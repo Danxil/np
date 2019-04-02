@@ -63,4 +63,15 @@ export default function* () {
         </Providers>
     });
   });
+  yield takeLatest(['REINVEST_PROFIT_SUCCESS'], () => {
+    notification.success({
+      duration: 5,
+      description:
+        <Providers>
+          <Fragment>
+            <Translate id="REINVEST_PROFIT_SUCCESS" />
+          </Fragment>
+        </Providers>
+    });
+  });
 }

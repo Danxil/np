@@ -647,5 +647,9 @@ export default {
   LOAN_DURATION_IN_DAYS: [
     'Loan duration in days',
     'Срок займа в днях'
+  ],
+  REINVEST_PROFIT_SUCCESS: [
+    'Profit reinvested',
+    'Прибыль ринвестирована'
   ]
 };
