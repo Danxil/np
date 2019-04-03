@@ -41,7 +41,7 @@ const AppComp = () => {
       </Content>
       <BackTop />
       <Footer />
-      <a href="https://t.me/blckvlastelin" target="blank">
+      <a href="https://t.me/FastCreditIn" target="blank">
         <i className={classNames('fab fa-telegram-plane', styles.telegramLink)}></i>
       </a>
     </Layout>
