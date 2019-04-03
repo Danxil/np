@@ -21,9 +21,9 @@ const getColumns = ({ USER_REFERENCE_PERCENTAGE }) => [
   },
   {
     title: <Translate id="REVENUE" />,
-    dataIndex: 'totalInvested',
-    key: 'totalInvested',
-    render: totalInvested => <Fragment>$ {totalInvested * (USER_REFERENCE_PERCENTAGE / 100)}</Fragment>
+    dataIndex: 'totalReplenished',
+    key: 'totalReplenished',
+    render: totalReplenished => <Fragment>$ {totalReplenished * (USER_REFERENCE_PERCENTAGE / 100)}</Fragment>
   },
 ];
 
@@ -61,12 +61,12 @@ const ForPartners = ({
                   className={styles.widthrawsList}
                   grid={{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 4, xl: 5, xxl: 5 }}
                   dataSource={referrals}
-                  renderItem={({ totalInvested, displayName }) => (
+                  renderItem={({ totalReplenished, displayName }) => (
                     <List.Item>
                       <Card title={displayName}>
                         <div className={styles.card}>
                           <div>
-                            <span>$ {totalInvested}</span>
+                            <span>$ {totalReplenished}</span>
                           </div>
                         </div>
                       </Card>
