@@ -133,7 +133,7 @@ const Cabinet = ({
                   </Menu.Item>)
                 })
               }
-              <Menu.Item>
+              <Menu.Item key={`${match.path}/support`}>
                 <Link to={{ pathname: `${match.path}/support` }}>
                   <span>{translate('SUPPORT')}</span>
                 </Link>
