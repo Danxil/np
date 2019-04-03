@@ -45,6 +45,10 @@ const SIDE_MENU_ITEMS = {
       route: '/for-partners',
       translateId: 'FOR_PARTNERS',
     },
+    {
+      route: '/support',
+      translateId: 'SUPPORT',
+    },
   ],
   borrower: [
     {
@@ -58,6 +62,10 @@ const SIDE_MENU_ITEMS = {
     {
       route: '/for-partners',
       translateId: 'FOR_PARTNERS',
+    },
+    {
+      route: '/support',
+      translateId: 'SUPPORT',
     },
   ],
 };
@@ -133,11 +141,6 @@ const Cabinet = ({
                   </Menu.Item>)
                 })
               }
-              <Menu.Item key={`${match.path}/support`}>
-                <Link to={{ pathname: `${match.path}/support` }}>
-                  <span>{translate('SUPPORT')}</span>
-                </Link>
-              </Menu.Item>
             </Menu>
           </Sider>
           <Content className={styles.content}>
