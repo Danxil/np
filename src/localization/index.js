@@ -29,7 +29,7 @@ export default {
   ],
   HOW_TO_INVESTORS_STEP_2_ITEM_1: [
     'In the investor’s сфиштуе, from the list of approved loan applications, select the one you want to invest in. The choice is made by assessing the level of reliability of the borrower, the size and duration of the loan',
-    'В кабинете инвестора, из списка одобренных заявок на получение займа, выбирете ту, в которую хотите инвестировать. Выбор происходит путем оценивания уровня благонадежности заемщика, размера и срока займа',
+    'В кабинете инвестора, из списка одобренных заявок на получение займа, выберите ту, в которую хотите инвестировать. Выбор происходит путем оценивания уровня благонадежности заемщика, размера и срока займа',
   ],
   HOW_TO_INVESTORS_STEP_3_ITEM_1: [
     'The money will go to the borrower’s account. In the meantime, without waiting for the end of the loan term, you will receive daily percentage rate payments, which can be withdrawn at any time.',
@@ -37,7 +37,7 @@ export default {
   ],
   HOW_TO_INVESTORS_STEP_4_ITEM_1: [
     'After the end of the loan term, either immediately or for some time (depending on the level of reliability of the borrower), the loan body will be credited to your account. In case of a delay of more than 14 days, you will receive insurance compensation if it is provided for in your investment plan',
-    'После окончания срока займа, сразу, либо в течении некоторого времени (зависит от уровня благонадежности заемщика) на ваш счет поступит тело займа. В случае возникновения задержки более чем 14 дней, вы получите сраховочную компенсацию, если она предусмотрена вашим инвестиционным планом',
+    'После окончания срока займа, сразу, либо в течении некоторого времени (зависит от уровня благонадежности заемщика) на ваш счет поступит тело займа. В случае возникновения задержки более чем 14 дней, вы получите страховочную компенсацию, если она предусмотрена вашим инвестиционным планом',
   ],
   HOW_TO_BORROWERS_STEP_1_ITEM_1: [
     'Select the amount, term of the loan and the method of receiving funds using a calculator',
@@ -49,7 +49,7 @@ export default {
   ],
   HOW_TO_BORROWERS_STEP_3_ITEM_1: [
     'If your security level allows you to take the selected amount for a specified period, the funds will be credited to your account in the near future. Otherwise, you will be asked to take a smaller amount, or specify a shorter period',
-    'В случае если ваш уровень благонадежности позволит взять выбраннуй сумму на указанный срок, средства поступят на ваш счет в ближайшее время. В противном случае, вам будет предложено взять меньшую сумму, либо указать меньший срок',
+    'В случае если ваш уровень благонадежности позволит взять выбранную сумму на указанный срок, средства поступят на ваш счет в ближайшее время. В противном случае, вам будет предложено взять меньшую сумму, либо указать меньший срок',
   ],
   HOW_TO_BORROWERS_STEP_4_ITEM_1: [
     'On the expiration date of the loan, you will need to deposit the calculated loan amount by any means available in the cabinet, after that your loan will be closed',
@@ -69,7 +69,7 @@ export default {
   ],
   OUR_ACHIEVEMENTS_3_DESCRIPTION: [
     'Users registered',
-    'Пользователей зарегистрированно'
+    'Пользователей зарегистрировано'
   ],
   '$': [
     '$',
@@ -121,15 +121,15 @@ export default {
   ],
   PARTNER_PROGRAM_TEXT: [
     'To promote and develop the project, we have an referral program. With its help partners can attract other users to our project, receiving a bonus from each purchase of each referral',
-    'Для популяризациии и развития проекта у нас действует партнерская программа. Ее суть заключается в том, что с ее помощью партнеры могут привлекать других пользователей в наш проект, получая при этом бонус с каждого вклада привлеченного им пользователя'
+    'Для популяризации и развития проекта у нас действует партнерская программа. Ее суть заключается в том, что с ее помощью партнеры могут привлекать других пользователей в наш проект, получая при этом бонус с каждого вклада привлеченного им пользователя'
   ],
   PARTNER_PROGRAM_HOW_TO_START_TEXT_1: [
     'When registering, you will receive a link. Use this link in your ad campaigns. Attract referrals and get bonuses from their deposits',
-    'При регистрации, вы получите ссылку. Иcпользуйте эту ссылку в своих рекламных кампниях, зарегистрировавшись по ней, новый пользователь станет вашим рефералом. Привлекайте рефералов и получайте бонусы с их вкладов'
+    'При регистрации, вы получите ссылку. Иcпользуйте эту ссылку в своих рекламных кампаниях, зарегистрировавшись по ней, новый пользователь станет вашим рефералом. Привлекайте рефералов и получайте бонусы с их вкладов'
   ],
   PARTNER_PROGRAM_HOW_TO_START_TEXT_2: [
     'Use this link in your ad campaigns. Attract referrals and get bonuses from their deposits',
-    'Иcпользуйте эту ссылку в своих рекламных кампниях, зарегистрировавшись по ней, новый пользователь станет вашим рефералом. Привлекайте рефералов и получайте бонусы с их вкладов'
+    'Иcпользуйте эту ссылку в своих рекламных кампаниях, зарегистрировавшись по ней, новый пользователь станет вашим рефералом. Привлекайте рефералов и получайте бонусы с их вкладов'
   ],
   BONUS_FOR_DEPOSIT_FROM_REFERRAL: [
     'Bonus for deposit from referral',
