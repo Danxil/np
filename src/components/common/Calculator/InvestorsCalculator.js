@@ -238,7 +238,7 @@ export default compose(
       if (
         prevProps.userInfo &&
         this.props.userInfo &&
-        prevProps.userInfo.balance &&
+        prevProps.userInfo.balance !== this.props.userInfo.balance &&
         this.props.userInfo.balance < MIN_REINVEST_AMOUNT
       ) {
         this.props.setReinvestProfitMode(false);
