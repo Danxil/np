@@ -191,7 +191,7 @@ export default compose(
     tariff: tariffs.find(o => o.id === tariffId),
   })),
   withState('amount', 'setAmount', ({ tariff, query, reinvestProfitMode }) => {
-    return reinvestProfitMode ? MIN_REINVEST_AMOUNT : (parseInt(query.amount) || tariff.maxCredit)
+    return reinvestProfitMode ? MIN_REINVEST_AMOUNT : (parseInt(query.amount) || tariff.minReplenishment)
   }),
   withState('billingSystemId', 'setBillingSystemId', ({ query }) => {
     const queryBillingSystemId = parseInt(query.billingSystemId);
