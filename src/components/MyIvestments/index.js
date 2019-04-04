@@ -38,7 +38,7 @@ const MyIvestments = ({ translate, investments }) => {
                         },
                         {
                           label: translate('DAILY_PROFIT'),
-                          value: `${investment.tariff.percentage / 100 * investment.amount} $`,
+                          value: `${toFixedIfNeed(investment.tariff.percentage / 100 * investment.amount)} $`,
                         },
                         {
                           label: translate('PROFIT_RECEIVED'),
