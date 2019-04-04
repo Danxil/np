@@ -29,10 +29,10 @@ const BILLING_SYSTEMS = [
     label: 'PERFECT MONEY',
     id: 2,
   },
-  {
-    label: 'ADV CASH',
-    id: 3,
-  },
+  // {
+  //   label: 'ADV CASH',
+  //   id: 3,
+  // },
 ];
 
 
