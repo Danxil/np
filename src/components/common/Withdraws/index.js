@@ -62,6 +62,18 @@ const Withdraws = ({ withdraws, maxItems, userInfo, completeWithdraw, translate 
         render: user => <Fragment><Avatar icon="user" src={user.photo} /><span>&nbsp;&nbsp;&nbsp;</span>{user.displayName}</Fragment>
       },
       {
+        title: <Translate id="METHOD" />,
+        dataIndex: 'method',
+        key: 'method',
+        render: method => method
+      },
+      {
+        title: <Translate id="REQUISITE" />,
+        dataIndex: 'requisite',
+        key: 'requisite',
+        render: requisite => requisite
+      },
+      {
         title: null,
         dataIndex: 'action',
         key: 'action',

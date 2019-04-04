@@ -651,5 +651,13 @@ export default {
   REINVEST_PROFIT_SUCCESS: [
     'Profit reinvested',
     'Прибыль ринвестирована'
+  ],
+  REQUISITE: [
+    'Requisite',
+    'Реквизит',
+  ],
+  METHOD: [
+    'Method',
+    'Метод'
   ]
 };
