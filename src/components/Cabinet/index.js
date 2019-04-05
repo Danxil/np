@@ -18,6 +18,7 @@ import ForPartners from '../ForPartners';
 import GiveLoan from '../GiveLoan';
 import TakeLoan from '../TakeLoan';
 import Support from '../Support';
+import Game from '../Game';
 
 const {
   Content, Sider, Header
@@ -48,6 +49,10 @@ const SIDE_MENU_ITEMS = {
     {
       route: '/support',
       translateId: 'SUPPORT',
+    },
+    {
+      route: '/multiplier',
+      translateId: 'MULTIPLIER',
     },
   ],
   borrower: [
@@ -150,6 +155,7 @@ const Cabinet = ({
                 <AuthenticatedRoute path={`${match.path}/my-investments`} exact component={MyIvestments}/>
                 <AuthenticatedRoute path={`${match.path}/withdraw`} exact component={Withdraw}/>
                 <AuthenticatedRoute path={`${match.path}/give-a-loan`} component={GiveLoan} />
+                <AuthenticatedRoute path={`${match.path}/multiplier`} component={Game} />
               </Fragment>)
             }
             {

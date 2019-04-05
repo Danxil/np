@@ -4,6 +4,8 @@ import {
   disconnectFromGame,
   notifyGameSpinStart,
   notifyCreateGame,
+  initWs,
+  closeWs,
 } from '../redux/games/actions';
 
 export default () => connect(null, (dispatch) => ({
@@ -18,6 +20,12 @@ export default () => connect(null, (dispatch) => ({
     },
     notifyCreateGame({ game }) {
       return dispatch(notifyCreateGame({ game }));
+    },
+    initWs() {
+      return dispatch(initWs());
+    },
+    closeWs() {
+      return dispatch(closeWs());
     },
   }),
 );

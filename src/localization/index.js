@@ -659,5 +659,21 @@ export default {
   METHOD: [
     'Method',
     'Метод'
+  ],
+  BET: [
+    'Bet',
+    'Ставка'
+  ],
+  START: [
+    'Start',
+    'Старт'
+  ],
+  MULTIPLIER: [
+    'Multiplier',
+    'Мультипликатор'
+  ],
+  MIN: [
+    'Min.',
+    'Мин.'
   ]
 };

@@ -11,6 +11,7 @@ import userSaga from './user/saga';
 import investmentsSaga from './investments/saga';
 import withdrawsSaga from './withdraws/saga';
 import supportSaga from './support/saga';
+import gamesSaga from './games/saga';
 import user from './user';
 import spinners from './spinners';
 import tariffs from './tariffs';
@@ -19,6 +20,7 @@ import businessConfig from './businessConfig';
 import adminStatistic from './adminStatistic';
 import investments from './investments';
 import support from './support';
+import games from './games';
 import { setSpinnerStatus } from './spinners/actions';
 import restApiInjector from './middlewares/restApiInjector';
 import spinnerMiddleware from './middlewares/spinnerMiddleware';
@@ -34,6 +36,7 @@ export default ({ history }) => {
     investments,
     adminStatistic,
     support,
+    games,
     localize: localizeReducer,
   });
 
@@ -42,6 +45,7 @@ export default ({ history }) => {
     yield fork(withdrawsSaga);
     yield fork(investmentsSaga);
     yield fork(supportSaga);
+    yield fork(gamesSaga);
     yield fork(function* () {
       yield takeLatest(
         ({ type }) => {

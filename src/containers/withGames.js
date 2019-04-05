@@ -5,5 +5,5 @@ export default () => connect(
       games: Object.values(games),
       activeGame: games[activeGameId],
     };
-  }
+  },
 );
