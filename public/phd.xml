@@ -39,8 +39,8 @@
       <OVERVIEW> 8% daily for 1-3 days</OVERVIEW>
       <NAME>BEGINNER</NAME>
       <MIN>10</MIN>
-      <MAX>25</MIN>
-      <PERCENT>8</MIN>
+      <MAX>25</MAX>
+      <PERCENT>8</PERCENT>
       <DURATION>
         <AMOUNT>1-3</AMOUNT>
         <SCALE>days</SCALE>
@@ -51,8 +51,8 @@
       <OVERVIEW> 5% daily for 1-7 days</OVERVIEW>
       <NAME>BASE</NAME>
       <MIN>10</MIN>
-      <MAX>50</MIN>
-      <PERCENT>5</MIN>
+      <MAX>50</MAX>
+      <PERCENT>5</PERCENT>
       <DURATION>
         <AMOUNT>1-7</AMOUNT>
         <SCALE>days</SCALE>
@@ -63,8 +63,8 @@
       <OVERVIEW> 3% daily for 1-14 days</OVERVIEW>
       <NAME>BASE</NAME>
       <MIN>10</MIN>
-      <MAX>100</MIN>
-      <PERCENT>3</MIN>
+      <MAX>100</MAX>
+      <PERCENT>3</PERCENT>
       <DURATION>
         <AMOUNT>1-14</AMOUNT>
         <SCALE>days</SCALE>
@@ -75,8 +75,8 @@
       <OVERVIEW> 2% daily for 1-30 days</OVERVIEW>
       <NAME>BASE</NAME>
       <MIN>10</MIN>
-      <MAX>500</MIN>
-      <PERCENT>3</MIN>
+      <MAX>500</MAX>
+      <PERCENT>3</PERCENT>
       <DURATION>
         <AMOUNT>1-30</AMOUNT>
         <SCALE>days</SCALE>
