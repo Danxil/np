@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<XML_HYIP_INFO version="1.0">
+  <NAME>FastCredit</NAME>
+  <URL>https://fast-credit.in</URL>
+  <CONTACT>
+    <NAME>Danxi</NAME>
+    <EMAIL>danxilggggaa@gmail.com</EMAIL>
+  </CONTACT>
+  <DESCRIPTION>Investment in microloans. Only verified borrowers with a clean credit history.</DESCRIPTION>
+  <MIN_SPEND>10</MIN_SPEND>
+  <MAX_SPEND>500</MAX_SPEND>
+  <REFERRAL_COMMISSION>10</REFERRAL_COMMISSION>
+  <WITHDRAWAL_TYPE>Manual</WITHDRAWAL_TYPE>
+  <PROCESSINGS>
+    <PROCESSING>perfectmoney.is</PROCESSING>
+    <PROCESSING>payeer.com</PROCESSING>
+    <PROCESSING>coinpayments.net</PROCESSING>
+    <PROCESSING>free-kassa.ru</PROCESSING>
+  </PROCESSINGS>
+  <FEATURES>
+    <FEATURE>SSL</FEATURE>
+    <FEATURE>DDOS</FEATURE>
+  </FEATURES>
+  <SUPPORT>
+    <EMAIL>danxilggggaa@gmail.com</EMAIL>
+    <FORM_URL>https://fast-credit.in/cabinet/support</FORM_URL>
+    <FORUM>https://mmgp.ru/showthread.php?t=624160</FORUM>
+    <LIVE>YES</LIVE>
+    <AIMS>
+      <AIM name="Telegram">@blckvlastelin</AIM>
+    </AIMS>
+    <FORUMS>
+      <FORUM name="MMGP">https://mmgp.ru/showthread.php?t=624160</FORUM>
+    </FORUMS>
+  </SUPPORT>
+  <PLANS>
+    <PLAN>
+      <ID>1</ID>
+      <OVERVIEW> 8% daily for 1-3 days</OVERVIEW>
+      <NAME>BEGINNER</NAME>
+      <MIN>10</MIN>
+      <MAX>25</MIN>
+      <PERCENT>8</MIN>
+      <DURATION>
+        <AMOUNT>1-3</AMOUNT>
+        <SCALE>days</SCALE>
+      </DURATION>
+    </PLAN>
+    <PLAN>
+      <ID>2</ID>
+      <OVERVIEW> 5% daily for 1-7 days</OVERVIEW>
+      <NAME>BASE</NAME>
+      <MIN>10</MIN>
+      <MAX>50</MIN>
+      <PERCENT>5</MIN>
+      <DURATION>
+        <AMOUNT>1-7</AMOUNT>
+        <SCALE>days</SCALE>
+      </DURATION>
+    </PLAN>
+    <PLAN>
+      <ID>3</ID>
+      <OVERVIEW> 3% daily for 1-14 days</OVERVIEW>
+      <NAME>BASE</NAME>
+      <MIN>10</MIN>
+      <MAX>100</MIN>
+      <PERCENT>3</MIN>
+      <DURATION>
+        <AMOUNT>1-14</AMOUNT>
+        <SCALE>days</SCALE>
+      </DURATION>
+    </PLAN>
+    <PLAN>
+      <ID>3</ID>
+      <OVERVIEW> 2% daily for 1-30 days</OVERVIEW>
+      <NAME>BASE</NAME>
+      <MIN>10</MIN>
+      <MAX>500</MIN>
+      <PERCENT>3</MIN>
+      <DURATION>
+        <AMOUNT>1-30</AMOUNT>
+        <SCALE>days</SCALE>
+      </DURATION>
+    </PLAN>
+  </PLANS>
+</XML_HYIP_INFO>
