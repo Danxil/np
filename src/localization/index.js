@@ -659,5 +659,13 @@ export default {
   METHOD: [
     'Method',
     'Метод'
+  ],
+  VALUE_TOO_BIG: [
+    'Value too big',
+    'Значение слишком велико'
+  ],
+  VALUE_TOO_LOW: [
+    'Value too low',
+    'Значение слишком мало'
   ]
 };

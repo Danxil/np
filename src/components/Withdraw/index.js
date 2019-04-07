@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
-  Slider,
   Form,
   Select,
   Input,
@@ -46,6 +45,7 @@ const Withdraw = ({
   setRequisite,
   form: { getFieldDecorator },
   handleSubmit,
+  businessConfig: { MIN_AMOUNT_OF_WITHDRAWING },
 }) => {
   const lowBalance = balance < 1;
   return (
@@ -53,7 +53,7 @@ const Withdraw = ({
       <Container>
         <PageTitle>{translate('WITHDRAW')}</PageTitle>
         <div className={styles.content}>
-          <Form id="withdrawing" className={styles.withdrawingForm}>
+          <Form id="withdrawing" noValidate className={styles.withdrawingForm}>
             {
               lowBalance && (
                 <FormItem>
@@ -67,19 +67,42 @@ const Withdraw = ({
             }
             <FormItem>
               <div>
-                {amount}$
-              </div>
-              <div>
-                <Slider
-                  step={1}
-                  defaultValue={1}
-                  min={1}
-                  max={Math.floor(balance)}
-                  tipFormatter={(value) => (<span>{value}$</span>)}
-                  onChange={(val) => setAmount(val)}
-                  value={amount}
-                  disabled={lowBalance}
-                />
+                {getFieldDecorator('amount', {
+                  rules: [
+                    {
+                      validator(rule, value, callback) {
+                        if (value < MIN_AMOUNT_OF_WITHDRAWING) {
+                          console.log(111);
+                          callback(translate('VALUE_TOO_LOW'));
+                        } else {
+                          callback();
+                        }
+                      }
+                    },
+                    {
+                      validator(rule, value, callback) {
+                        if (value > Math.floor(balance)) {
+                          callback(translate('VALUE_TOO_BIG'));
+                        } else {
+                          callback();
+                        }
+                      }
+                    }
+                  ],
+                  initialValue: amount,
+                })(
+                  <Input
+                    suffix="$"
+                    step={0.1}
+                    type="number"
+                    min={MIN_AMOUNT_OF_WITHDRAWING}
+                    onChange={(e) => {
+                      const val = parseFloat(e.target.value)
+                      setAmount(!isNaN(val) ? val: 0);
+                    }}
+                    max={Math.floor(balance)}
+                  />
+                )}
               </div>
             </FormItem>
             <FormItem
