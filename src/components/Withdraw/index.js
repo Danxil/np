@@ -72,7 +72,6 @@ const Withdraw = ({
                     {
                       validator(rule, value, callback) {
                         if (value < MIN_AMOUNT_OF_WITHDRAWING) {
-                          console.log(111);
                           callback(translate('VALUE_TOO_LOW'));
                         } else {
                           callback();
@@ -81,7 +80,7 @@ const Withdraw = ({
                     },
                     {
                       validator(rule, value, callback) {
-                        if (value > Math.floor(balance)) {
+                        if (value > balance) {
                           callback(translate('VALUE_TOO_BIG'));
                         } else {
                           callback();
@@ -96,11 +95,11 @@ const Withdraw = ({
                     step={0.1}
                     type="number"
                     min={MIN_AMOUNT_OF_WITHDRAWING}
+                    max={balance}
                     onChange={(e) => {
                       const val = parseFloat(e.target.value)
                       setAmount(!isNaN(val) ? val: 0);
                     }}
-                    max={Math.floor(balance)}
                   />
                 )}
               </div>
