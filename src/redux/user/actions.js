@@ -102,10 +102,10 @@ export const unverifyUser = ({ userId }) => {
     }
   };
 };
-export const getNotVerifiedUsers = () => {
+export const getUsersForAdminStatistic = () => {
   return {
     [RSAA]: {
-      endpoint: `${process.env.REACT_APP_BASE_REST_URL}/users`,
+      endpoint: `${process.env.REACT_APP_BASE_REST_URL}/admin-statistic/users`,
       credentials: 'include',
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },

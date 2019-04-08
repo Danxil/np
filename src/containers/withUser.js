@@ -6,7 +6,7 @@ import {
   signUp,
   confirmWelcome,
   getReferrals,
-  getNotVerifiedUsers,
+  getUsersForAdminStatistic,
   unverifyUser,
   reinvestProfit,
 } from '../redux/user/actions';
@@ -43,8 +43,8 @@ export default () => connect(
       getReferrals() {
         return dispatch(getReferrals());
       },
-      getNotVerifiedUsers() {
-        return dispatch(getNotVerifiedUsers());
+      getUsersForAdminStatistic() {
+        return dispatch(getUsersForAdminStatistic());
       },
       unverifyUser({ userId }) {
         return dispatch(unverifyUser({ userId }));

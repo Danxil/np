@@ -667,5 +667,33 @@ export default {
   VALUE_TOO_LOW: [
     'Value too low',
     'Значение слишком мало'
+  ],
+  BET: [
+    'Bet',
+    'Ставка'
+  ],
+  START: [
+    'Start',
+    'Старт'
+  ],
+  MULTIPLIER: [
+    'Multiplier',
+    'Мультипликатор'
+  ],
+  MIN: [
+    'Min.',
+    'Мин.'
+  ],
+  DELAY_WITHDRAW: [
+    'Delay withdraw',
+    'Задержать выплату'
+  ],
+  DELAY: [
+    'Delay',
+    'Задержка'
+  ],
+  DELAYED_WITHDRAW_DESCRIPTION: [
+    'The borrower has delayed the return. Collection agency is working on the return of the loan. If within 14 days there is no result, you will receive the insurance compensation provided by your plan. To avoid such situations, try to give loans to borrowers with a high level of reliability.',
+    'Заемщик задерживает возврат займа. Коллекторное агенство работает над возвратом. Если в течении 14 дней не будет результата - вам будет выплачена страховка, предусмотренная вашим тарифом. Для избежания подобных ситуаций попробуйте выдавать займы заемщикам с высоким уровнем благонадежности.'
   ]
 };

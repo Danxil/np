@@ -4,9 +4,9 @@ import { isMobile } from 'react-device-detect';
 import { Avatar, Card, List, Table, Icon, Button } from 'antd';
 import _ from 'lodash';
 import moment from 'moment';
-import { compose, lifecycle, pure, defaultProps } from 'recompose';
+import { compose, pure, defaultProps } from 'recompose';
 import { Translate, withLocalize } from 'react-localize-redux';
-import withWithdraws from '../../../containers/withWithdraws';
+import withWithdrawsActions from '../../../containers/withWithdrawsActions';
 import withUser from '../../../containers/withUser';
 import Spinner from '../Spinner';
 import { DATE_FORMAT } from '../../../config';
@@ -15,17 +15,17 @@ import styles from './index.module.scss';
 const getStatusLabel = (status) => {
   switch (status) {
     case 'done':
-      return <div classNames={styles.greenColor}>
+      return (<div className={styles.greenColor}>
         <Icon type="check-circle-o" /> <span className="statusLabel"><Translate id="DONE" /></span>
-      </div>;
+      </div>);
     case 'inProgress':
-      return <div>
+      return (<div>
         <Icon type="hourglass" /> <span className="statusLabel"><Translate id="IN_PROGRESS" /></span>
-      </div>;
+      </div>);
     case 'rejected':
-      return <div classNames={styles.redColor}>
+      return (<div className={styles.redColor}>
         <Icon type="close-circle-o" /> <span className="statusLabel"><Translate id="REJECTED" /></span>
-      </div>;
+      </div>);
   }
 };
 
@@ -131,7 +131,6 @@ const Withdraws = ({ withdraws, maxItems, userInfo, completeWithdraw, translate 
 
 Withdraws.propTypes = {
   withdraws: PropTypes.arrayOf(PropTypes.object).isRequired,
-  getWithdraws: PropTypes.func.isRequired,
   completeWithdraw: PropTypes.func.isRequired,
   translate: PropTypes.func.isRequired,
   filter: PropTypes.object,
@@ -140,16 +139,11 @@ Withdraws.propTypes = {
 };
 export default compose(
   defaultProps({
-    maxItems: 10,
+    maxItems: 999999,
     filter: {},
   }),
-  withWithdraws(),
+  withWithdrawsActions(),
   withUser(),
-  lifecycle({
-    componentDidMount () {
-      this.props.getWithdraws({ filter: this.props.filter });
-    },
-  }),
   withLocalize,
   pure,
 )(Withdraws);

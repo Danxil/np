@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { compose, pure } from 'recompose';
 import { withRouter } from 'react-router';
-import withUser from '../../containers/withUser';
+import withUser from '../../../containers/withUser';
 import styles from './index.module.scss';
 import User from './User';
 
