@@ -7,9 +7,10 @@ import {
   Input,
   Alert,
 } from 'antd';
-import { compose, withState, withProps, pure } from 'recompose';
+import { compose, withState, withProps, pure, lifecycle } from 'recompose';
 import { withLocalize } from 'react-localize-redux';
 import withWithdraws from '../../containers/withWithdraws';
+import withWithdrawsActions from '../../containers/withWithdrawsActions';
 import withBusinessConfig from '../../containers/withBusinessConfig';
 import withUser from '../../containers/withUser';
 import PageTitle from '../common/PageTitle';
@@ -37,7 +38,7 @@ const BILLING_SYSTEMS = [
 
 const Withdraw = ({
   translate,
-  userInfo: { balance, id: userId },
+  userInfo: { balance },
   setAmount,
   amount,
   method,
@@ -46,6 +47,7 @@ const Withdraw = ({
   form: { getFieldDecorator },
   handleSubmit,
   businessConfig: { MIN_AMOUNT_OF_WITHDRAWING },
+  withdraws,
 }) => {
   const lowBalance = balance < 1;
   return (
@@ -146,7 +148,7 @@ const Withdraw = ({
             </FormItem>
           </Form>
           <h3>{translate('WITHDRAW_HISTORY')}:</h3>
-          <WithdrawsCommon filter={{ userId }} />
+          <WithdrawsCommon withdraws={withdraws} />
         </div>
       </Container>
     </div>
@@ -156,6 +158,7 @@ const Withdraw = ({
 export default compose(
   withLocalize,
   withWithdraws(),
+  withWithdrawsActions(),
   withUser(),
   withBusinessConfig(),
   withState('amount', 'setAmount', ({ businessConfig: { MIN_AMOUNT_OF_WITHDRAWING } }) => MIN_AMOUNT_OF_WITHDRAWING),
@@ -171,6 +174,11 @@ export default compose(
       });
     },
   })),
+  lifecycle({
+    componentDidMount() {
+      this.props.getWithdraws({ filter: { userId: this.props.userInfo.id } });
+    }
+  }),
   pure,
 )(Withdraw);
 
@@ -181,6 +189,7 @@ Withdraw.propTypes = {
   translate: PropTypes.func.isRequired,
   getWithdraws: PropTypes.func.isRequired,
   userInfo: PropTypes.object.isRequired,
+  withdraws: PropTypes.array.isRequired,
   setAmount: PropTypes.func.isRequired,
   amount: PropTypes.number.isRequired,
   method: PropTypes.string.isRequired,
